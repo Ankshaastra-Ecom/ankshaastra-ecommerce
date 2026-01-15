@@ -140,31 +140,48 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-gold-dark transition-all duration-300 shadow-soft hover:shadow-gold;
+    @apply bg-primary text-primary-foreground transition-all duration-300;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-amethyst transition-all duration-300;
+    @apply bg-secondary text-secondary-foreground transition-all duration-300;
   }
 
   .btn-gold {
-    @apply bg-gradient-to-r from-gold to-primary text-primary-foreground font-medium hover:shadow-gold transition-all duration-300;
+    background: linear-gradient(to right, hsl(42 85% 55%), hsl(38 70% 45%));
+    @apply text-primary-foreground font-medium transition-all duration-300;
+  }
+
+  .btn-gold:hover {
+    box-shadow: 0 4px 20px -2px hsl(42 85% 55% / 0.25);
   }
 
   .card-spiritual {
-    @apply bg-card rounded-lg shadow-soft hover:shadow-medium transition-all duration-300 border border-border/50;
+    @apply bg-card rounded-lg transition-all duration-300 border border-border/50;
+    box-shadow: 0 4px 20px -2px hsl(25 30% 12% / 0.08);
+  }
+
+  .card-spiritual:hover {
+    box-shadow: 0 8px 30px -4px hsl(25 30% 12% / 0.12);
   }
 
   .text-gradient-gold {
-    @apply bg-gradient-to-r from-gold via-primary to-copper bg-clip-text text-transparent;
+    background: linear-gradient(to right, hsl(42 85% 55%), hsl(38 70% 45%), hsl(25 60% 45%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .text-gradient-spiritual {
-    @apply bg-gradient-to-r from-amethyst to-gold bg-clip-text text-transparent;
+    background: linear-gradient(to right, hsl(270 35% 35%), hsl(42 85% 55%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .divider-spiritual {
-    @apply h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent;
+    @apply h-px;
+    background: linear-gradient(to right, transparent, hsl(38 70% 45% / 0.3), transparent);
   }
 
   .glow-gold {
@@ -173,6 +190,22 @@
 
   .pattern-mandala {
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a574' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20v40c11.046 0 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20V10c-11.046 0-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .shadow-soft {
+    box-shadow: 0 4px 20px -2px hsl(25 30% 12% / 0.08);
+  }
+
+  .shadow-medium {
+    box-shadow: 0 8px 30px -4px hsl(25 30% 12% / 0.12);
+  }
+
+  .shadow-gold {
+    box-shadow: 0 4px 20px -2px hsl(42 85% 55% / 0.25);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 20px 50px -12px hsl(25 30% 12% / 0.15);
   }
 }
 
