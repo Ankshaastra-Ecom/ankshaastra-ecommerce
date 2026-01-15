@@ -52,14 +52,14 @@ const AboutPreview: React.FC = () => {
 
           {/* Content Side */}
           <div>
-            <p className="text-primary font-medium uppercase tracking-wider mb-2">About GemsMantra</p>
+            <p className="text-primary font-medium uppercase tracking-wider mb-2">About Ankshaastra</p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
               Your Trusted Partner in
               <span className="text-gradient-gold"> Spiritual Wellness</span>
             </h2>
             
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              At GemsMantra, we believe in the transformative power of authentic spiritual products. 
+              At Ankshaastra, we believe in the transformative power of authentic spiritual products. 
               For over 15 years, we have been sourcing the finest Rudraksha beads from Nepal, 
               healing crystals from around the world, and precious gemstones certified for 
               astrological purposes.

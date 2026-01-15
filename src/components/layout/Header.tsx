@@ -53,7 +53,7 @@ const Header: React.FC = () => {
               <span className="text-primary-foreground font-display font-bold text-lg md:text-xl">ॐ</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-xl md:text-2xl font-display font-bold text-gradient-gold">GemsMantra</h1>
+              <h1 className="text-xl md:text-2xl font-display font-bold text-gradient-gold">Ankshaastra</h1>
               <p className="text-xs text-muted-foreground -mt-1">Spiritual Wellness</p>
             </div>
           </Link>
@@ -141,7 +141,7 @@ const Header: React.FC = () => {
               </SheetTrigger>
               <SheetContent side="right" className="w-full sm:w-80">
                 <SheetHeader>
-                  <SheetTitle className="text-gradient-gold font-display text-2xl">GemsMantra</SheetTitle>
+                  <SheetTitle className="text-gradient-gold font-display text-2xl">Ankshaastra</SheetTitle>
                 </SheetHeader>
                 <div className="mt-8 space-y-4">
                   <Link 

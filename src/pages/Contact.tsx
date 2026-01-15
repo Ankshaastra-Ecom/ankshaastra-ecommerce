@@ -68,8 +68,9 @@ const Contact: React.FC = () => {
                     <div>
                       <h3 className="font-medium text-foreground mb-1">Address</h3>
                       <p className="text-muted-foreground text-sm">
-                        123 Spiritual Lane<br />
-                        Sacred City, India - 110001
+                        Unit No. O-622, Block E,<br />
+                        Eye of Noida, Sector-140A,<br />
+                        Noida-201305
                       </p>
                     </div>
                   </div>
@@ -94,8 +95,8 @@ const Contact: React.FC = () => {
                     <div>
                       <h3 className="font-medium text-foreground mb-1">Email</h3>
                       <p className="text-muted-foreground text-sm">
-                        info@gemsmantra.com<br />
-                        support@gemsmantra.com
+                        info@ankshaastra.com<br />
+                        support@ankshaastra.com
                       </p>
                     </div>
                   </div>
