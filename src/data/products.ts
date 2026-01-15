@@ -5,6 +5,7 @@ import kuberYantra from '@/assets/yantras/kuber-yantra.webp';
 import rahuYantra from '@/assets/yantras/rahu-yantra.webp';
 import shreeYantra from '@/assets/yantras/shree-yantra.webp';
 import shukraYantra from '@/assets/yantras/shukra-yantra.webp';
+import suryaYantra from '@/assets/yantras/surya-yantra.webp';
 
 export interface Product {
   id: string;
@@ -26,6 +27,7 @@ export interface Product {
 }
 
 const yantraImageMap: Record<string, string> = {
+  'Surya Yantra': suryaYantra,
   'Chandrama Yantra': chandraYantra,
   'Ketu Yantra': ketuYantra,
   'Laxmi-Ganesh-Kuber Yantra': kuberYantra,
