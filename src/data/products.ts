@@ -1,3 +1,11 @@
+// Yantra images
+import chandraYantra from '@/assets/yantras/chandra-yantra.webp';
+import ketuYantra from '@/assets/yantras/ketu-yantra.webp';
+import kuberYantra from '@/assets/yantras/kuber-yantra.webp';
+import rahuYantra from '@/assets/yantras/rahu-yantra.webp';
+import shreeYantra from '@/assets/yantras/shree-yantra.webp';
+import shukraYantra from '@/assets/yantras/shukra-yantra.webp';
+
 export interface Product {
   id: string;
   name: string;
@@ -16,6 +24,15 @@ export interface Product {
   featured?: boolean;
   bestSeller?: boolean;
 }
+
+const yantraImageMap: Record<string, string> = {
+  'Chandrama Yantra': chandraYantra,
+  'Ketu Yantra': ketuYantra,
+  'Laxmi-Ganesh-Kuber Yantra': kuberYantra,
+  'Rahu Yantra': rahuYantra,
+  'Shree Yantra': shreeYantra,
+  'Shukra Yantra': shukraYantra,
+};
 
 export const categories = [
   {
@@ -258,7 +275,7 @@ const generateProducts = (): Product[] => {
     });
   });
 
-  // Yantras
+// Yantras
   const yantraItems = [
     { name: 'Surya Yantra', price: 396, benefits: ['Sun blessings', 'Success', 'Health'] },
     { name: 'Chandrama Yantra', price: 396, benefits: ['Moon blessings', 'Peace', 'Emotional balance'] },
@@ -284,7 +301,7 @@ const generateProducts = (): Product[] => {
       category: 'yantra',
       price: item.price,
       originalPrice: Math.round(item.price * 1.2),
-      image: '/placeholder.svg',
+      image: yantraImageMap[item.name] || '/placeholder.svg',
       rating: 4.5 + Math.random() * 0.5,
       reviews: Math.floor(Math.random() * 40) + 20,
       description: `Sacred ${item.name} engraved on pure copper plate. Energized with proper Vedic mantras for maximum effectiveness.`,
