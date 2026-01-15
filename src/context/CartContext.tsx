@@ -87,7 +87,7 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-const CART_STORAGE_KEY = 'gemsmantra_cart';
+const CART_STORAGE_KEY = 'ankshaastra_cart';
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, { items: [], total: 0, itemCount: 0 });

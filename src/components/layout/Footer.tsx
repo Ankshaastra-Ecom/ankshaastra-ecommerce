@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-display font-bold text-lg">ॐ</span>
               </div>
-              <span className="text-xl font-display font-bold">GemsMantra</span>
+              <span className="text-xl font-display font-bold">Ankshaastra</span>
             </Link>
             <p className="text-secondary-foreground/80 mb-4 text-sm">
               Your trusted source for authentic Rudraksha beads, healing crystals, gemstones, and spiritual products. Energized with Vedic mantras for maximum spiritual benefits.
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                <span className="text-secondary-foreground/80 text-sm">123 Spiritual Lane, Sacred City, India - 110001</span>
+                <span className="text-secondary-foreground/80 text-sm">Unit No. O-622, Block E, Eye of Noida, Sector-140A, Noida-201305</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gold flex-shrink-0" />
@@ -121,7 +121,7 @@ const Footer: React.FC = () => {
       <div className="border-t border-secondary-foreground/10">
         <div className="container-custom py-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-2 text-sm text-secondary-foreground/60">
-            <p>© 2024 GemsMantra. All rights reserved.</p>
+            <p>© 2024 Ankshaastra. All rights reserved.</p>
             <p className="flex items-center gap-1">
               Made with <span className="text-gold">♥</span> for spiritual seekers
             </p>

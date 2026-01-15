@@ -16,7 +16,7 @@ const About: React.FC = () => {
           <div className="container-custom relative z-10">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-6">
-                About <span className="text-gradient-gold">GemsMantra</span>
+                About <span className="text-gradient-gold">Ankshaastra</span>
               </h1>
               <p className="text-xl text-muted-foreground">
                 Your trusted partner in spiritual wellness since 2008
@@ -34,7 +34,7 @@ const About: React.FC = () => {
                   Our Journey
                 </h2>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  GemsMantra was born from a deep passion for authentic spiritual products and a desire to make 
+                  Ankshaastra was born from a deep passion for authentic spiritual products and a desire to make 
                   genuine Vedic remedies accessible to seekers worldwide. Our founder, a devoted practitioner 
                   of ancient Indian spirituality, recognized the challenge many faced in finding truly authentic 
                   products in a market flooded with imitations.
@@ -108,7 +108,7 @@ const About: React.FC = () => {
           <div className="container-custom">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-display font-bold text-foreground mb-8 text-center">
-                Why Choose GemsMantra?
+                Why Choose Ankshaastra?
               </h2>
               <div className="space-y-4">
                 {[

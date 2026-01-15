@@ -260,21 +260,21 @@ const generateProducts = (): Product[] => {
 
   // Yantras
   const yantraItems = [
-    { name: 'Surya Yantra', price: 1500, benefits: ['Sun blessings', 'Success', 'Health'] },
-    { name: 'Chandrama Yantra', price: 1500, benefits: ['Moon blessings', 'Peace', 'Emotional balance'] },
-    { name: 'Guru Yantra', price: 1500, benefits: ['Jupiter blessings', 'Wisdom', 'Prosperity'] },
-    { name: 'Rahu Yantra', price: 1500, benefits: ['Rahu pacification', 'Success', 'Protection'] },
-    { name: 'Buddha Yantra', price: 1500, benefits: ['Mercury blessings', 'Intelligence', 'Business success'] },
-    { name: 'Shukra Yantra', price: 1500, benefits: ['Venus blessings', 'Love', 'Luxury'] },
-    { name: 'Ketu Yantra', price: 1500, benefits: ['Ketu pacification', 'Spiritual growth', 'Liberation'] },
-    { name: 'Shani Yantra', price: 1500, benefits: ['Saturn pacification', 'Discipline', 'Justice'] },
-    { name: 'Mangal Yantra', price: 1500, benefits: ['Mars blessings', 'Courage', 'Victory'] },
-    { name: 'Shree Yantra', price: 2500, benefits: ['Wealth', 'Prosperity', 'Abundance'] },
-    { name: 'Ganesh Yantra', price: 1800, benefits: ['Obstacle removal', 'Success', 'Wisdom'] },
-    { name: 'Laxmi-Ganesh Yantra', price: 2200, benefits: ['Wealth', 'Success', 'Prosperity'] },
-    { name: 'Laxmi-Ganesh-Kuber Yantra', price: 3500, benefits: ['Maximum wealth', 'Abundance', 'Fortune'] },
-    { name: 'Hanuman Yantra', price: 1800, benefits: ['Protection', 'Strength', 'Courage'] },
-    { name: 'Baglamukhi Yantra', price: 2000, benefits: ['Victory over enemies', 'Protection', 'Power'] },
+    { name: 'Surya Yantra', price: 396, benefits: ['Sun blessings', 'Success', 'Health'] },
+    { name: 'Chandrama Yantra', price: 396, benefits: ['Moon blessings', 'Peace', 'Emotional balance'] },
+    { name: 'Guru Yantra', price: 396, benefits: ['Jupiter blessings', 'Wisdom', 'Prosperity'] },
+    { name: 'Rahu Yantra', price: 396, benefits: ['Rahu pacification', 'Success', 'Protection'] },
+    { name: 'Buddha Yantra', price: 396, benefits: ['Mercury blessings', 'Intelligence', 'Business success'] },
+    { name: 'Shukra Yantra', price: 396, benefits: ['Venus blessings', 'Love', 'Luxury'] },
+    { name: 'Ketu Yantra', price: 396, benefits: ['Ketu pacification', 'Spiritual growth', 'Liberation'] },
+    { name: 'Shani Yantra', price: 396, benefits: ['Saturn pacification', 'Discipline', 'Justice'] },
+    { name: 'Mangal Yantra', price: 396, benefits: ['Mars blessings', 'Courage', 'Victory'] },
+    { name: 'Shree Yantra', price: 396, benefits: ['Wealth', 'Prosperity', 'Abundance'] },
+    { name: 'Ganesh Yantra', price: 396, benefits: ['Obstacle removal', 'Success', 'Wisdom'] },
+    { name: 'Laxmi-Ganesh Yantra', price: 396, benefits: ['Wealth', 'Success', 'Prosperity'] },
+    { name: 'Laxmi-Ganesh-Kuber Yantra', price: 396, benefits: ['Maximum wealth', 'Abundance', 'Fortune'] },
+    { name: 'Hanuman Yantra', price: 396, benefits: ['Protection', 'Strength', 'Courage'] },
+    { name: 'Baglamukhi Yantra', price: 396, benefits: ['Victory over enemies', 'Protection', 'Power'] },
   ];
 
   yantraItems.forEach(item => {
