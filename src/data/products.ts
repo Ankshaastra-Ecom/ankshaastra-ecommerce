@@ -7,6 +7,18 @@ import shreeYantra from '@/assets/yantras/shree-yantra.webp';
 import shukraYantra from '@/assets/yantras/shukra-yantra.webp';
 import suryaYantra from '@/assets/yantras/surya-yantra.webp';
 
+// Bracelet images
+import amazonite1 from '@/assets/bracelets/amazonite-1.webp';
+import amazonite2 from '@/assets/bracelets/amazonite-2.webp';
+import amazonite3 from '@/assets/bracelets/amazonite-3.webp';
+import amazonite4 from '@/assets/bracelets/amazonite-4.webp';
+import amazonite5 from '@/assets/bracelets/amazonite-5.webp';
+import amazonite6 from '@/assets/bracelets/amazonite-6.webp';
+import redJasper1 from '@/assets/bracelets/red-jasper-1.webp';
+import redJasper2 from '@/assets/bracelets/red-jasper-2.webp';
+import redJasper3 from '@/assets/bracelets/red-jasper-3.webp';
+import redJasper4 from '@/assets/bracelets/red-jasper-4.webp';
+
 export interface Product {
   id: string;
   name: string;
@@ -34,6 +46,17 @@ const yantraImageMap: Record<string, string> = {
   'Rahu Yantra': rahuYantra,
   'Shree Yantra': shreeYantra,
   'Shukra Yantra': shukraYantra,
+};
+
+const braceletImageMap: Record<string, { image: string; images: string[] }> = {
+  'Natural Amazonite Bracelet': {
+    image: amazonite1,
+    images: [amazonite1, amazonite2, amazonite3, amazonite4, amazonite5, amazonite6]
+  },
+  'Red Jasper Bracelet': {
+    image: redJasper1,
+    images: [redJasper1, redJasper2, redJasper3, redJasper4]
+  },
 };
 
 export const categories = [
@@ -185,13 +208,15 @@ const generateProducts = (): Product[] => {
   ];
 
   crystalItems.forEach(item => {
+    const braceletImages = braceletImageMap[item.name];
     products.push({
       id: `cry-${id++}`,
       name: item.name,
       category: 'crystals',
       price: item.price,
       originalPrice: Math.round(item.price * 1.15),
-      image: '/placeholder.svg',
+      image: braceletImages?.image || '/placeholder.svg',
+      images: braceletImages?.images,
       rating: 4.3 + Math.random() * 0.7,
       reviews: Math.floor(Math.random() * 80) + 15,
       description: `Beautiful ${item.name} made with genuine natural crystals. Each bead is carefully selected for its healing properties.`,
