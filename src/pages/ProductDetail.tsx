@@ -16,6 +16,7 @@ const ProductDetail: React.FC = () => {
   const navigate = useNavigate();
   const { addItem, isInCart } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const product = id ? getProductById(id) : undefined;
 
@@ -80,11 +81,12 @@ const ProductDetail: React.FC = () => {
         <section className="py-8 md:py-12">
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-              {/* Product Image */}
+              {/* Product Images */}
               <div className="space-y-4">
+                {/* Main Image */}
                 <div className="relative aspect-square rounded-2xl overflow-hidden bg-muted">
                   <img
-                    src={product.image}
+                    src={product.images?.[selectedImageIndex] || product.image}
                     alt={product.name}
                     className="w-full h-full object-cover"
                   />
@@ -99,6 +101,29 @@ const ProductDetail: React.FC = () => {
                     </Badge>
                   )}
                 </div>
+                
+                {/* Thumbnail Gallery */}
+                {product.images && product.images.length > 1 && (
+                  <div className="flex gap-3 overflow-x-auto pb-2">
+                    {product.images.map((img, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setSelectedImageIndex(index)}
+                        className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                          selectedImageIndex === index
+                            ? 'border-primary ring-2 ring-primary/20'
+                            : 'border-border hover:border-primary/50'
+                        }`}
+                      >
+                        <img
+                          src={img}
+                          alt={`${product.name} view ${index + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Product Info */}
