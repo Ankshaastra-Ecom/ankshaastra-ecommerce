@@ -188,24 +188,30 @@ const generateProducts = (): Product[] => {
     { name: 'Blood Stone Bracelet', price: 1200, benefits: ['Courage and vitality', 'Blood purification', 'Grounding energy'] },
     { name: 'Tiger Eye Blue Bracelet', price: 1100, benefits: ['Calm and soothing', 'Clear thinking', 'Stress relief'] },
     { name: 'Mother of Pearl Bracelet', price: 1300, benefits: ['Intuition enhancement', 'Emotional healing', 'Feminine energy'] },
-    { name: 'Howlite Bracelet', price: 900, benefits: ['Patience and calm', 'Insomnia relief', 'Anger reduction'] },
+    { name: 'Howlite Bracelet', price: 834, benefits: ['Patience and calm', 'Insomnia relief', 'Anger reduction'] },
     { name: 'Natural Turquoise Bracelet', price: 2500, benefits: ['Protection and healing', 'Communication', 'Spiritual grounding'] },
-    { name: 'Natural Amazonite Bracelet', price: 1400, benefits: ['Hope and harmony', 'Throat chakra', 'Truth speaking'] },
-    { name: 'Black Agate Bracelet', price: 800, benefits: ['Protection', 'Grounding', 'Courage'] },
-    { name: '7 Chakra Bracelet', price: 1500, benefits: ['Energy balance', 'Chakra alignment', 'Holistic healing'] },
-    { name: 'Green Jade Bracelet', price: 1800, benefits: ['Luck and prosperity', 'Heart chakra', 'Emotional balance'] },
-    { name: 'Green Aventurine Bracelet', price: 1100, benefits: ['Luck and opportunity', 'Heart healing', 'Optimism'] },
-    { name: 'Rose Quartz Bracelet', price: 1000, benefits: ['Unconditional love', 'Self-love', 'Emotional healing'] },
+    { name: 'Natural Amazonite Bracelet', price: 834, benefits: ['Wealth, Luck & Success', 'Emotional Healing', 'Throat & Heart Chakra'] },
+    { name: 'Black Agate Bracelet', price: 834, benefits: ['Protection', 'Grounding', 'Courage'] },
+    { name: '7 Chakra Bracelet', price: 834, benefits: ['Energy balance', 'Chakra alignment', 'Holistic healing'] },
+    { name: 'Green Jade Bracelet', price: 834, benefits: ['Luck and prosperity', 'Heart chakra', 'Emotional balance'] },
+    { name: 'Green Aventurine Bracelet', price: 834, benefits: ['Luck and opportunity', 'Heart healing', 'Optimism'] },
+    { name: 'Rose Quartz Bracelet', price: 834, benefits: ['Unconditional love', 'Self-love', 'Emotional healing'] },
     { name: 'Dragon Vein Bracelet', price: 1600, benefits: ['Courage and strength', 'Life force energy', 'Creativity'] },
     { name: 'Cats Eye Black Bracelet', price: 2200, benefits: ['Protection from evil eye', 'Intuition', 'Grounding'] },
     { name: 'Azurite Bracelet', price: 2800, benefits: ['Third eye activation', 'Psychic abilities', 'Insight'] },
     { name: 'Amethyst Bracelet', price: 1200, benefits: ['Spiritual protection', 'Intuition', 'Stress relief'] },
-    { name: 'Red Jasper Bracelet', price: 950, benefits: ['Stamina and endurance', 'Root chakra', 'Grounding'] },
+    { name: 'Red Jasper Bracelet', price: 834, benefits: ['Stamina and endurance', 'Root chakra', 'Grounding'] },
     { name: 'Pyrite Bracelet', price: 1400, benefits: ['Wealth attraction', 'Protection', 'Willpower'] },
     { name: 'Citrine Bracelet', price: 1600, benefits: ['Abundance and joy', 'Solar plexus chakra', 'Confidence'] },
     { name: 'Sunstone Bracelet', price: 1500, benefits: ['Joy and vitality', 'Leadership', 'Independence'] },
     { name: 'Dhan Yog Bracelet', price: 2000, benefits: ['Wealth attraction', 'Financial success', 'Abundance'] },
+    { name: "Tiger's Eye Bracelet", price: 834, benefits: ['Courage and confidence', 'Protection', 'Grounding'] },
   ];
+
+  // Custom descriptions for specific bracelets
+  const braceletDescriptions: Record<string, string> = {
+    'Natural Amazonite Bracelet': 'The Amazonite crystal bracelet is crafted from high-quality crystal beads, showcasing soothing shades of mint-green to bluish-green. These carefully polished 8mm beads are arranged on a durable, stretchable band, ensuring a comfortable fit for daily wear. Known for its calming energy, this original Amazonite bracelet promotes balance, attracts good fortune, and enhances overall well-being.',
+  };
 
   crystalItems.forEach(item => {
     const braceletImages = braceletImageMap[item.name];
@@ -219,13 +225,14 @@ const generateProducts = (): Product[] => {
       images: braceletImages?.images,
       rating: 4.3 + Math.random() * 0.7,
       reviews: Math.floor(Math.random() * 80) + 15,
-      description: `Beautiful ${item.name} made with genuine natural crystals. Each bead is carefully selected for its healing properties.`,
+      description: braceletDescriptions[item.name] || `Beautiful ${item.name} made with genuine natural crystals. Each bead is carefully selected for its healing properties.`,
       benefits: item.benefits,
       specifications: {
         'Bead Size': '8mm',
         'Wrist Size': 'Adjustable',
-        'Material': '100% Natural Crystal',
-        'String': 'Elastic'
+        'Material': 'Premium AAA-Quality Crystal Bracelet',
+        'String': 'Elastic',
+        'Pre-Charged': 'Yes'
       },
       inStock: true,
       featured: Math.random() > 0.75,
