@@ -4,6 +4,7 @@ import { Menu, X, ShoppingCart, Search, User, ChevronDown, Heart } from 'lucide-
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
 import { categories } from '@/data/products';
+import logo from '@/assets/logo.jpg';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -48,14 +49,12 @@ const Header: React.FC = () => {
       <div className="container-custom">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-gold to-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-lg md:text-xl">ॐ</span>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-xl md:text-2xl font-display font-bold text-gradient-gold">Ankshaastra</h1>
-              <p className="text-xs text-muted-foreground -mt-1">Spiritual Wellness</p>
-            </div>
+          <Link to="/" className="flex items-center">
+            <img 
+              src={logo} 
+              alt="Ankshaastra - Empower Your Name" 
+              className="h-10 md:h-14 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
