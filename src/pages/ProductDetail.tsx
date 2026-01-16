@@ -80,23 +80,23 @@ const ProductDetail: React.FC = () => {
         {/* Product Details */}
         <section className="py-8 md:py-12">
           <div className="container-custom">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <div className="grid lg:grid-cols-2 gap-6 lg:gap-12">
               {/* Product Images */}
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {/* Main Image */}
-                <div className="relative aspect-square rounded-2xl overflow-hidden bg-muted">
+                <div className="relative aspect-square max-h-[70vh] md:max-h-none rounded-xl md:rounded-2xl overflow-hidden bg-muted mx-auto w-full max-w-md md:max-w-none">
                   <img
                     src={product.images?.[selectedImageIndex] || product.image}
                     alt={product.name}
                     className="w-full h-full object-cover"
                   />
                   {discount > 0 && (
-                    <Badge className="absolute top-4 left-4 bg-destructive text-destructive-foreground">
+                    <Badge className="absolute top-2 left-2 md:top-4 md:left-4 text-xs md:text-sm bg-destructive text-destructive-foreground">
                       -{discount}% OFF
                     </Badge>
                   )}
                   {product.bestSeller && (
-                    <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
+                    <Badge className="absolute top-2 right-2 md:top-4 md:right-4 text-xs md:text-sm bg-primary text-primary-foreground">
                       Best Seller
                     </Badge>
                   )}
@@ -104,12 +104,12 @@ const ProductDetail: React.FC = () => {
                 
                 {/* Thumbnail Gallery */}
                 {product.images && product.images.length > 1 && (
-                  <div className="flex gap-3 overflow-x-auto pb-2">
+                  <div className="flex gap-2 md:gap-3 overflow-x-auto pb-2 px-1 justify-center md:justify-start">
                     {product.images.map((img, index) => (
                       <button
                         key={index}
                         onClick={() => setSelectedImageIndex(index)}
-                        className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                        className={`flex-shrink-0 w-14 h-14 md:w-20 md:h-20 rounded-md md:rounded-lg overflow-hidden border-2 transition-all ${
                           selectedImageIndex === index
                             ? 'border-primary ring-2 ring-primary/20'
                             : 'border-border hover:border-primary/50'
