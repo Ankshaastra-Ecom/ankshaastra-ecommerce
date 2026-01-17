@@ -55,6 +55,15 @@ export interface Product {
 }
 
 const yantraImageMap: Record<string, string> = {
+  'One Mukhi': Mukhi1,
+  'Two Mukhi': Mukhi2,
+  'Three Mukhi': Mukhi3,
+  'Four Mukhi': Mukhi4,
+};
+
+
+
+const yantraImageMap: Record<string, string> = {
   'Surya Yantra': suryaYantra,
   'Chandrama Yantra': chandraYantra,
   'Ketu Yantra': ketuYantra,
@@ -91,7 +100,7 @@ export const categories = [
     id: 'rudraksha',
     name: 'Rudraksha',
     description: 'Sacred seeds of Lord Shiva for spiritual awakening',
-    image: '/placeholder.svg',
+    image: '@/assets/rudraksha/1-Mukhi-1.webp',
     items: [
       '1 Mukhi', '2 Mukhi', '3 Mukhi', '4 Mukhi', '5 Mukhi', '6 Mukhi',
       '7 Mukhi', '8 Mukhi', '9 Mukhi', '10 Mukhi', '11 Mukhi', '12 Mukhi',
