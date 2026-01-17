@@ -1,3 +1,13 @@
+// Rudraksha images
+import chandraYantra from '@/assets/yantras/chandra-yantra.webp';
+import ketuYantra from '@/assets/yantras/ketu-yantra.webp';
+import kuberYantra from '@/assets/yantras/kuber-yantra.webp';
+import rahuYantra from '@/assets/yantras/rahu-yantra.webp';
+import shreeYantra from '@/assets/yantras/shree-yantra.webp';
+import shukraYantra from '@/assets/yantras/shukra-yantra.webp';
+import suryaYantra from '@/assets/yantras/surya-yantra.webp';
+
+
 // Yantra images
 import chandraYantra from '@/assets/yantras/chandra-yantra.webp';
 import ketuYantra from '@/assets/yantras/ketu-yantra.webp';
