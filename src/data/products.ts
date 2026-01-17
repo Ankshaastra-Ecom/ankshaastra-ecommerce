@@ -68,8 +68,7 @@ export const categories = [
     items: [
       '1 Mukhi', '2 Mukhi', '3 Mukhi', '4 Mukhi', '5 Mukhi', '6 Mukhi',
       '7 Mukhi', '8 Mukhi', '9 Mukhi', '10 Mukhi', '11 Mukhi', '12 Mukhi',
-      '13 Mukhi', '14 Mukhi', '15 Mukhi', '16 Mukhi', '17 Mukhi', '18 Mukhi',
-      'Gauri Garbh Rudraksha', 'Ganesh Rudraksha', 'Gauri Shankar Rudraksha'
+      '13 Mukhi', '14 Mukhi', 'Ganesh Rudraksha', 'Gauri Garbh Rudraksha', 'Gauri Shankar Rudraksha'
     ]
   },
   {
@@ -134,39 +133,46 @@ const generateProducts = (): Product[] => {
   const products: Product[] = [];
   let id = 1;
 
-  // Rudraksha products
+  // Rudraksha products - 17 items only (1-14 Mukhi, Ganesh, Gauri Garbh, Gauri Shankar)
+  // 5 images each for 1-14 Mukhi and Ganesh Rudraksha
+  // 4 images each for Gauri Garbh and Gauri Shankar Rudraksha
   const rudrakshaItems = [
-    { name: '1 Mukhi Rudraksha', price: 15000, benefits: ['Supreme consciousness', 'Liberation from sins', 'Spiritual enlightenment'] },
-    { name: '2 Mukhi Rudraksha', price: 2500, benefits: ['Unity and harmony', 'Relationship healing', 'Emotional balance'] },
-    { name: '3 Mukhi Rudraksha', price: 1800, benefits: ['Release of past karma', 'Self-confidence', 'Fire element balance'] },
-    { name: '4 Mukhi Rudraksha', price: 1500, benefits: ['Knowledge and wisdom', 'Communication skills', 'Creative expression'] },
-    { name: '5 Mukhi Rudraksha', price: 800, benefits: ['Health and wellbeing', 'Peace of mind', 'Protection from negativity'] },
-    { name: '6 Mukhi Rudraksha', price: 1200, benefits: ['Emotional stability', 'Willpower', 'Focus and concentration'] },
-    { name: '7 Mukhi Rudraksha', price: 1800, benefits: ['Wealth and prosperity', 'Good fortune', 'Success in ventures'] },
-    { name: '8 Mukhi Rudraksha', price: 3500, benefits: ['Obstacle removal', 'Success in endeavors', 'Wisdom and intelligence'] },
-    { name: '9 Mukhi Rudraksha', price: 4500, benefits: ['Energy and power', 'Fearlessness', 'Dynamic personality'] },
-    { name: '10 Mukhi Rudraksha', price: 5500, benefits: ['Protection from evil', 'Peace and harmony', 'Divine blessings'] },
-    { name: '11 Mukhi Rudraksha', price: 6500, benefits: ['Wisdom and adventure', 'Protection during travel', 'Yogic powers'] },
-    { name: '12 Mukhi Rudraksha', price: 7500, benefits: ['Leadership qualities', 'Radiance and brilliance', 'Administrative skills'] },
-    { name: '13 Mukhi Rudraksha', price: 12000, benefits: ['Materialistic pleasures', 'Hypnotic attraction', 'Fulfillment of desires'] },
-    { name: '14 Mukhi Rudraksha', price: 18000, benefits: ['Third eye activation', 'Divine intuition', 'Supreme protection'] },
-    { name: '15 Mukhi Rudraksha', price: 25000, benefits: ['Inner peace', 'Emotional healing', 'Compassion'] },
-    { name: '16 Mukhi Rudraksha', price: 35000, benefits: ['Victory over enemies', 'Fearlessness', 'Protection from harm'] },
-    { name: '17 Mukhi Rudraksha', price: 45000, benefits: ['Unexpected gains', 'Fortune and luck', 'Material abundance'] },
-    { name: '18 Mukhi Rudraksha', price: 55000, benefits: ['Health and prosperity', 'Earth energy connection', 'Grounding'] },
-    { name: 'Gauri Garbh Rudraksha', price: 8500, benefits: ['Fertility blessings', 'Motherly protection', 'Family harmony'] },
-    { name: 'Ganesh Rudraksha', price: 9500, benefits: ['Obstacle removal', 'New beginnings', 'Success in ventures'] },
-    { name: 'Gauri Shankar Rudraksha', price: 4500, benefits: ['Relationship harmony', 'Marital bliss', 'Unity and love'] },
+    { name: '1 Mukhi Rudraksha', price: 15000, benefits: ['Supreme consciousness', 'Liberation from sins', 'Spiritual enlightenment'], imageCount: 5 },
+    { name: '2 Mukhi Rudraksha', price: 2500, benefits: ['Unity and harmony', 'Relationship healing', 'Emotional balance'], imageCount: 5 },
+    { name: '3 Mukhi Rudraksha', price: 1800, benefits: ['Release of past karma', 'Self-confidence', 'Fire element balance'], imageCount: 5 },
+    { name: '4 Mukhi Rudraksha', price: 1500, benefits: ['Knowledge and wisdom', 'Communication skills', 'Creative expression'], imageCount: 5 },
+    { name: '5 Mukhi Rudraksha', price: 800, benefits: ['Health and wellbeing', 'Peace of mind', 'Protection from negativity'], imageCount: 5 },
+    { name: '6 Mukhi Rudraksha', price: 1200, benefits: ['Emotional stability', 'Willpower', 'Focus and concentration'], imageCount: 5 },
+    { name: '7 Mukhi Rudraksha', price: 1800, benefits: ['Wealth and prosperity', 'Good fortune', 'Success in ventures'], imageCount: 5 },
+    { name: '8 Mukhi Rudraksha', price: 3500, benefits: ['Obstacle removal', 'Success in endeavors', 'Wisdom and intelligence'], imageCount: 5 },
+    { name: '9 Mukhi Rudraksha', price: 4500, benefits: ['Energy and power', 'Fearlessness', 'Dynamic personality'], imageCount: 5 },
+    { name: '10 Mukhi Rudraksha', price: 5500, benefits: ['Protection from evil', 'Peace and harmony', 'Divine blessings'], imageCount: 5 },
+    { name: '11 Mukhi Rudraksha', price: 6500, benefits: ['Wisdom and adventure', 'Protection during travel', 'Yogic powers'], imageCount: 5 },
+    { name: '12 Mukhi Rudraksha', price: 7500, benefits: ['Leadership qualities', 'Radiance and brilliance', 'Administrative skills'], imageCount: 5 },
+    { name: '13 Mukhi Rudraksha', price: 12000, benefits: ['Materialistic pleasures', 'Hypnotic attraction', 'Fulfillment of desires'], imageCount: 5 },
+    { name: '14 Mukhi Rudraksha', price: 18000, benefits: ['Third eye activation', 'Divine intuition', 'Supreme protection'], imageCount: 5 },
+    { name: 'Ganesh Rudraksha', price: 9500, benefits: ['Obstacle removal', 'New beginnings', 'Success in ventures'], imageCount: 5 },
+    { name: 'Gauri Garbh Rudraksha', price: 8500, benefits: ['Fertility blessings', 'Motherly protection', 'Family harmony'], imageCount: 4 },
+    { name: 'Gauri Shankar Rudraksha', price: 4500, benefits: ['Relationship harmony', 'Marital bliss', 'Unity and love'], imageCount: 4 },
   ];
 
+  // Generate placeholder image arrays for Rudraksha
+  const generateRudrakshaPlaceholders = (name: string, count: number): string[] => {
+    // These will be replaced with actual images when uploaded
+    // Format: rudraksha-{type}-{number}.webp
+    return Array.from({ length: count }, () => '/placeholder.svg');
+  };
+
   rudrakshaItems.forEach(item => {
+    const images = generateRudrakshaPlaceholders(item.name, item.imageCount);
     products.push({
       id: `rud-${id++}`,
       name: item.name,
       category: 'rudraksha',
       price: item.price,
       originalPrice: Math.round(item.price * 1.2),
-      image: '/placeholder.svg',
+      image: images[0],
+      images: images,
       rating: 4.5 + Math.random() * 0.5,
       reviews: Math.floor(Math.random() * 100) + 20,
       description: `Authentic ${item.name} sourced from Nepal. This sacred bead is blessed and energized for maximum spiritual benefits.`,
