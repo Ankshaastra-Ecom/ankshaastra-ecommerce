@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Star, ShoppingCart, Heart, Truck, Shield, RefreshCw, Minus, Plus, Check } from 'lucide-react';
 import Header from '@/components/layout/Header';
@@ -17,6 +17,13 @@ const ProductDetail: React.FC = () => {
   const { addItem, isInCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  // Reset state when product ID changes (navigation to different product)
+  useEffect(() => {
+    setSelectedImageIndex(0);
+    setQuantity(1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [id]);
 
   const product = id ? getProductById(id) : undefined;
 
