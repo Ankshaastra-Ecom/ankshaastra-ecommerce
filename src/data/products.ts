@@ -19,6 +19,16 @@ import redJasper2 from '@/assets/bracelets/red-jasper-2.webp';
 import redJasper3 from '@/assets/bracelets/red-jasper-3.webp';
 import redJasper4 from '@/assets/bracelets/red-jasper-4.webp';
 
+// Miscellaneous images
+import blackTourmaline1 from '@/assets/miscellaneous/black-tourmaline-tower-1.webp';
+import blackTourmaline2 from '@/assets/miscellaneous/black-tourmaline-tower-2.webp';
+import blackTourmaline3 from '@/assets/miscellaneous/black-tourmaline-tower-3.webp';
+import blackTourmaline4 from '@/assets/miscellaneous/black-tourmaline-tower-4.webp';
+import selenitePlate1 from '@/assets/miscellaneous/selenite-plate-1.webp';
+import selenitePlate2 from '@/assets/miscellaneous/selenite-plate-2.webp';
+import selenitePlate3 from '@/assets/miscellaneous/selenite-plate-3.webp';
+import selenitePlate4 from '@/assets/miscellaneous/selenite-plate-4.webp';
+
 export interface Product {
   id: string;
   name: string;
@@ -56,6 +66,17 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   'Red Jasper Bracelet': {
     image: redJasper1,
     images: [redJasper1, redJasper2, redJasper3, redJasper4]
+  },
+};
+
+const miscImageMap: Record<string, { image: string; images: string[] }> = {
+  'Black Tourmaline Tower': {
+    image: blackTourmaline1,
+    images: [blackTourmaline1, blackTourmaline2, blackTourmaline3, blackTourmaline4]
+  },
+  'Selenite 7 Chakra Charging Plate': {
+    image: selenitePlate1,
+    images: [selenitePlate1, selenitePlate2, selenitePlate3, selenitePlate4]
   },
 };
 
@@ -366,13 +387,15 @@ const generateProducts = (): Product[] => {
   ];
 
   miscItems.forEach(item => {
+    const miscImages = miscImageMap[item.name];
     products.push({
       id: `mis-${id++}`,
       name: item.name,
       category: 'miscellaneous',
       price: item.price,
       originalPrice: Math.round(item.price * 1.15),
-      image: '/placeholder.svg',
+      image: miscImages?.image || '/placeholder.svg',
+      images: miscImages?.images,
       rating: 4.4 + Math.random() * 0.6,
       reviews: Math.floor(Math.random() * 30) + 10,
       description: `High-quality ${item.name} for spiritual practices. Sourced from authentic suppliers.`,
