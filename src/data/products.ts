@@ -43,6 +43,13 @@ import mukhi2_3 from '@/assets/rudraksha/2-mukhi-3.webp';
 import mukhi2_4 from '@/assets/rudraksha/2-mukhi-4.jpg';
 import mukhi2_5 from '@/assets/rudraksha/2-mukhi-5.webp';
 
+// Rudraksha images - 3 Mukhi
+import mukhi3_1 from '@/assets/rudraksha/3-mukhi-1.webp';
+import mukhi3_2 from '@/assets/rudraksha/3-mukhi-2.webp';
+import mukhi3_3 from '@/assets/rudraksha/3-mukhi-3.webp';
+import mukhi3_4 from '@/assets/rudraksha/3-mukhi-4.jpg';
+import mukhi3_5 from '@/assets/rudraksha/3-mukhi-5.webp';
+
 export interface Product {
   id: string;
   name: string;
@@ -102,6 +109,10 @@ const rudrakshaImageMap: Record<string, { image: string; images: string[] }> = {
   '2 Mukhi Rudraksha': {
     image: mukhi2_1,
     images: [mukhi2_1, mukhi2_2, mukhi2_3, mukhi2_4, mukhi2_5]
+  },
+  '3 Mukhi Rudraksha': {
+    image: mukhi3_1,
+    images: [mukhi3_1, mukhi3_2, mukhi3_3, mukhi3_4, mukhi3_5]
   },
 };
 
