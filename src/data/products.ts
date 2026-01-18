@@ -29,6 +29,20 @@ import selenitePlate2 from '@/assets/miscellaneous/selenite-plate-2.webp';
 import selenitePlate3 from '@/assets/miscellaneous/selenite-plate-3.webp';
 import selenitePlate4 from '@/assets/miscellaneous/selenite-plate-4.webp';
 
+// Rudraksha images - 1 Mukhi
+import mukhi1_1 from '@/assets/rudraksha/1-mukhi-1.webp';
+import mukhi1_2 from '@/assets/rudraksha/1-mukhi-2.webp';
+import mukhi1_3 from '@/assets/rudraksha/1-mukhi-3.webp';
+import mukhi1_4 from '@/assets/rudraksha/1-mukhi-4.jpg';
+import mukhi1_5 from '@/assets/rudraksha/1-mukhi-5.webp';
+
+// Rudraksha images - 2 Mukhi
+import mukhi2_1 from '@/assets/rudraksha/2-mukhi-1.webp';
+import mukhi2_2 from '@/assets/rudraksha/2-mukhi-2.webp';
+import mukhi2_3 from '@/assets/rudraksha/2-mukhi-3.webp';
+import mukhi2_4 from '@/assets/rudraksha/2-mukhi-4.jpg';
+import mukhi2_5 from '@/assets/rudraksha/2-mukhi-5.webp';
+
 export interface Product {
   id: string;
   name: string;
@@ -77,6 +91,17 @@ const miscImageMap: Record<string, { image: string; images: string[] }> = {
   'Selenite 7 Chakra Charging Plate': {
     image: selenitePlate1,
     images: [selenitePlate1, selenitePlate2, selenitePlate3, selenitePlate4]
+  },
+};
+
+const rudrakshaImageMap: Record<string, { image: string; images: string[] }> = {
+  '1 Mukhi Rudraksha': {
+    image: mukhi1_1,
+    images: [mukhi1_1, mukhi1_2, mukhi1_3, mukhi1_4, mukhi1_5]
+  },
+  '2 Mukhi Rudraksha': {
+    image: mukhi2_1,
+    images: [mukhi2_1, mukhi2_2, mukhi2_3, mukhi2_4, mukhi2_5]
   },
 };
 
@@ -185,14 +210,15 @@ const generateProducts = (): Product[] => {
   };
 
   rudrakshaItems.forEach(item => {
-    const images = generateRudrakshaPlaceholders(item.name, item.imageCount);
+    const rudrakshaImages = rudrakshaImageMap[item.name];
+    const images = rudrakshaImages?.images || generateRudrakshaPlaceholders(item.name, item.imageCount);
     products.push({
       id: `rud-${id++}`,
       name: item.name,
       category: 'rudraksha',
       price: item.price,
       originalPrice: Math.round(item.price * 1.2),
-      image: images[0],
+      image: rudrakshaImages?.image || images[0],
       images: images,
       rating: 4.5 + Math.random() * 0.5,
       reviews: Math.floor(Math.random() * 100) + 20,
