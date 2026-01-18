@@ -1,9 +1,3 @@
-// Rudraksha images
-import Mukhi1 from '@/assets/rudraksha/1-Mukhi-1.webp';
-import Mukhi2 from '@/assets/rudraksha/1-Mukhi-2.webp';
-import Mukhi3 from '@/assets/rudraksha/1-Mukhi-3.webp';
-import Mukhi4 from '@/assets/rudraksha/1-Mukhi-4.webp';
-
 // Yantra images
 import chandraYantra from '@/assets/yantras/chandra-yantra.webp';
 import ketuYantra from '@/assets/yantras/ketu-yantra.webp';
@@ -55,15 +49,6 @@ export interface Product {
 }
 
 const yantraImageMap: Record<string, string> = {
-  'One Mukhi': Mukhi1,
-  'Two Mukhi': Mukhi2,
-  'Three Mukhi': Mukhi3,
-  'Four Mukhi': Mukhi4,
-};
-
-
-
-const yantraImageMap: Record<string, string> = {
   'Surya Yantra': suryaYantra,
   'Chandrama Yantra': chandraYantra,
   'Ketu Yantra': ketuYantra,
@@ -100,7 +85,7 @@ export const categories = [
     id: 'rudraksha',
     name: 'Rudraksha',
     description: 'Sacred seeds of Lord Shiva for spiritual awakening',
-    image: '@/assets/rudraksha/1-Mukhi-1.webp',
+    image: '/placeholder.svg',
     items: [
       '1 Mukhi', '2 Mukhi', '3 Mukhi', '4 Mukhi', '5 Mukhi', '6 Mukhi',
       '7 Mukhi', '8 Mukhi', '9 Mukhi', '10 Mukhi', '11 Mukhi', '12 Mukhi',
