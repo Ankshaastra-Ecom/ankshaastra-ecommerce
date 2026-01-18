@@ -64,6 +64,19 @@ import mukhi5_3 from '@/assets/rudraksha/5-mukhi-3.webp';
 import mukhi5_4 from '@/assets/rudraksha/5-mukhi-4.jpg';
 import mukhi5_5 from '@/assets/rudraksha/5-mukhi-5.webp';
 
+// Rudraksha images - Ganesh
+import ganesh_1 from '@/assets/rudraksha/ganesh-1.webp';
+import ganesh_2 from '@/assets/rudraksha/ganesh-2.webp';
+import ganesh_3 from '@/assets/rudraksha/ganesh-3.webp';
+import ganesh_4 from '@/assets/rudraksha/ganesh-4.jpg';
+import ganesh_5 from '@/assets/rudraksha/ganesh-5.webp';
+
+// Rudraksha images - Gauri Garbh
+import gauriGarbh_1 from '@/assets/rudraksha/gauri-garbh-1.webp';
+import gauriGarbh_2 from '@/assets/rudraksha/gauri-garbh-2.webp';
+import gauriGarbh_3 from '@/assets/rudraksha/gauri-garbh-3.webp';
+import gauriGarbh_4 from '@/assets/rudraksha/gauri-garbh-4.jpg';
+
 export interface Product {
   id: string;
   name: string;
@@ -135,6 +148,14 @@ const rudrakshaImageMap: Record<string, { image: string; images: string[] }> = {
   '5 Mukhi Rudraksha': {
     image: mukhi5_1,
     images: [mukhi5_1, mukhi5_2, mukhi5_3, mukhi5_4, mukhi5_5]
+  },
+  'Ganesh Rudraksha': {
+    image: ganesh_1,
+    images: [ganesh_1, ganesh_2, ganesh_3, ganesh_4, ganesh_5]
+  },
+  'Gauri Garbh Rudraksha': {
+    image: gauriGarbh_1,
+    images: [gauriGarbh_1, gauriGarbh_2, gauriGarbh_3, gauriGarbh_4]
   },
 };
 
