@@ -92,6 +92,20 @@ import mukhi9_3 from '@/assets/rudraksha/9-mukhi-3.webp';
 import mukhi9_4 from '@/assets/rudraksha/9-mukhi-4.jpg';
 import mukhi9_5 from '@/assets/rudraksha/9-mukhi-5.webp';
 
+// Rudraksha images - 10 Mukhi
+import mukhi10_1 from '@/assets/rudraksha/10-mukhi-1.webp';
+import mukhi10_2 from '@/assets/rudraksha/10-mukhi-2.webp';
+import mukhi10_3 from '@/assets/rudraksha/10-mukhi-3.webp';
+import mukhi10_4 from '@/assets/rudraksha/10-mukhi-4.jpg';
+import mukhi10_5 from '@/assets/rudraksha/10-mukhi-5.webp';
+
+// Rudraksha images - 11 Mukhi
+import mukhi11_1 from '@/assets/rudraksha/11-mukhi-1.webp';
+import mukhi11_2 from '@/assets/rudraksha/11-mukhi-2.webp';
+import mukhi11_3 from '@/assets/rudraksha/11-mukhi-3.webp';
+import mukhi11_4 from '@/assets/rudraksha/11-mukhi-4.jpg';
+import mukhi11_5 from '@/assets/rudraksha/11-mukhi-5.webp';
+
 // Rudraksha images - Ganesh
 import ganesh_1 from '@/assets/rudraksha/ganesh-1.webp';
 import ganesh_2 from '@/assets/rudraksha/ganesh-2.webp';
@@ -205,6 +219,14 @@ const rudrakshaImageMap: Record<string, { image: string; images: string[] }> = {
   '9 Mukhi Rudraksha': {
     image: mukhi9_1,
     images: [mukhi9_1, mukhi9_2, mukhi9_3, mukhi9_4, mukhi9_5]
+  },
+  '10 Mukhi Rudraksha': {
+    image: mukhi10_1,
+    images: [mukhi10_1, mukhi10_2, mukhi10_3, mukhi10_4, mukhi10_5]
+  },
+  '11 Mukhi Rudraksha': {
+    image: mukhi11_1,
+    images: [mukhi11_1, mukhi11_2, mukhi11_3, mukhi11_4, mukhi11_5]
   },
   'Ganesh Rudraksha': {
     image: ganesh_1,
