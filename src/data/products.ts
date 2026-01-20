@@ -14,10 +14,22 @@ import amazonite3 from '@/assets/bracelets/amazonite-3.webp';
 import amazonite4 from '@/assets/bracelets/amazonite-4.webp';
 import amazonite5 from '@/assets/bracelets/amazonite-5.webp';
 import amazonite6 from '@/assets/bracelets/amazonite-6.webp';
+import amazonite7 from '@/assets/bracelets/amazonite-7.webp';
+import amazonite8 from '@/assets/bracelets/amazonite-8.webp';
 import redJasper1 from '@/assets/bracelets/red-jasper-1.webp';
 import redJasper2 from '@/assets/bracelets/red-jasper-2.webp';
 import redJasper3 from '@/assets/bracelets/red-jasper-3.webp';
 import redJasper4 from '@/assets/bracelets/red-jasper-4.webp';
+
+// 7 Chakra Bracelet images
+import chakra7_1 from '@/assets/bracelets/7-chakra-1.webp';
+import chakra7_2 from '@/assets/bracelets/7-chakra-2.webp';
+import chakra7_3 from '@/assets/bracelets/7-chakra-3.webp';
+import chakra7_4 from '@/assets/bracelets/7-chakra-4.webp';
+import chakra7_5 from '@/assets/bracelets/7-chakra-5.webp';
+import chakra7_6 from '@/assets/bracelets/7-chakra-6.webp';
+import chakra7_7 from '@/assets/bracelets/7-chakra-7.webp';
+import chakra7_8 from '@/assets/bracelets/7-chakra-8.webp';
 
 // Miscellaneous images
 import blackTourmaline1 from '@/assets/miscellaneous/black-tourmaline-tower-1.webp';
@@ -164,11 +176,15 @@ const yantraImageMap: Record<string, string> = {
 const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   'Natural Amazonite Bracelet': {
     image: amazonite1,
-    images: [amazonite1, amazonite2, amazonite3, amazonite4, amazonite5, amazonite6]
+    images: [amazonite1, amazonite2, amazonite3, amazonite4, amazonite5, amazonite6, amazonite7, amazonite8]
   },
   'Red Jasper Bracelet': {
     image: redJasper1,
     images: [redJasper1, redJasper2, redJasper3, redJasper4]
+  },
+  '7 Chakra Bracelet': {
+    image: chakra7_1,
+    images: [chakra7_1, chakra7_2, chakra7_3, chakra7_4, chakra7_5, chakra7_6, chakra7_7, chakra7_8]
   },
 };
 
