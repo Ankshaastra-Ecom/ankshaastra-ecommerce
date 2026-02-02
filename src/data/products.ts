@@ -15,6 +15,7 @@ import hanumanYantra from '@/assets/yantras/hanuman-yantra.webp';
 import mangalYantra from '@/assets/yantras/mangal-yantra.jpg';
 import laxmiGaneshKuberYantra from '@/assets/yantras/laxmi-ganesh-kuber-yantra.webp';
 import laxmiKuberYantra from '@/assets/yantras/laxmi-kuber-yantra.webp';
+import budhYantra from '@/assets/yantras/budh-yantra.webp';
 
 // Bracelet images
 import amazonite1 from '@/assets/bracelets/amazonite-1.webp';
@@ -195,7 +196,8 @@ const yantraImageMap: Record<string, string> = {
   'Chandrama Yantra': chandraYantra,
   'Ketu Yantra': ketuYantra,
   'Laxmi-Ganesh-Kuber Yantra': laxmiGaneshKuberYantra,
-  'Laxmi-Ganesh Yantra': laxmiKuberYantra,
+  'Laxmi Kuber Yantra': laxmiKuberYantra,
+  'Budh Yantra': budhYantra,
   'Rahu Yantra': rahuYantra,
   'Shree Yantra': shreeYantra,
   'Shukra Yantra': shukraYantra,
@@ -362,8 +364,8 @@ export const categories = [
     image: '/placeholder.svg',
     items: [
       'Surya Yantra', 'Chandrama Yantra', 'Guru Yantra', 'Rahu Yantra',
-      'Buddha Yantra', 'Shukra Yantra', 'Ketu Yantra', 'Shani Yantra',
-      'Mangal Yantra', 'Shree Yantra', 'Ganesh Yantra', 'Laxmi-Ganesh Yantra',
+      'Budh Yantra', 'Shukra Yantra', 'Ketu Yantra', 'Shani Yantra',
+      'Mangal Yantra', 'Shree Yantra', 'Ganesh Yantra', 'Laxmi Kuber Yantra',
       'Laxmi-Ganesh-Kuber Yantra', 'Hanuman Yantra', 'Baglamukhi Yantra'
     ]
   },
@@ -571,14 +573,14 @@ const generateProducts = (): Product[] => {
     { name: 'Chandrama Yantra', price: 396, benefits: ['Moon blessings', 'Peace', 'Emotional balance'] },
     { name: 'Guru Yantra', price: 396, benefits: ['Jupiter blessings', 'Wisdom', 'Prosperity'] },
     { name: 'Rahu Yantra', price: 396, benefits: ['Rahu pacification', 'Success', 'Protection'] },
-    { name: 'Buddha Yantra', price: 396, benefits: ['Mercury blessings', 'Intelligence', 'Business success'] },
+    { name: 'Budh Yantra', price: 396, benefits: ['Mercury blessings', 'Intelligence', 'Business success'] },
     { name: 'Shukra Yantra', price: 396, benefits: ['Venus blessings', 'Love', 'Luxury'] },
     { name: 'Ketu Yantra', price: 396, benefits: ['Ketu pacification', 'Spiritual growth', 'Liberation'] },
     { name: 'Shani Yantra', price: 396, benefits: ['Saturn pacification', 'Discipline', 'Justice'] },
     { name: 'Mangal Yantra', price: 396, benefits: ['Mars blessings', 'Courage', 'Victory'] },
     { name: 'Shree Yantra', price: 396, benefits: ['Wealth', 'Prosperity', 'Abundance'] },
     { name: 'Ganesh Yantra', price: 396, benefits: ['Obstacle removal', 'Success', 'Wisdom'] },
-    { name: 'Laxmi-Ganesh Yantra', price: 396, benefits: ['Wealth', 'Success', 'Prosperity'] },
+    { name: 'Laxmi Kuber Yantra', price: 396, benefits: ['Wealth', 'Success', 'Prosperity'] },
     { name: 'Laxmi-Ganesh-Kuber Yantra', price: 396, benefits: ['Maximum wealth', 'Abundance', 'Fortune'] },
     { name: 'Hanuman Yantra', price: 396, benefits: ['Protection', 'Strength', 'Courage'] },
     { name: 'Baglamukhi Yantra', price: 396, benefits: ['Victory over enemies', 'Protection', 'Power'] },
