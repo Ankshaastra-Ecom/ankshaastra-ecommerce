@@ -6,6 +6,13 @@ import rahuYantra from '@/assets/yantras/rahu-yantra.webp';
 import shreeYantra from '@/assets/yantras/shree-yantra.webp';
 import shukraYantra from '@/assets/yantras/shukra-yantra.webp';
 import suryaYantra from '@/assets/yantras/surya-yantra.webp';
+import shaniYantra from '@/assets/yantras/shani-yantra.jpg';
+import baglamukhiYantra from '@/assets/yantras/baglamukhi-yantra.jpeg';
+import brahaspatiYantra from '@/assets/yantras/brahaspati-yantra.jpg';
+import ganeshYantra from '@/assets/yantras/ganesh-yantra.webp';
+import guruYantra from '@/assets/yantras/guru-yantra.jpg';
+import hanumanYantra from '@/assets/yantras/hanuman-yantra.webp';
+import mangalYantra from '@/assets/yantras/mangal-yantra.jpg';
 
 // Bracelet images
 import amazonite1 from '@/assets/bracelets/amazonite-1.webp';
@@ -185,6 +192,12 @@ const yantraImageMap: Record<string, string> = {
   'Rahu Yantra': rahuYantra,
   'Shree Yantra': shreeYantra,
   'Shukra Yantra': shukraYantra,
+  'Shani Yantra': shaniYantra,
+  'Baglamukhi Yantra': baglamukhiYantra,
+  'Guru Yantra': guruYantra,
+  'Ganesh Yantra': ganeshYantra,
+  'Hanuman Yantra': hanumanYantra,
+  'Mangal Yantra': mangalYantra,
 };
 
 const braceletImageMap: Record<string, { image: string; images: string[] }> = {
