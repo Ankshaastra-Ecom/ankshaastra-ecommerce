@@ -13,6 +13,8 @@ import ganeshYantra from '@/assets/yantras/ganesh-yantra.webp';
 import guruYantra from '@/assets/yantras/guru-yantra.jpg';
 import hanumanYantra from '@/assets/yantras/hanuman-yantra.webp';
 import mangalYantra from '@/assets/yantras/mangal-yantra.jpg';
+import laxmiGaneshKuberYantra from '@/assets/yantras/laxmi-ganesh-kuber-yantra.webp';
+import laxmiKuberYantra from '@/assets/yantras/laxmi-kuber-yantra.webp';
 
 // Bracelet images
 import amazonite1 from '@/assets/bracelets/amazonite-1.webp';
@@ -47,6 +49,10 @@ import selenitePlate1 from '@/assets/miscellaneous/selenite-plate-1.webp';
 import selenitePlate2 from '@/assets/miscellaneous/selenite-plate-2.webp';
 import selenitePlate3 from '@/assets/miscellaneous/selenite-plate-3.webp';
 import selenitePlate4 from '@/assets/miscellaneous/selenite-plate-4.webp';
+import kushAsan1 from '@/assets/miscellaneous/kush-asan-1.webp';
+import kushAsan2 from '@/assets/miscellaneous/kush-asan-2.webp';
+import kushAsan3 from '@/assets/miscellaneous/kush-asan-3.webp';
+import kushAsan4 from '@/assets/miscellaneous/kush-asan-4.webp';
 
 // Rudraksha images - 1 Mukhi
 import mukhi1_1 from '@/assets/rudraksha/1-mukhi-1.webp';
@@ -188,7 +194,8 @@ const yantraImageMap: Record<string, string> = {
   'Surya Yantra': suryaYantra,
   'Chandrama Yantra': chandraYantra,
   'Ketu Yantra': ketuYantra,
-  'Laxmi-Ganesh-Kuber Yantra': kuberYantra,
+  'Laxmi-Ganesh-Kuber Yantra': laxmiGaneshKuberYantra,
+  'Laxmi-Ganesh Yantra': laxmiKuberYantra,
   'Rahu Yantra': rahuYantra,
   'Shree Yantra': shreeYantra,
   'Shukra Yantra': shukraYantra,
@@ -223,6 +230,10 @@ const miscImageMap: Record<string, { image: string; images: string[] }> = {
   'Selenite 7 Chakra Charging Plate': {
     image: selenitePlate1,
     images: [selenitePlate1, selenitePlate2, selenitePlate3, selenitePlate4]
+  },
+  'Kush Asan': {
+    image: kushAsan1,
+    images: [kushAsan1, kushAsan2, kushAsan3, kushAsan4]
   },
 };
 
