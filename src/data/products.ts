@@ -76,6 +76,17 @@ import bloodStone1 from '@/assets/bracelets/blood-stone-1.webp';
 import bloodStone2 from '@/assets/bracelets/blood-stone-2.webp';
 import bloodStone3 from '@/assets/bracelets/blood-stone-3.webp';
 
+// Black Agate Bracelet images
+import blackAgate1 from '@/assets/bracelets/black-agate-1.webp';
+import blackAgate2 from '@/assets/bracelets/black-agate-2.webp';
+import blackAgate3 from '@/assets/bracelets/black-agate-3.webp';
+import blackAgate4 from '@/assets/bracelets/black-agate-4.webp';
+import blackAgate5 from '@/assets/bracelets/black-agate-5.webp';
+import blackAgate6 from '@/assets/bracelets/black-agate-6.webp';
+import blackAgate7 from '@/assets/bracelets/black-agate-7.webp';
+import blackAgate8 from '@/assets/bracelets/black-agate-8.webp';
+import blackAgate9 from '@/assets/bracelets/black-agate-9.webp';
+
 // 7 Chakra Bracelet images
 import chakra7_1 from '@/assets/bracelets/7-chakra-1.webp';
 import chakra7_2 from '@/assets/bracelets/7-chakra-2.webp';
@@ -290,6 +301,10 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   'Blood Stone Bracelet': {
     image: bloodStone1,
     images: [bloodStone1, bloodStone2, bloodStone3]
+  },
+  'Black Agate Bracelet': {
+    image: blackAgate1,
+    images: [blackAgate1, blackAgate2, blackAgate3, blackAgate4, blackAgate5, blackAgate6, blackAgate7, blackAgate8, blackAgate9]
   },
 };
 
