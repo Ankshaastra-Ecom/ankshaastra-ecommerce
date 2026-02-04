@@ -64,6 +64,18 @@ import pyrite3 from '@/assets/bracelets/pyrite-3.webp';
 import pyrite4 from '@/assets/bracelets/pyrite-4.webp';
 import pyrite5 from '@/assets/bracelets/pyrite-5.webp';
 
+// Citrine Bracelet images
+import citrine1 from '@/assets/bracelets/citrine-1.webp';
+import citrine2 from '@/assets/bracelets/citrine-2.webp';
+import citrine3 from '@/assets/bracelets/citrine-3.webp';
+import citrine4 from '@/assets/bracelets/citrine-4.webp';
+import citrine5 from '@/assets/bracelets/citrine-5.webp';
+
+// Blood Stone Bracelet images
+import bloodStone1 from '@/assets/bracelets/blood-stone-1.webp';
+import bloodStone2 from '@/assets/bracelets/blood-stone-2.webp';
+import bloodStone3 from '@/assets/bracelets/blood-stone-3.webp';
+
 // 7 Chakra Bracelet images
 import chakra7_1 from '@/assets/bracelets/7-chakra-1.webp';
 import chakra7_2 from '@/assets/bracelets/7-chakra-2.webp';
@@ -270,6 +282,14 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   'Pyrite Bracelet': {
     image: pyrite1,
     images: [pyrite1, pyrite2, pyrite3, pyrite4, pyrite5]
+  },
+  'Citrine Bracelet': {
+    image: citrine1,
+    images: [citrine1, citrine2, citrine3, citrine4, citrine5]
+  },
+  'Blood Stone Bracelet': {
+    image: bloodStone1,
+    images: [bloodStone1, bloodStone2, bloodStone3]
   },
 };
 
