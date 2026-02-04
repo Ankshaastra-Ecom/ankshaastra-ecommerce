@@ -30,6 +30,8 @@ import redJasper1 from '@/assets/bracelets/red-jasper-1.webp';
 import redJasper2 from '@/assets/bracelets/red-jasper-2.webp';
 import redJasper3 from '@/assets/bracelets/red-jasper-3.webp';
 import redJasper4 from '@/assets/bracelets/red-jasper-4.webp';
+import redJasper5 from '@/assets/bracelets/red-jasper-5.webp';
+import redJasper6 from '@/assets/bracelets/red-jasper-6.webp';
 
 // Amethyst Bracelet images
 import amethyst1 from '@/assets/bracelets/amethyst-1.webp';
@@ -38,6 +40,18 @@ import amethyst3 from '@/assets/bracelets/amethyst-3.webp';
 import amethyst4 from '@/assets/bracelets/amethyst-4.webp';
 import amethyst5 from '@/assets/bracelets/amethyst-5.webp';
 import amethyst6 from '@/assets/bracelets/amethyst-6.webp';
+
+// Rose Quartz Bracelet images
+import roseQuartz1 from '@/assets/bracelets/rose-quartz-1.webp';
+import roseQuartz2 from '@/assets/bracelets/rose-quartz-2.webp';
+import roseQuartz3 from '@/assets/bracelets/rose-quartz-3.webp';
+import roseQuartz4 from '@/assets/bracelets/rose-quartz-4.webp';
+import roseQuartz5 from '@/assets/bracelets/rose-quartz-5.webp';
+import roseQuartz6 from '@/assets/bracelets/rose-quartz-6.webp';
+
+// Tiger's Eye Bracelet images
+import tigersEye1 from '@/assets/bracelets/tigers-eye-1.webp';
+import tigersEye2 from '@/assets/bracelets/tigers-eye-2.webp';
 
 // 7 Chakra Bracelet images
 import chakra7_1 from '@/assets/bracelets/7-chakra-1.webp';
@@ -224,7 +238,7 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   },
   'Red Jasper Bracelet': {
     image: redJasper1,
-    images: [redJasper1, redJasper2, redJasper3, redJasper4]
+    images: [redJasper1, redJasper2, redJasper3, redJasper4, redJasper5, redJasper6]
   },
   '7 Chakra Bracelet': {
     image: chakra7_1,
@@ -233,6 +247,14 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   'Amethyst Bracelet': {
     image: amethyst1,
     images: [amethyst1, amethyst2, amethyst3, amethyst4, amethyst5, amethyst6]
+  },
+  'Rose Quartz Bracelet': {
+    image: roseQuartz1,
+    images: [roseQuartz1, roseQuartz2, roseQuartz3, roseQuartz4, roseQuartz5, roseQuartz6]
+  },
+  'Tiger Eye Blue Bracelet': {
+    image: tigersEye1,
+    images: [tigersEye1, tigersEye2]
   },
 };
 
