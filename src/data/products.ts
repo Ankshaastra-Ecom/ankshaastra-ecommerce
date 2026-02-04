@@ -52,6 +52,17 @@ import roseQuartz6 from '@/assets/bracelets/rose-quartz-6.webp';
 // Tiger's Eye Bracelet images
 import tigersEye1 from '@/assets/bracelets/tigers-eye-1.webp';
 import tigersEye2 from '@/assets/bracelets/tigers-eye-2.webp';
+import tigersEye3 from '@/assets/bracelets/tigers-eye-3.webp';
+import tigersEye4 from '@/assets/bracelets/tigers-eye-4.webp';
+import tigersEye5 from '@/assets/bracelets/tigers-eye-5.webp';
+import tigersEye6 from '@/assets/bracelets/tigers-eye-6.webp';
+
+// Pyrite Bracelet images
+import pyrite1 from '@/assets/bracelets/pyrite-1.webp';
+import pyrite2 from '@/assets/bracelets/pyrite-2.webp';
+import pyrite3 from '@/assets/bracelets/pyrite-3.webp';
+import pyrite4 from '@/assets/bracelets/pyrite-4.webp';
+import pyrite5 from '@/assets/bracelets/pyrite-5.webp';
 
 // 7 Chakra Bracelet images
 import chakra7_1 from '@/assets/bracelets/7-chakra-1.webp';
@@ -254,7 +265,11 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   },
   'Tiger Eye Blue Bracelet': {
     image: tigersEye1,
-    images: [tigersEye1, tigersEye2]
+    images: [tigersEye1, tigersEye2, tigersEye3, tigersEye4, tigersEye5, tigersEye6]
+  },
+  'Pyrite Bracelet': {
+    image: pyrite1,
+    images: [pyrite1, pyrite2, pyrite3, pyrite4, pyrite5]
   },
 };
 
