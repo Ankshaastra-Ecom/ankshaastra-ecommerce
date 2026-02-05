@@ -105,6 +105,16 @@ import dhanYog5 from '@/assets/bracelets/dhan-yog-5.webp';
 import dhanYog6 from '@/assets/bracelets/dhan-yog-6.webp';
 import dhanYog7 from '@/assets/bracelets/dhan-yog-7.webp';
 
+// Turquoise Bracelet images
+import turquoise1 from '@/assets/bracelets/turquoise-1.webp';
+import turquoise2 from '@/assets/bracelets/turquoise-2.webp';
+import turquoise3 from '@/assets/bracelets/turquoise-3.webp';
+import turquoise4 from '@/assets/bracelets/turquoise-4.webp';
+import turquoise5 from '@/assets/bracelets/turquoise-5.webp';
+import turquoise6 from '@/assets/bracelets/turquoise-6.webp';
+import turquoise7 from '@/assets/bracelets/turquoise-7.webp';
+import turquoise8 from '@/assets/bracelets/turquoise-8.webp';
+
 // 7 Chakra Bracelet images
 import chakra7_1 from '@/assets/bracelets/7-chakra-1.webp';
 import chakra7_2 from '@/assets/bracelets/7-chakra-2.webp';
@@ -329,8 +339,12 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
     images: [greenJade1, greenJade2, greenJade3, greenJade4, greenJade5, greenJade6, greenJade7, greenJade8]
   },
   'Dhan Yog Bracelet': {
-    image: dhanYog2,
-    images: [dhanYog2, dhanYog3, dhanYog4, dhanYog5, dhanYog6, dhanYog7]
+    image: dhanYog3,
+    images: [dhanYog3, dhanYog2, dhanYog4, dhanYog5, dhanYog6, dhanYog7]
+  },
+  'Natural Turquoise Bracelet': {
+    image: turquoise1,
+    images: [turquoise1, turquoise2, turquoise3, turquoise4, turquoise5, turquoise6, turquoise7, turquoise8]
   },
 };
 
