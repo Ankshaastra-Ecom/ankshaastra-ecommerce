@@ -87,6 +87,16 @@ import blackAgate7 from '@/assets/bracelets/black-agate-7.webp';
 import blackAgate8 from '@/assets/bracelets/black-agate-8.webp';
 import blackAgate9 from '@/assets/bracelets/black-agate-9.webp';
 
+// Green Jade Bracelet images
+import greenJade1 from '@/assets/bracelets/green-jade-1.webp';
+import greenJade2 from '@/assets/bracelets/green-jade-2.webp';
+import greenJade3 from '@/assets/bracelets/green-jade-3.webp';
+import greenJade4 from '@/assets/bracelets/green-jade-4.webp';
+import greenJade5 from '@/assets/bracelets/green-jade-5.webp';
+import greenJade6 from '@/assets/bracelets/green-jade-6.webp';
+import greenJade7 from '@/assets/bracelets/green-jade-7.webp';
+import greenJade8 from '@/assets/bracelets/green-jade-8.webp';
+
 // 7 Chakra Bracelet images
 import chakra7_1 from '@/assets/bracelets/7-chakra-1.webp';
 import chakra7_2 from '@/assets/bracelets/7-chakra-2.webp';
@@ -305,6 +315,10 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   'Black Agate Bracelet': {
     image: blackAgate1,
     images: [blackAgate1, blackAgate2, blackAgate3, blackAgate4, blackAgate5, blackAgate6, blackAgate7, blackAgate8, blackAgate9]
+  },
+  'Green Jade Bracelet': {
+    image: greenJade1,
+    images: [greenJade1, greenJade2, greenJade3, greenJade4, greenJade5, greenJade6, greenJade7, greenJade8]
   },
 };
 
