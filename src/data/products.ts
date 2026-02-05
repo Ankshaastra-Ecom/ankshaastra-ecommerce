@@ -97,6 +97,14 @@ import greenJade6 from '@/assets/bracelets/green-jade-6.webp';
 import greenJade7 from '@/assets/bracelets/green-jade-7.webp';
 import greenJade8 from '@/assets/bracelets/green-jade-8.webp';
 
+// Dhan Yog Bracelet images
+import dhanYog2 from '@/assets/bracelets/dhan-yog-2.webp';
+import dhanYog3 from '@/assets/bracelets/dhan-yog-3.webp';
+import dhanYog4 from '@/assets/bracelets/dhan-yog-4.webp';
+import dhanYog5 from '@/assets/bracelets/dhan-yog-5.webp';
+import dhanYog6 from '@/assets/bracelets/dhan-yog-6.webp';
+import dhanYog7 from '@/assets/bracelets/dhan-yog-7.webp';
+
 // 7 Chakra Bracelet images
 import chakra7_1 from '@/assets/bracelets/7-chakra-1.webp';
 import chakra7_2 from '@/assets/bracelets/7-chakra-2.webp';
@@ -296,7 +304,7 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
     image: roseQuartz1,
     images: [roseQuartz1, roseQuartz2, roseQuartz3, roseQuartz4, roseQuartz5, roseQuartz6]
   },
-  'Tiger Eye Blue Bracelet': {
+  "Tiger's Eye Yellow Bracelet": {
     image: tigersEye1,
     images: [tigersEye1, tigersEye2, tigersEye3, tigersEye4, tigersEye5, tigersEye6]
   },
@@ -319,6 +327,10 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   'Green Jade Bracelet': {
     image: greenJade1,
     images: [greenJade1, greenJade2, greenJade3, greenJade4, greenJade5, greenJade6, greenJade7, greenJade8]
+  },
+  'Dhan Yog Bracelet': {
+    image: dhanYog2,
+    images: [dhanYog2, dhanYog3, dhanYog4, dhanYog5, dhanYog6, dhanYog7]
   },
 };
 
@@ -542,7 +554,7 @@ const generateProducts = (): Product[] => {
   // Crystal Bracelets
   const crystalItems = [
     { name: 'Blood Stone Bracelet', price: 1200, benefits: ['Courage and vitality', 'Blood purification', 'Grounding energy'] },
-    { name: 'Tiger Eye Blue Bracelet', price: 1100, benefits: ['Calm and soothing', 'Clear thinking', 'Stress relief'] },
+    { name: "Tiger's Eye Yellow Bracelet", price: 1100, benefits: ['Courage and confidence', 'Protection', 'Clear thinking'] },
     { name: 'Mother of Pearl Bracelet', price: 1300, benefits: ['Intuition enhancement', 'Emotional healing', 'Feminine energy'] },
     { name: 'Howlite Bracelet', price: 834, benefits: ['Patience and calm', 'Insomnia relief', 'Anger reduction'] },
     { name: 'Natural Turquoise Bracelet', price: 2500, benefits: ['Protection and healing', 'Communication', 'Spiritual grounding'] },
@@ -561,7 +573,6 @@ const generateProducts = (): Product[] => {
     { name: 'Citrine Bracelet', price: 1600, benefits: ['Abundance and joy', 'Solar plexus chakra', 'Confidence'] },
     { name: 'Sunstone Bracelet', price: 1500, benefits: ['Joy and vitality', 'Leadership', 'Independence'] },
     { name: 'Dhan Yog Bracelet', price: 2000, benefits: ['Wealth attraction', 'Financial success', 'Abundance'] },
-    { name: "Tiger's Eye Bracelet", price: 834, benefits: ['Courage and confidence', 'Protection', 'Grounding'] },
   ];
 
   // Custom descriptions for specific bracelets
