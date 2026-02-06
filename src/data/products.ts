@@ -105,6 +105,16 @@ import dhanYog5 from '@/assets/bracelets/dhan-yog-5.webp';
 import dhanYog6 from '@/assets/bracelets/dhan-yog-6.webp';
 import dhanYog7 from '@/assets/bracelets/dhan-yog-7.webp';
 
+// Moon Stone Bracelet images
+import moonstone1 from '@/assets/bracelets/moonstone-1.webp';
+import moonstone2 from '@/assets/bracelets/moonstone-2.webp';
+import moonstone3 from '@/assets/bracelets/moonstone-3.webp';
+import moonstone4 from '@/assets/bracelets/moonstone-4.webp';
+import moonstone5 from '@/assets/bracelets/moonstone-5.webp';
+import moonstone6 from '@/assets/bracelets/moonstone-6.webp';
+import moonstone7 from '@/assets/bracelets/moonstone-7.webp';
+import moonstone8 from '@/assets/bracelets/moonstone-8.webp';
+
 // Turquoise Bracelet images
 import turquoise1 from '@/assets/bracelets/turquoise-1.webp';
 import turquoise2 from '@/assets/bracelets/turquoise-2.webp';
@@ -342,6 +352,10 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
     image: dhanYog3,
     images: [dhanYog3, dhanYog2, dhanYog4, dhanYog5, dhanYog6, dhanYog7]
   },
+  'Moon Stone Bracelet': {
+    image: moonstone1,
+    images: [moonstone1, moonstone2, moonstone3, moonstone4, moonstone5, moonstone6, moonstone7, moonstone8]
+  },
   'Natural Turquoise Bracelet': {
     image: turquoise1,
     images: [turquoise1, turquoise2, turquoise3, turquoise4, turquoise5, turquoise6, turquoise7, turquoise8]
@@ -452,7 +466,7 @@ export const categories = [
     description: 'Healing crystals for balance and positive energy',
     image: '/placeholder.svg',
     items: [
-      'Blood Stone', 'Tiger Eye Blue', 'Mother of Pearl', 'Howlite',
+      'Blood Stone', 'Tiger Eye Blue', 'Moon Stone', 'Howlite',
       'Natural Turquoise', 'Natural Amazonite', 'Black Agate', '7 Chakra',
       'Green Jade', 'Green Aventurine', 'Rose Quartz', 'Dragon Vein',
       'Cats Eye Black', 'Azurite', 'Amethyst', 'Red Jasper',
@@ -569,7 +583,7 @@ const generateProducts = (): Product[] => {
   const crystalItems = [
     { name: 'Blood Stone Bracelet', price: 1200, benefits: ['Courage and vitality', 'Blood purification', 'Grounding energy'] },
     { name: "Tiger's Eye Yellow Bracelet", price: 1100, benefits: ['Courage and confidence', 'Protection', 'Clear thinking'] },
-    { name: 'Mother of Pearl Bracelet', price: 1300, benefits: ['Intuition enhancement', 'Emotional healing', 'Feminine energy'] },
+    { name: 'Moon Stone Bracelet', price: 1300, benefits: ['Intuition enhancement', 'Emotional healing', 'Feminine energy'] },
     { name: 'Howlite Bracelet', price: 834, benefits: ['Patience and calm', 'Insomnia relief', 'Anger reduction'] },
     { name: 'Natural Turquoise Bracelet', price: 2500, benefits: ['Protection and healing', 'Communication', 'Spiritual grounding'] },
     { name: 'Natural Amazonite Bracelet', price: 834, benefits: ['Wealth, Luck & Success', 'Emotional Healing', 'Throat & Heart Chakra'] },
