@@ -162,6 +162,16 @@ import catsEyeBlack2 from '@/assets/bracelets/cats-eye-black-2.webp';
 import catsEyeBlack3 from '@/assets/bracelets/cats-eye-black-3.webp';
 import catsEyeBlack4 from '@/assets/bracelets/cats-eye-black-4.webp';
 
+// Howlite Bracelet images
+import howlite1 from '@/assets/bracelets/howlite-1.webp';
+import howlite2 from '@/assets/bracelets/howlite-2.webp';
+import howlite3 from '@/assets/bracelets/howlite-3.webp';
+import howlite4 from '@/assets/bracelets/howlite-4.webp';
+import howlite5 from '@/assets/bracelets/howlite-5.webp';
+import howlite6 from '@/assets/bracelets/howlite-6.webp';
+import howlite7 from '@/assets/bracelets/howlite-7.webp';
+import howlite8 from '@/assets/bracelets/howlite-8.webp';
+
 // Miscellaneous images
 import blackTourmaline1 from '@/assets/miscellaneous/black-tourmaline-tower-1.webp';
 import blackTourmaline2 from '@/assets/miscellaneous/black-tourmaline-tower-2.webp';
@@ -402,6 +412,10 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   'Cats Eye Black Bracelet': {
     image: catsEyeBlack1,
     images: [catsEyeBlack1, catsEyeBlack2, catsEyeBlack3, catsEyeBlack4]
+  },
+  'Howlite Bracelet': {
+    image: howlite1,
+    images: [howlite1, howlite2, howlite3, howlite4, howlite5, howlite6, howlite7, howlite8]
   },
 };
 
