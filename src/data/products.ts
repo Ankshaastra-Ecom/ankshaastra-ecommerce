@@ -149,6 +149,19 @@ import dragonVein2 from '@/assets/bracelets/dragon-vein-2.webp';
 import dragonVein3 from '@/assets/bracelets/dragon-vein-3.webp';
 import dragonVein4 from '@/assets/bracelets/dragon-vein-4.webp';
 
+// Sunstone Bracelet images
+import sunstone1 from '@/assets/bracelets/sunstone-1.webp';
+import sunstone2 from '@/assets/bracelets/sunstone-2.webp';
+import sunstone3 from '@/assets/bracelets/sunstone-3.webp';
+import sunstone4 from '@/assets/bracelets/sunstone-4.webp';
+import sunstone5 from '@/assets/bracelets/sunstone-5.webp';
+
+// Cats Eye Black Bracelet images
+import catsEyeBlack1 from '@/assets/bracelets/cats-eye-black-1.webp';
+import catsEyeBlack2 from '@/assets/bracelets/cats-eye-black-2.webp';
+import catsEyeBlack3 from '@/assets/bracelets/cats-eye-black-3.webp';
+import catsEyeBlack4 from '@/assets/bracelets/cats-eye-black-4.webp';
+
 // Miscellaneous images
 import blackTourmaline1 from '@/assets/miscellaneous/black-tourmaline-tower-1.webp';
 import blackTourmaline2 from '@/assets/miscellaneous/black-tourmaline-tower-2.webp';
@@ -381,6 +394,14 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   'Dragon Vein Bracelet': {
     image: dragonVein1,
     images: [dragonVein1, dragonVein2, dragonVein3, dragonVein4]
+  },
+  'Sunstone Bracelet': {
+    image: sunstone1,
+    images: [sunstone1, sunstone2, sunstone3, sunstone4, sunstone5]
+  },
+  'Cats Eye Black Bracelet': {
+    image: catsEyeBlack1,
+    images: [catsEyeBlack1, catsEyeBlack2, catsEyeBlack3, catsEyeBlack4]
   },
 };
 
