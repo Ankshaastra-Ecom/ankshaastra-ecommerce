@@ -135,6 +135,20 @@ import chakra7_6 from '@/assets/bracelets/7-chakra-6.webp';
 import chakra7_7 from '@/assets/bracelets/7-chakra-7.webp';
 import chakra7_8 from '@/assets/bracelets/7-chakra-8.webp';
 
+// Green Aventurine Bracelet images
+import greenAventurine1 from '@/assets/bracelets/green-aventurine-1.webp';
+import greenAventurine2 from '@/assets/bracelets/green-aventurine-2.webp';
+import greenAventurine3 from '@/assets/bracelets/green-aventurine-3.webp';
+import greenAventurine4 from '@/assets/bracelets/green-aventurine-4.jpg';
+import greenAventurine5 from '@/assets/bracelets/green-aventurine-5.webp';
+import greenAventurine6 from '@/assets/bracelets/green-aventurine-6.webp';
+
+// Dragon Vein Bracelet images
+import dragonVein1 from '@/assets/bracelets/dragon-vein-1.webp';
+import dragonVein2 from '@/assets/bracelets/dragon-vein-2.webp';
+import dragonVein3 from '@/assets/bracelets/dragon-vein-3.webp';
+import dragonVein4 from '@/assets/bracelets/dragon-vein-4.webp';
+
 // Miscellaneous images
 import blackTourmaline1 from '@/assets/miscellaneous/black-tourmaline-tower-1.webp';
 import blackTourmaline2 from '@/assets/miscellaneous/black-tourmaline-tower-2.webp';
@@ -359,6 +373,14 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   'Natural Turquoise Bracelet': {
     image: turquoise1,
     images: [turquoise1, turquoise2, turquoise3, turquoise4, turquoise5, turquoise6, turquoise7, turquoise8]
+  },
+  'Green Aventurine Bracelet': {
+    image: greenAventurine1,
+    images: [greenAventurine1, greenAventurine2, greenAventurine3, greenAventurine4, greenAventurine5, greenAventurine6]
+  },
+  'Dragon Vein Bracelet': {
+    image: dragonVein1,
+    images: [dragonVein1, dragonVein2, dragonVein3, dragonVein4]
   },
 };
 
