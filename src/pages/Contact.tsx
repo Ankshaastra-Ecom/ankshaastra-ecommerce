@@ -82,8 +82,7 @@ const Contact: React.FC = () => {
                     <div>
                       <h3 className="font-medium text-foreground mb-1">Phone</h3>
                       <p className="text-muted-foreground text-sm">
-                        +91 98765 43210<br />
-                        +91 98765 43211
+                        +91 96673 05577
                       </p>
                     </div>
                   </div>
@@ -95,8 +94,7 @@ const Contact: React.FC = () => {
                     <div>
                       <h3 className="font-medium text-foreground mb-1">Email</h3>
                       <p className="text-muted-foreground text-sm">
-                        info@ankshaastra.com<br />
-                        support@ankshaastra.com
+                        social@ankshaastra.com
                       </p>
                     </div>
                   </div>
