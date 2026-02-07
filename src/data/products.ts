@@ -177,6 +177,14 @@ import azurite1 from '@/assets/bracelets/azurite-1.webp';
 import azurite2 from '@/assets/bracelets/azurite-2.webp';
 import azurite3 from '@/assets/bracelets/azurite-3.webp';
 import azurite4 from '@/assets/bracelets/azurite-4.webp';
+import azurite5 from '@/assets/bracelets/azurite-5.webp';
+
+// Mala images
+import kamalGatta1 from '@/assets/mala/kamal-gatta-1.webp';
+import kamalGatta2 from '@/assets/mala/kamal-gatta-2.webp';
+import tulsi1 from '@/assets/mala/tulsi-1.webp';
+import lapisLazuli1 from '@/assets/mala/lapis-lazuli-1.webp';
+import lapisLazuli2 from '@/assets/mala/lapis-lazuli-2.webp';
 
 // Miscellaneous images
 import blackTourmaline1 from '@/assets/miscellaneous/black-tourmaline-tower-1.webp';
@@ -425,7 +433,22 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
   },
   'Azurite Bracelet': {
     image: azurite1,
-    images: [azurite1, azurite2, azurite3, azurite4]
+    images: [azurite1, azurite2, azurite3, azurite4, azurite5]
+  },
+};
+
+const malaImageMap: Record<string, { image: string; images: string[] }> = {
+  'Kamal Gatta 108 Bead Chanting Mala': {
+    image: kamalGatta1,
+    images: [kamalGatta1, kamalGatta2]
+  },
+  'Tulsi 108 Bead Chanting Mala': {
+    image: tulsi1,
+    images: [tulsi1]
+  },
+  'Lapis Lazuli 108 Bead Chanting Mala': {
+    image: lapisLazuli1,
+    images: [lapisLazuli1, lapisLazuli2]
   },
 };
 
@@ -708,13 +731,15 @@ const generateProducts = (): Product[] => {
   ];
 
   malaItems.forEach(item => {
+    const malaImages = malaImageMap[item.name];
     products.push({
       id: `mal-${id++}`,
       name: item.name,
       category: 'mala',
       price: item.price,
       originalPrice: Math.round(item.price * 1.1),
-      image: '/placeholder.svg',
+      image: malaImages?.image || '/placeholder.svg',
+      images: malaImages?.images,
       rating: 4.6 + Math.random() * 0.4,
       reviews: Math.floor(Math.random() * 60) + 10,
       description: `Traditional ${item.name} crafted for meditation and mantra chanting. 108 beads with a guru bead.`,
@@ -731,42 +756,7 @@ const generateProducts = (): Product[] => {
     });
   });
 
-  // Gemstones
-  const gemstoneItems = [
-    { name: 'Ruby (Manik)', price: 8500, benefits: ['Sun energy', 'Leadership', 'Vitality'] },
-    { name: 'Pearl (Moti)', price: 3500, benefits: ['Moon energy', 'Emotional balance', 'Intuition'] },
-    { name: 'Red Coral (Moonga)', price: 2500, benefits: ['Mars energy', 'Courage', 'Vitality'] },
-    { name: 'Emerald (Panna)', price: 12000, benefits: ['Mercury energy', 'Intelligence', 'Communication'] },
-    { name: 'Yellow Sapphire (Pukhraj)', price: 15000, benefits: ['Jupiter blessings', 'Wisdom', 'Prosperity'] },
-    { name: 'Diamond (Heera)', price: 45000, benefits: ['Venus energy', 'Love', 'Luxury'] },
-    { name: 'Blue Sapphire (Neelam)', price: 18000, benefits: ['Saturn energy', 'Discipline', 'Protection'] },
-    { name: 'Hessonite (Gomed)', price: 4500, benefits: ['Rahu energy', 'Clarity', 'Success'] },
-    { name: 'Cats Eye (Lehsunia)', price: 5500, benefits: ['Ketu energy', 'Intuition', 'Protection'] },
-  ];
-
-  gemstoneItems.forEach(item => {
-    products.push({
-      id: `gem-${id++}`,
-      name: item.name,
-      category: 'gemstones',
-      price: item.price,
-      originalPrice: Math.round(item.price * 1.25),
-      image: '/placeholder.svg',
-      rating: 4.7 + Math.random() * 0.3,
-      reviews: Math.floor(Math.random() * 50) + 25,
-      description: `Natural certified ${item.name} for astrological purposes. Each gemstone is carefully selected and comes with certification.`,
-      benefits: item.benefits,
-      specifications: {
-        'Weight': '5-7 Carats',
-        'Cut': 'Oval/Round',
-        'Certification': 'Govt. Lab Certified',
-        'Treatment': 'Untreated'
-      },
-      inStock: true,
-      featured: Math.random() > 0.5,
-      bestSeller: Math.random() > 0.6
-    });
-  });
+  // Gemstones removed - Coming Soon
 
 // Yantras
   const yantraItems = [
