@@ -4,6 +4,7 @@ import { Star, ShoppingCart, Heart, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Product } from '@/data/products';
+import WatermarkImage from '@/components/product/WatermarkImage';
 import { useCart } from '@/context/CartContext';
 import { toast } from '@/hooks/use-toast';
 
@@ -33,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="card-spiritual overflow-hidden">
         {/* Image Container */}
         <div className="relative aspect-square overflow-hidden bg-muted">
-          <img
+          <WatermarkImage
             src={product.image}
             alt={product.name}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

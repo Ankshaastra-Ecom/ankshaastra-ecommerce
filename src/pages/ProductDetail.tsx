@@ -4,6 +4,7 @@ import { Star, ShoppingCart, Heart, Truck, Shield, RefreshCw, Minus, Plus, Check
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ProductCard from '@/components/product/ProductCard';
+import WatermarkImage from '@/components/product/WatermarkImage';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -92,7 +93,7 @@ const ProductDetail: React.FC = () => {
               <div className="space-y-3">
                 {/* Main Image */}
                 <div className="relative aspect-square max-h-[70vh] md:max-h-none rounded-xl md:rounded-2xl overflow-hidden bg-muted mx-auto w-full max-w-md md:max-w-none">
-                  <img
+                  <WatermarkImage
                     src={product.images?.[selectedImageIndex] || product.image}
                     alt={product.name}
                     className="w-full h-full object-cover"
