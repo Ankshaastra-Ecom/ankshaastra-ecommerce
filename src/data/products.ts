@@ -172,6 +172,12 @@ import howlite6 from '@/assets/bracelets/howlite-6.webp';
 import howlite7 from '@/assets/bracelets/howlite-7.webp';
 import howlite8 from '@/assets/bracelets/howlite-8.webp';
 
+// Azurite Bracelet images
+import azurite1 from '@/assets/bracelets/azurite-1.webp';
+import azurite2 from '@/assets/bracelets/azurite-2.webp';
+import azurite3 from '@/assets/bracelets/azurite-3.webp';
+import azurite4 from '@/assets/bracelets/azurite-4.webp';
+
 // Miscellaneous images
 import blackTourmaline1 from '@/assets/miscellaneous/black-tourmaline-tower-1.webp';
 import blackTourmaline2 from '@/assets/miscellaneous/black-tourmaline-tower-2.webp';
@@ -417,6 +423,10 @@ const braceletImageMap: Record<string, { image: string; images: string[] }> = {
     image: howlite1,
     images: [howlite1, howlite2, howlite3, howlite4, howlite5, howlite6, howlite7, howlite8]
   },
+  'Azurite Bracelet': {
+    image: azurite1,
+    images: [azurite1, azurite2, azurite3, azurite4]
+  },
 };
 
 const miscImageMap: Record<string, { image: string; images: string[] }> = {
@@ -547,10 +557,7 @@ export const categories = [
     name: 'Gemstones',
     description: 'Precious stones for astrological remedies',
     image: '/placeholder.svg',
-    items: [
-      'Ruby', 'Pearl', 'Red Coral', 'Emerald', 'Yellow Sapphire',
-      'Diamond', 'Blue Sapphire', 'Hessonite', 'Cats Eye'
-    ]
+    items: []
   },
   {
     id: 'yantra',
