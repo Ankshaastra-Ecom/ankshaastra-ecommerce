@@ -826,8 +826,52 @@ const generateProducts = (): Product[] => {
         'Care': 'Keep dry, store in clean cloth'
       }
     },
-    { name: 'Black Tourmaline Tower', price: 2500, benefits: ['EMF protection', 'Negativity shield', 'Grounding'] },
-    { name: 'Selenite 7 Chakra Charging Plate', price: 1800, benefits: ['Crystal cleansing', 'Chakra alignment', 'Energy amplification'] },
+    {
+      name: 'Black Tourmaline Tower',
+      price: 2500,
+      benefits: [
+        'Powerful EMF protection',
+        'Shields against negative energy',
+        'Deep grounding & stabilization',
+        'Purifies surrounding environment',
+        'Reduces anxiety & stress',
+        'Strengthens root chakra'
+      ],
+      description: 'The Black Tourmaline Tower is a powerfully protective crystal, regarded as one of the most effective stones for shielding against electromagnetic frequencies (EMF), psychic attacks, and all forms of negative energy. Naturally formed and hand-polished into a striking tower shape, this crystal acts as an energetic bodyguard — absorbing, transmuting, and grounding harmful vibrations before they reach you. Black Tourmaline is deeply connected to the Root Chakra (Muladhara), making it an exceptional tool for grounding scattered energy, calming anxiety, and fostering a sense of safety and stability. Placing it near electronic devices, at your home entrance, or in your workspace creates a protective energy barrier. Revered across cultures by healers, shamans, and spiritual practitioners, this tower-cut specimen radiates protection in all directions, making it both a stunning décor piece and a potent spiritual guardian.',
+      specifications: {
+        'Material': 'Natural Black Tourmaline (Schorl)',
+        'Shape': 'Hand-polished Tower / Obelisk',
+        'Height': 'Approx. 3–5 inches',
+        'Weight': 'Varies (150–350g)',
+        'Origin': 'Brazil / India',
+        'Chakra': 'Root (Muladhara)',
+        'Placement': 'Entrance, Workspace, Near Electronics',
+        'Care': 'Cleanse with sage or selenite monthly'
+      }
+    },
+    {
+      name: 'Selenite 7 Chakra Charging Plate',
+      price: 1800,
+      benefits: [
+        'Cleanses & charges other crystals',
+        'Aligns all 7 chakras',
+        'Amplifies spiritual energy',
+        'Promotes mental clarity',
+        'Creates peaceful environment',
+        'Connects to higher consciousness'
+      ],
+      description: 'The Selenite 7 Chakra Charging Plate is a dual-purpose spiritual tool — a natural Selenite slab embedded with seven chakra-colored stones, designed to both cleanse your crystals and balance your energy centers. Selenite, named after the Greek Moon Goddess Selene, is one of the rare self-cleansing crystals that never needs energetic purification. Its high-vibrational frequency dissolves stagnant energy and recharges any crystal placed upon it overnight. The seven embedded stones — Red Jasper, Carnelian, Citrine, Green Aventurine, Lapis Lazuli, Amethyst, and Clear Quartz — correspond to each chakra from Root to Crown, making this plate a powerful meditation companion for full-body energy alignment. Simply place your bracelets, tumbled stones, or pendants on this plate to restore their vibrancy, or hold it during meditation to harmonize your entire chakra system. An essential piece for every crystal collection.',
+      specifications: {
+        'Material': 'Natural Selenite with Chakra Stones',
+        'Shape': 'Flat Oval / Rectangle Plate',
+        'Size': 'Approx. 6 x 3 inches',
+        'Weight': 'Approx. 250–400g',
+        'Origin': 'Morocco / India',
+        'Chakra Stones': 'Red Jasper, Carnelian, Citrine, Aventurine, Lapis, Amethyst, Quartz',
+        'Usage': 'Crystal Charging, Chakra Meditation',
+        'Care': 'Keep away from water; wipe with dry cloth'
+      }
+    },
   ];
 
   miscItems.forEach(item => {
