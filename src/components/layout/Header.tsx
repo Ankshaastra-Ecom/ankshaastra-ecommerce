@@ -53,7 +53,7 @@ const Header: React.FC = () => {
             <img 
               src={logo} 
               alt="Ankshaastra - Empower Your Name" 
-              className="h-10 md:h-14 w-auto"
+              className="h-12 md:h-16 w-auto rounded-md mix-blend-multiply dark:mix-blend-screen object-contain"
             />
           </Link>
 
