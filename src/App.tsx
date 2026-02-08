@@ -13,6 +13,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import RudrakshaCalculator from "./pages/calculators/RudrakshaCalculator";
 import GemstonesComingSoon from "./pages/GemstonesComingSoon";
+import RefundPolicy from "./pages/RefundPolicy";
+import ShippingPolicy from "./pages/ShippingPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +36,8 @@ const App = () => (
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/shipping-policy" element={<ShippingPolicy />} />
             <Route path="/calculators/rudraksha" element={<RudrakshaCalculator />} />
             <Route path="/calculators/bracelet" element={<RudrakshaCalculator />} />
             <Route path="/calculators/gemstone" element={<RudrakshaCalculator />} />

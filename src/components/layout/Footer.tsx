@@ -81,8 +81,8 @@ const Footer: React.FC = () => {
               <li><Link to="/about" className="text-secondary-foreground/80 hover:text-gold transition-colors text-sm">About Us</Link></li>
               <li><Link to="/contact" className="text-secondary-foreground/80 hover:text-gold transition-colors text-sm">Contact Us</Link></li>
               <li><Link to="/faq" className="text-secondary-foreground/80 hover:text-gold transition-colors text-sm">FAQ</Link></li>
-              <li><Link to="/shipping" className="text-secondary-foreground/80 hover:text-gold transition-colors text-sm">Shipping & Returns</Link></li>
-              <li><Link to="/privacy" className="text-secondary-foreground/80 hover:text-gold transition-colors text-sm">Privacy Policy</Link></li>
+              <li><Link to="/shipping-policy" className="text-secondary-foreground/80 hover:text-gold transition-colors text-sm">Shipping Policy</Link></li>
+              <li><Link to="/refund-policy" className="text-secondary-foreground/80 hover:text-gold transition-colors text-sm">Refund Policy</Link></li>
               <li><Link to="/terms" className="text-secondary-foreground/80 hover:text-gold transition-colors text-sm">Terms & Conditions</Link></li>
             </ul>
           </div>
