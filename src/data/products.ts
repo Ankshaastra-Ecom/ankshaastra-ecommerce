@@ -803,7 +803,29 @@ const generateProducts = (): Product[] => {
 
   // Miscellaneous
   const miscItems = [
-    { name: 'Kush Asan', price: 850, benefits: ['Meditation aid', 'Grounding', 'Positive energy'] },
+    {
+      name: 'Kush Asan',
+      price: 850,
+      benefits: [
+        'Sacred meditation seat',
+        'Insulates from ground energy',
+        'Enhances focus & concentration',
+        'Mentioned in Vedic scriptures',
+        'Purifies meditation space',
+        'Promotes spiritual grounding'
+      ],
+      description: 'The Kush Asan (Kusha Grass Mat) is a sacred meditation seat revered in Hindu scriptures and Vedic traditions. Made from naturally dried Kusha grass (Desmostachya bipinnata), it is considered one of the most auspicious materials to sit upon during meditation, puja, and mantra chanting. Ancient texts like the Bhagavad Gita (Chapter 6, Verse 11) specifically recommend Kusha grass as the ideal seat for spiritual practice, as it acts as a natural insulator — preventing the loss of meditative energy into the ground while shielding the practitioner from negative earth vibrations. Traditionally used by saints, yogis, and spiritual seekers for thousands of years, this handwoven Kush Asan helps deepen concentration, stabilize the mind, and create a purified space for devotion. Lightweight, portable, and crafted with care, it is an essential companion for anyone committed to a disciplined spiritual practice.',
+      specifications: {
+        'Material': 'Natural Kusha Grass (Desmostachya bipinnata)',
+        'Type': 'Handwoven Meditation Mat',
+        'Size': 'Approx. 24 x 24 inches',
+        'Weight': 'Lightweight (~200g)',
+        'Origin': 'India',
+        'Usage': 'Meditation, Puja, Mantra Chanting',
+        'Scriptural Reference': 'Bhagavad Gita Ch.6 V.11',
+        'Care': 'Keep dry, store in clean cloth'
+      }
+    },
     { name: 'Black Tourmaline Tower', price: 2500, benefits: ['EMF protection', 'Negativity shield', 'Grounding'] },
     { name: 'Selenite 7 Chakra Charging Plate', price: 1800, benefits: ['Crystal cleansing', 'Chakra alignment', 'Energy amplification'] },
   ];
@@ -820,9 +842,9 @@ const generateProducts = (): Product[] => {
       images: miscImages?.images,
       rating: 4.4 + Math.random() * 0.6,
       reviews: Math.floor(Math.random() * 30) + 10,
-      description: `High-quality ${item.name} for spiritual practices. Sourced from authentic suppliers.`,
+      description: item.description || `High-quality ${item.name} for spiritual practices. Sourced from authentic suppliers.`,
       benefits: item.benefits,
-      specifications: {
+      specifications: item.specifications || {
         'Material': 'Natural',
         'Quality': 'Premium Grade',
         'Origin': 'Authentic Source'
