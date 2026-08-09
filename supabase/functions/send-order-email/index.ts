@@ -97,9 +97,10 @@ Deno.serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  const ZOHO_SMTP_EMAIL = Deno.env.get('ZOHO_SMTP_EMAIL'); // e.g. orders@ankshaastra.in
+  const ZOHO_SMTP_EMAIL = Deno.env.get('ZOHO_SMTP_EMAIL'); // login/auth account, e.g. himansshu@ankshaastra.in
   const ZOHO_SMTP_PASSWORD = Deno.env.get('ZOHO_SMTP_PASSWORD'); // Zoho App Password, not the normal login password
   const ZOHO_SMTP_HOST = Deno.env.get('ZOHO_SMTP_HOST') || 'smtp.zoho.in';
+  const ZOHO_FROM_EMAIL = Deno.env.get('ZOHO_FROM_EMAIL') || ZOHO_SMTP_EMAIL;
 
   if (!ZOHO_SMTP_EMAIL || !ZOHO_SMTP_PASSWORD) {
     return new Response(JSON.stringify({ error: 'ZOHO_SMTP_EMAIL / ZOHO_SMTP_PASSWORD not configured' }), {
@@ -242,7 +243,7 @@ Deno.serve(async (req) => {
     let customerEmailError: string | null = null;
     try {
       await client.send({
-        from: `Ankshaastra <${ZOHO_SMTP_EMAIL}>`,
+        from: `Ankshaastra <${ZOHO_FROM_EMAIL}>`,
         to: to,
         subject: `Order Confirmed - ${orderNumber} | Ankshaastra`,
         html: html,
@@ -268,7 +269,7 @@ Deno.serve(async (req) => {
 
       try {
         await client.send({
-          from: `Ankshaastra <${ZOHO_SMTP_EMAIL}>`,
+          from: `Ankshaastra <${ZOHO_FROM_EMAIL}>`,
           to: ADMIN_EMAIL,
           subject: `🛍️ New Order - ${orderNumber} | ₹${total.toLocaleString('en-IN')}`,
           html: adminHtml,
