@@ -1,5 +1,4 @@
-import { SMTPClient } from 'https://deno.land/x/denomailer@1.6.0/mod.ts';
-
+import nodemailer from 'npm:nodemailer@6.9.16';
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
