@@ -1,3 +1,5 @@
+import { SMTPClient } from 'https://deno.land/x/denomailer@1.6.0/mod.ts';
+
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
@@ -95,9 +97,12 @@ Deno.serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
-  if (!RESEND_API_KEY) {
-    return new Response(JSON.stringify({ error: 'RESEND_API_KEY not configured' }), {
+  const ZOHO_SMTP_EMAIL = Deno.env.get('ZOHO_SMTP_EMAIL'); // e.g. orders@ankshaastra.in
+  const ZOHO_SMTP_PASSWORD = Deno.env.get('ZOHO_SMTP_PASSWORD'); // Zoho App Password, not the normal login password
+  const ZOHO_SMTP_HOST = Deno.env.get('ZOHO_SMTP_HOST') || 'smtp.zoho.in';
+
+  if (!ZOHO_SMTP_EMAIL || !ZOHO_SMTP_PASSWORD) {
+    return new Response(JSON.stringify({ error: 'ZOHO_SMTP_EMAIL / ZOHO_SMTP_PASSWORD not configured' }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
@@ -132,7 +137,6 @@ Deno.serve(async (req) => {
     </head>
     <body style="margin: 0; padding: 0; background-color: #ffffff; font-family: 'Lato', Arial, sans-serif;">
       <div style="max-width: 600px; margin: 0 auto; background-color: #faf8f5;">
-        <!-- Header -->
         <div style="background: linear-gradient(135deg, #b8860b, #cd9b1d); padding: 32px 24px; text-align: center;">
           <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; color: #ffffff; font-size: 28px; font-weight: 700; letter-spacing: 1px;">
             🙏 Ankshaastra
@@ -140,7 +144,6 @@ Deno.serve(async (req) => {
           <p style="margin: 8px 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">Sacred Crystals & Spiritual Treasures</p>
         </div>
 
-        <!-- Greeting -->
         <div style="padding: 32px 24px 16px;">
           <h2 style="margin: 0 0 8px; font-family: 'Playfair Display', Georgia, serif; color: #3d2e1a; font-size: 22px;">
             Thank You, ${customerName}!
@@ -150,7 +153,6 @@ Deno.serve(async (req) => {
           </p>
         </div>
 
-        <!-- Order Number Badge -->
         <div style="padding: 0 24px 24px;">
           <div style="background: linear-gradient(135deg, #f5f0e8, #ede4d4); border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #d4c5a9;">
             <p style="margin: 0 0 4px; color: #6b5a47; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Order Number</p>
@@ -158,7 +160,6 @@ Deno.serve(async (req) => {
           </div>
         </div>
 
-        <!-- Items Table -->
         <div style="padding: 0 24px 24px;">
           <table style="width: 100%; border-collapse: collapse; background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
             <thead>
@@ -174,7 +175,6 @@ Deno.serve(async (req) => {
           </table>
         </div>
 
-        <!-- Totals -->
         <div style="padding: 0 24px 24px;">
           <div style="background: #ffffff; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
             <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0ebe4;">
@@ -192,7 +192,6 @@ Deno.serve(async (req) => {
           </div>
         </div>
 
-        <!-- Payment & Shipping -->
         <div style="padding: 0 24px 24px;">
           <div style="background: #ffffff; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
             <p style="margin: 0 0 8px; color: #6b5a47; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Payment Method</p>
@@ -202,7 +201,6 @@ Deno.serve(async (req) => {
           </div>
         </div>
 
-        <!-- Delivery Note -->
         <div style="padding: 0 24px 24px;">
           <div style="background: linear-gradient(135deg, #f0f7f0, #e8f5e8); border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #c5e1c5;">
             <p style="margin: 0; color: #2d5a2d; font-size: 14px;">
@@ -211,7 +209,6 @@ Deno.serve(async (req) => {
           </div>
         </div>
 
-        <!-- Footer -->
         <div style="background: #3d2e1a; padding: 24px; text-align: center;">
           <p style="margin: 0 0 8px; color: rgba(255,255,255,0.9); font-size: 14px;">
             Questions? Contact us on WhatsApp
@@ -228,38 +225,33 @@ Deno.serve(async (req) => {
     </html>
     `;
 
-    // FROM_EMAIL must be on a domain verified in Resend (Domains tab) once you go live,
-    // otherwise Resend's shared onboarding@resend.dev sender will not reliably deliver
-    // to real customer inboxes. Falls back to the Resend sandbox sender if not set.
-    const FROM_EMAIL = Deno.env.get('FROM_EMAIL') || 'Ankshaastra <onboarding@resend.dev>';
+    const ADMIN_EMAIL = Deno.env.get('ADMIN_EMAIL') || ZOHO_SMTP_EMAIL;
 
-    // The address that should receive a copy of every order notification -
-    // set this to your Zoho order-notifications mailbox address.
-    const ADMIN_EMAIL = Deno.env.get('ADMIN_EMAIL');
-
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
+    const client = new SMTPClient({
+      connection: {
+        hostname: ZOHO_SMTP_HOST,
+        port: 465,
+        tls: true,
+        auth: {
+          username: ZOHO_SMTP_EMAIL,
+          password: ZOHO_SMTP_PASSWORD,
+        },
       },
-      body: JSON.stringify({
-        from: FROM_EMAIL,
-        to: [to],
-        subject: `Order Confirmed - ${orderNumber} | Ankshaastra`,
-        html,
-      }),
     });
 
-    const data = await res.json();
-
-    if (!res.ok) {
-      throw new Error(`Resend API error [${res.status}]: ${JSON.stringify(data)}`);
+    let customerEmailError: string | null = null;
+    try {
+      await client.send({
+        from: `Ankshaastra <${ZOHO_SMTP_EMAIL}>`,
+        to: to,
+        subject: `Order Confirmed - ${orderNumber} | Ankshaastra`,
+        html: html,
+      });
+    } catch (sendErr: unknown) {
+      customerEmailError = sendErr instanceof Error ? sendErr.message : 'Unknown SMTP error';
+      console.error('Customer email send error:', customerEmailError);
     }
 
-    // Send a separate internal notification copy to the admin/Zoho order mailbox.
-    // This is best-effort - if it fails we still return success for the customer email,
-    // but we log it clearly so it's easy to spot in Supabase function logs.
     let adminEmailResult: { sent: boolean; error?: string } = { sent: false };
     if (ADMIN_EMAIL) {
       const adminHtml = buildAdminNotificationHtml({
@@ -274,32 +266,30 @@ Deno.serve(async (req) => {
         shippingAddress,
       });
 
-      const adminRes = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${RESEND_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: FROM_EMAIL,
-          to: [ADMIN_EMAIL],
+      try {
+        await client.send({
+          from: `Ankshaastra <${ZOHO_SMTP_EMAIL}>`,
+          to: ADMIN_EMAIL,
           subject: `🛍️ New Order - ${orderNumber} | ₹${total.toLocaleString('en-IN')}`,
           html: adminHtml,
-        }),
-      });
-
-      if (adminRes.ok) {
+        });
         adminEmailResult = { sent: true };
-      } else {
-        const adminData = await adminRes.json().catch(() => ({}));
-        console.error('Admin notification email failed:', adminData);
-        adminEmailResult = { sent: false, error: JSON.stringify(adminData) };
+      } catch (adminSendErr: unknown) {
+        const msg = adminSendErr instanceof Error ? adminSendErr.message : 'Unknown SMTP error';
+        console.error('Admin notification email failed:', msg);
+        adminEmailResult = { sent: false, error: msg };
       }
     } else {
-      console.warn('ADMIN_EMAIL secret not set - skipping admin/Zoho order notification email');
+      console.warn('ADMIN_EMAIL / ZOHO_SMTP_EMAIL not set - skipping admin order notification email');
     }
 
-    return new Response(JSON.stringify({ success: true, data, adminEmail: adminEmailResult }), {
+    await client.close();
+
+    if (customerEmailError) {
+      throw new Error(`Customer email failed: ${customerEmailError}`);
+    }
+
+    return new Response(JSON.stringify({ success: true, adminEmail: adminEmailResult }), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
