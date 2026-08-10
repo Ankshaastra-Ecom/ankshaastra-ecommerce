@@ -96,12 +96,12 @@ Deno.serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  const ZOHO_SMTP_EMAIL = Deno.env.get('ZOHO_SMTP_EMAIL'); // login/auth account, e.g. himansshu@ankshaastra.in
-  const ZOHO_SMTP_PASSWORD = Deno.env.get('ZOHO_SMTP_PASSWORD'); // Zoho App Password, not the normal login password
+  const ZOHO_SMTP_EMAIL = Deno.env.get('ZOHO_SMTP_EMAIL');
+  const ZOHO_SMTP_PASSWORD = Deno.env.get('ZOHO_SMTP_PASSWORD');
   const ZOHO_SMTP_HOST = Deno.env.get('ZOHO_SMTP_HOST') || 'smtp.zoho.in';
   const ZOHO_FROM_EMAIL = Deno.env.get('ZOHO_FROM_EMAIL') || ZOHO_SMTP_EMAIL;
-  const ZOHO_SMTP_PORT = Number(Deno.env.get('ZOHO_SMTP_PORT')) || 465; // 465 = SSL, 587 = STARTTLS
-  const ZOHO_SMTP_TLS = ZOHO_SMTP_PORT === 465; // implicit TLS only on 465; 587 uses STARTTLS (tls: false)
+  const ZOHO_SMTP_PORT = Number(Deno.env.get('ZOHO_SMTP_PORT')) || 465;
+  const ZOHO_SMTP_TLS = ZOHO_SMTP_PORT === 465;
 
   if (!ZOHO_SMTP_EMAIL || !ZOHO_SMTP_PASSWORD) {
     return new Response(JSON.stringify({ error: 'ZOHO_SMTP_EMAIL / ZOHO_SMTP_PASSWORD not configured' }), {
