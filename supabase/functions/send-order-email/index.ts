@@ -23,74 +23,6 @@ interface OrderEmailRequest {
   shippingAddress: string;
 }
 
-function buildAdminNotificationHtml(params: {
-  orderNumber: string;
-  customerName: string;
-  customerEmail: string;
-  items: OrderItem[];
-  subtotal: number;
-  shipping: number;
-  total: number;
-  paymentMethod: string;
-  shippingAddress: string;
-}): string {
-  const { orderNumber, customerName, customerEmail, items, subtotal, shipping, total, paymentMethod, shippingAddress } = params;
-  const paymentLabel = paymentMethod === 'cod' ? 'Cash on Delivery' : paymentMethod === 'upi' ? 'UPI Payment' : paymentMethod === 'razorpay' ? 'Razorpay (Card/UPI/Netbanking)' : 'Card';
-
-  const itemRows = items
-    .map(
-      (item) => `
-      <tr>
-        <td style="padding: 10px 14px; border-bottom: 1px solid #eee; font-family: Arial, sans-serif; font-size: 14px;">${item.product_name}</td>
-        <td style="padding: 10px 14px; border-bottom: 1px solid #eee; text-align: center; font-family: Arial, sans-serif; font-size: 14px;">${item.quantity}</td>
-        <td style="padding: 10px 14px; border-bottom: 1px solid #eee; text-align: right; font-family: Arial, sans-serif; font-size: 14px; font-weight: 600;">₹${item.total.toLocaleString('en-IN')}</td>
-      </tr>`,
-    )
-    .join('');
-
-  return `
-  <!DOCTYPE html>
-  <html>
-  <head><meta charset="utf-8"></head>
-  <body style="margin:0;padding:0;background:#f5f5f5;font-family:Arial, sans-serif;">
-    <div style="max-width:600px;margin:0 auto;background:#ffffff;">
-      <div style="background:#3d2e1a;padding:20px 24px;">
-        <h2 style="margin:0;color:#fff;font-size:20px;">🛍️ New Order Received</h2>
-      </div>
-      <div style="padding:20px 24px;">
-        <p style="margin:0 0 4px;font-size:14px;color:#555;">Order Number</p>
-        <p style="margin:0 0 16px;font-size:20px;font-weight:700;color:#b8860b;">${orderNumber}</p>
-
-        <p style="margin:0 0 4px;font-size:14px;color:#555;">Customer</p>
-        <p style="margin:0 0 16px;font-size:15px;color:#222;">${customerName} &lt;${customerEmail}&gt;</p>
-
-        <table style="width:100%;border-collapse:collapse;margin-bottom:16px;">
-          <thead>
-            <tr style="background:#f0ebe4;">
-              <th style="padding:10px 14px;text-align:left;font-size:12px;text-transform:uppercase;">Item</th>
-              <th style="padding:10px 14px;text-align:center;font-size:12px;text-transform:uppercase;">Qty</th>
-              <th style="padding:10px 14px;text-align:right;font-size:12px;text-transform:uppercase;">Total</th>
-            </tr>
-          </thead>
-          <tbody>${itemRows}</tbody>
-        </table>
-
-        <div style="border-top:1px solid #eee;padding-top:12px;">
-          <p style="margin:0 0 4px;font-size:14px;">Subtotal: ₹${subtotal.toLocaleString('en-IN')}</p>
-          <p style="margin:0 0 4px;font-size:14px;">Shipping: ${shipping === 0 ? 'FREE' : `₹${shipping}`}</p>
-          <p style="margin:0 0 12px;font-size:16px;font-weight:700;">Total: ₹${total.toLocaleString('en-IN')}</p>
-          <p style="margin:0 0 4px;font-size:14px;">Payment Method: <strong>${paymentLabel}</strong></p>
-          <p style="margin:0 0 4px;font-size:14px;">Shipping Address: ${shippingAddress}</p>
-        </div>
-      </div>
-      <div style="background:#3d2e1a;padding:14px 24px;text-align:center;">
-        <p style="margin:0;color:rgba(255,255,255,0.7);font-size:12px;">Ankshaastra order notification system</p>
-      </div>
-    </div>
-  </body>
-  </html>`;
-}
-
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -242,47 +174,20 @@ Deno.serve(async (req) => {
     });
 
     let customerEmailError: string | null = null;
+    let adminEmailResult: { sent: boolean; error?: string } = { sent: false };
+    const recipients = ADMIN_EMAIL && ADMIN_EMAIL !== to ? [to, ADMIN_EMAIL] : to;
     try {
       await client.send({
         from: `Ankshaastra <${ZOHO_FROM_EMAIL}>`,
-        to: to,
+        to: recipients,
         subject: `Order Confirmed - ${orderNumber} | Ankshaastra`,
         html: html,
       });
+      if (ADMIN_EMAIL) adminEmailResult = { sent: true };
     } catch (sendErr: unknown) {
       customerEmailError = sendErr instanceof Error ? sendErr.message : 'Unknown SMTP error';
       console.error('Customer email send error:', customerEmailError);
-    }
-
-    let adminEmailResult: { sent: boolean; error?: string } = { sent: false };
-    if (ADMIN_EMAIL) {
-      const adminHtml = buildAdminNotificationHtml({
-        orderNumber,
-        customerName,
-        customerEmail: to,
-        items,
-        subtotal,
-        shipping,
-        total,
-        paymentMethod,
-        shippingAddress,
-      });
-
-      try {
-        await client.send({
-          from: `Ankshaastra <${ZOHO_FROM_EMAIL}>`,
-          to: ADMIN_EMAIL,
-          subject: `🛍️ New Order - ${orderNumber} | ₹${total.toLocaleString('en-IN')}`,
-          html: adminHtml,
-        });
-        adminEmailResult = { sent: true };
-      } catch (adminSendErr: unknown) {
-        const msg = adminSendErr instanceof Error ? adminSendErr.message : 'Unknown SMTP error';
-        console.error('Admin notification email failed:', msg);
-        adminEmailResult = { sent: false, error: msg };
-      }
-    } else {
-      console.warn('ADMIN_EMAIL / ZOHO_SMTP_EMAIL not set - skipping admin order notification email');
+      if (ADMIN_EMAIL) adminEmailResult = { sent: false, error: customerEmailError };
     }
 
     await client.close();
