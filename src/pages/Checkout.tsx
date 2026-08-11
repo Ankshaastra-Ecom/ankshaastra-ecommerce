@@ -230,7 +230,9 @@ const Checkout: React.FC = () => {
           body: {
             to: shippingInfo.email,
             customerName: `${shippingInfo.firstName} ${shippingInfo.lastName}`,
+            customerPhone: shippingInfo.phone,
             orderNumber: orderNum,
+            orderDate: new Date().toISOString(),
             items: state.items.map(item => ({
               product_name: item.product.name,
               product_price: item.product.price,
@@ -242,6 +244,9 @@ const Checkout: React.FC = () => {
             total: grandTotal,
             paymentMethod,
             shippingAddress,
+            shippingCity: shippingInfo.city,
+            shippingState: shippingInfo.state,
+            shippingPincode: shippingInfo.pincode,
           },
         }).catch(err => console.error('Email send failed:', err));
 
@@ -720,3 +725,5 @@ const Checkout: React.FC = () => {
 };
 
 export default Checkout;
+
+
