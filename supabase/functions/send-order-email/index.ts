@@ -467,6 +467,12 @@ function buildAdminNotificationHtml(params: {
           <p style="margin:0 0 4px;font-size:14px;">Payment Method: <strong>${paymentLabel}</strong></p>
           <p style="margin:0 0 4px;font-size:14px;">Shipping Address: ${shippingAddress}</p>
         </div>
+
+        <div style="margin-top:16px;background:#f0f7f0;border-radius:8px;padding:14px 16px;text-align:center;border:1px solid #c5e1c5;">
+          <p style="margin:0;color:#2d5a2d;font-size:14px;">
+            Estimated delivery: <strong>5-7 business days</strong>
+          </p>
+        </div>
       </div>
       <div style="background:#3d2e1a;padding:14px 24px;text-align:center;">
         <p style="margin:0;color:rgba(255,255,255,0.7);font-size:12px;">Ankshaastra order notification system</p>
@@ -676,11 +682,15 @@ Deno.serve(async (req) => {
         shippingAddress,
       });
 
+      const adminSubjectLabel = items.length > 1
+        ? `${items[0].product_name} +${items.length - 1} more`
+        : (items[0]?.product_name || 'Order');
+
       try {
         await transporter.sendMail({
           from: `Ankshaastra <${ZOHO_FROM_EMAIL}>`,
           to: ADMIN_EMAIL,
-          subject: `New Order - ${orderNumber} | ₹${total.toLocaleString('en-IN')}`,
+          subject: `${adminSubjectLabel} - ${orderNumber}`,
           html: adminHtml,
           attachments: invoiceAttachment ? [invoiceAttachment] : [],
         });
