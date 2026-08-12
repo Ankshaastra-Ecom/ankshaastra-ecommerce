@@ -1,214 +1,4 @@
-// import { SMTPClient } from 'https://deno.land/x/denomailer@1.6.0/mod.ts';
-// const corsHeaders = {
-//   'Access-Control-Allow-Origin': '*',
-//   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-// };
 
-// interface OrderItem {
-//   product_name: string;
-//   product_price: number;
-//   quantity: number;
-//   total: number;
-// }
-
-// interface OrderEmailRequest {
-//   to: string;
-//   customerName: string;
-//   orderNumber: string;
-//   items: OrderItem[];
-//   subtotal: number;
-//   shipping: number;
-//   total: number;
-//   paymentMethod: string;
-//   shippingAddress: string;
-// }
-
-// Deno.serve(async (req) => {
-//   if (req.method === 'OPTIONS') {
-//     return new Response(null, { headers: corsHeaders });
-//   }
-
-//   const ZOHO_SMTP_EMAIL = Deno.env.get('ZOHO_SMTP_EMAIL');
-//   const ZOHO_SMTP_PASSWORD = Deno.env.get('ZOHO_SMTP_PASSWORD');
-//   const ZOHO_SMTP_HOST = Deno.env.get('ZOHO_SMTP_HOST') || 'smtp.zoho.in';
-//   const ZOHO_FROM_EMAIL = Deno.env.get('ZOHO_FROM_EMAIL') || ZOHO_SMTP_EMAIL;
-//   const ZOHO_SMTP_PORT = Number(Deno.env.get('ZOHO_SMTP_PORT')) || 465;
-//   const ZOHO_SMTP_TLS = ZOHO_SMTP_PORT === 465;
-
-//   if (!ZOHO_SMTP_EMAIL || !ZOHO_SMTP_PASSWORD) {
-//     return new Response(JSON.stringify({ error: 'ZOHO_SMTP_EMAIL / ZOHO_SMTP_PASSWORD not configured' }), {
-//       status: 500,
-//       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-//     });
-//   }
-
-//   try {
-//     const body: OrderEmailRequest = await req.json();
-//     const { to, customerName, orderNumber, items, subtotal, shipping, total, paymentMethod, shippingAddress } = body;
-
-//     const paymentLabel = paymentMethod === 'cod' ? 'Cash on Delivery' : paymentMethod === 'upi' ? 'UPI Payment' : 'Credit / Debit Card';
-
-//     const itemRows = items.map(item => `
-//       <tr>
-//         <td style="padding: 12px 16px; border-bottom: 1px solid #f0ebe4; font-family: 'Lato', sans-serif; color: #3d2e1a; font-size: 14px;">
-//           ${item.product_name}
-//         </td>
-//         <td style="padding: 12px 16px; border-bottom: 1px solid #f0ebe4; text-align: center; font-family: 'Lato', sans-serif; color: #6b5a47; font-size: 14px;">
-//           ${item.quantity}
-//         </td>
-//         <td style="padding: 12px 16px; border-bottom: 1px solid #f0ebe4; text-align: right; font-family: 'Lato', sans-serif; color: #3d2e1a; font-size: 14px; font-weight: 600;">
-//           ₹${item.total.toLocaleString('en-IN')}
-//         </td>
-//       </tr>
-//     `).join('');
-
-//     const html = `
-//     <!DOCTYPE html>
-//     <html>
-//     <head>
-//       <meta charset="utf-8">
-//       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//     </head>
-//     <body style="margin: 0; padding: 0; background-color: #ffffff; font-family: 'Lato', Arial, sans-serif;">
-//       <div style="max-width: 600px; margin: 0 auto; background-color: #faf8f5;">
-//         <div style="background: linear-gradient(135deg, #b8860b, #cd9b1d); padding: 32px 24px; text-align: center;">
-//           <h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; color: #ffffff; font-size: 28px; font-weight: 700; letter-spacing: 1px;">
-//             🙏 Ankshaastra
-//           </h1>
-//           <p style="margin: 8px 0 0; color: rgba(255,255,255,0.9); font-size: 14px;">Sacred Crystals & Spiritual Treasures</p>
-//         </div>
-
-//         <div style="padding: 32px 24px 16px;">
-//           <h2 style="margin: 0 0 8px; font-family: 'Playfair Display', Georgia, serif; color: #3d2e1a; font-size: 22px;">
-//             Thank You, ${customerName}!
-//           </h2>
-//           <p style="margin: 0; color: #6b5a47; font-size: 15px; line-height: 1.6;">
-//             Your order has been placed successfully. Here are your order details:
-//           </p>
-//         </div>
-
-//         <div style="padding: 0 24px 24px;">
-//           <div style="background: linear-gradient(135deg, #f5f0e8, #ede4d4); border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #d4c5a9;">
-//             <p style="margin: 0 0 4px; color: #6b5a47; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Order Number</p>
-//             <p style="margin: 0; color: #b8860b; font-size: 22px; font-weight: 700; font-family: 'Playfair Display', Georgia, serif;">${orderNumber}</p>
-//           </div>
-//         </div>
-
-//         <div style="padding: 0 24px 24px;">
-//           <table style="width: 100%; border-collapse: collapse; background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
-//             <thead>
-//               <tr style="background: #3d2e1a;">
-//                 <th style="padding: 12px 16px; text-align: left; color: #ffffff; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Item</th>
-//                 <th style="padding: 12px 16px; text-align: center; color: #ffffff; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Qty</th>
-//                 <th style="padding: 12px 16px; text-align: right; color: #ffffff; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Total</th>
-//               </tr>
-//             </thead>
-//             <tbody>
-//               ${itemRows}
-//             </tbody>
-//           </table>
-//         </div>
-
-//         <div style="padding: 0 24px 24px;">
-//           <div style="background: #ffffff; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
-//             <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0ebe4;">
-//               <span style="color: #6b5a47; font-size: 14px;">Subtotal</span>
-//               <span style="color: #3d2e1a; font-size: 14px;">₹${subtotal.toLocaleString('en-IN')}</span>
-//             </div>
-//             <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0ebe4;">
-//               <span style="color: #6b5a47; font-size: 14px;">Shipping</span>
-//               <span style="color: #3d2e1a; font-size: 14px;">${shipping === 0 ? 'FREE' : `₹${shipping}`}</span>
-//             </div>
-//             <div style="display: flex; justify-content: space-between; padding: 12px 0 4px;">
-//               <span style="color: #3d2e1a; font-size: 18px; font-weight: 700;">Total</span>
-//               <span style="color: #b8860b; font-size: 18px; font-weight: 700;">₹${total.toLocaleString('en-IN')}</span>
-//             </div>
-//           </div>
-//         </div>
-
-//         <div style="padding: 0 24px 24px;">
-//           <div style="background: #ffffff; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
-//             <p style="margin: 0 0 8px; color: #6b5a47; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Payment Method</p>
-//             <p style="margin: 0 0 16px; color: #3d2e1a; font-size: 14px; font-weight: 600;">${paymentLabel}</p>
-//             <p style="margin: 0 0 8px; color: #6b5a47; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Shipping Address</p>
-//             <p style="margin: 0; color: #3d2e1a; font-size: 14px; line-height: 1.5;">${shippingAddress}</p>
-//           </div>
-//         </div>
-
-//         <div style="padding: 0 24px 24px;">
-//           <div style="background: linear-gradient(135deg, #f0f7f0, #e8f5e8); border-radius: 10px; padding: 16px; text-align: center; border: 1px solid #c5e1c5;">
-//             <p style="margin: 0; color: #2d5a2d; font-size: 14px;">
-//               📦 Estimated delivery: <strong>5-7 business days</strong>
-//             </p>
-//           </div>
-//         </div>
-
-//         <div style="background: #3d2e1a; padding: 24px; text-align: center;">
-//           <p style="margin: 0 0 8px; color: rgba(255,255,255,0.9); font-size: 14px;">
-//             Questions? Contact us on WhatsApp
-//           </p>
-//           <a href="https://wa.me/919667305577" style="color: #cd9b1d; font-size: 14px; text-decoration: none;">
-//             +91 96673 05577
-//           </a>
-//           <p style="margin: 16px 0 0; color: rgba(255,255,255,0.5); font-size: 12px;">
-//             © ${new Date().getFullYear()} Ankshaastra. All rights reserved.
-//           </p>
-//         </div>
-//       </div>
-//     </body>
-//     </html>
-//     `;
-
-//     const ADMIN_EMAIL = Deno.env.get('ADMIN_EMAIL') || ZOHO_SMTP_EMAIL;
-
-//     const client = new SMTPClient({
-//       connection: {
-//         hostname: ZOHO_SMTP_HOST,
-//         port: ZOHO_SMTP_PORT,
-//         tls: ZOHO_SMTP_TLS,
-//         auth: {
-//           username: ZOHO_SMTP_EMAIL,
-//           password: ZOHO_SMTP_PASSWORD,
-//         },
-//       },
-//     });
-
-//     let customerEmailError: string | null = null;
-//     let adminEmailResult: { sent: boolean; error?: string } = { sent: false };
-//     const recipients = ADMIN_EMAIL && ADMIN_EMAIL !== to ? [to, ADMIN_EMAIL] : to;
-//     try {
-//       await client.send({
-//         from: `Ankshaastra <${ZOHO_FROM_EMAIL}>`,
-//         to: recipients,
-//         subject: `Order Confirmed - ${orderNumber} | Ankshaastra`,
-//         html: html,
-//       });
-//       if (ADMIN_EMAIL) adminEmailResult = { sent: true };
-//     } catch (sendErr: unknown) {
-//       customerEmailError = sendErr instanceof Error ? sendErr.message : 'Unknown SMTP error';
-//       console.error('Customer email send error:', customerEmailError);
-//       if (ADMIN_EMAIL) adminEmailResult = { sent: false, error: customerEmailError };
-//     }
-
-//     await client.close();
-
-//     if (customerEmailError) {
-//       throw new Error(`Customer email failed: ${customerEmailError}`);
-//     }
-
-//     return new Response(JSON.stringify({ success: true, adminEmail: adminEmailResult }), {
-//       status: 200,
-//       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-//     });
-//   } catch (error: unknown) {
-//     console.error('Email send error:', error);
-//     const message = error instanceof Error ? error.message : 'Unknown error';
-//     return new Response(JSON.stringify({ error: message }), {
-//       status: 500,
-//       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-//     });
-//   }
-// });
 
 import nodemailer from 'npm:nodemailer@6.9.16';
 import { PDFDocument, StandardFonts, rgb } from 'npm:pdf-lib@1.17.1';
@@ -353,11 +143,11 @@ async function buildInvoicePdfBytes(params: {
 
     drawText(`${i + 1}`, colX.idx, y, 9);
     drawText(item.product_name.slice(0, 32), colX.item, y, 9);
-    drawText(`₹${(base / item.quantity).toFixed(2)}`, colX.rate, y, 9);
+    drawText(`Rs.${(base / item.quantity).toFixed(2)}`, colX.rate, y, 9);
     drawText(`${item.quantity}`, colX.qty, y, 9);
-    drawText(`₹${base.toFixed(2)}`, colX.taxable, y, 9);
-    drawText(`₹${tax.toFixed(2)} (${(GST_RATE * 100).toFixed(0)}%)`, colX.tax, y, 8);
-    drawText(`₹${lineTotal.toFixed(2)}`, colX.amount, y, 9);
+    drawText(`Rs.${base.toFixed(2)}`, colX.taxable, y, 9);
+    drawText(`Rs.${tax.toFixed(2)} (${(GST_RATE * 100).toFixed(0)}%)`, colX.tax, y, 8);
+    drawText(`Rs.${lineTotal.toFixed(2)}`, colX.amount, y, 9);
     y -= 16;
   });
 
@@ -366,19 +156,19 @@ async function buildInvoicePdfBytes(params: {
   y -= 20;
 
   drawText('Taxable Amount', 380, y, 9);
-  drawText(`₹${taxableTotal.toFixed(2)}`, 520, y, 9);
+  drawText(`Rs.${taxableTotal.toFixed(2)}`, 520, y, 9);
   y -= 14;
   drawText(`CGST @ ${(GST_RATE * 50).toFixed(1)}%`, 380, y, 9);
-  drawText(`₹${(taxTotal / 2).toFixed(2)}`, 520, y, 9);
+  drawText(`Rs.${(taxTotal / 2).toFixed(2)}`, 520, y, 9);
   y -= 14;
   drawText(`SGST @ ${(GST_RATE * 50).toFixed(1)}%`, 380, y, 9);
-  drawText(`₹${(taxTotal / 2).toFixed(2)}`, 520, y, 9);
+  drawText(`Rs.${(taxTotal / 2).toFixed(2)}`, 520, y, 9);
   y -= 14;
   drawText('Shipping', 380, y, 9);
-  drawText(shipping === 0 ? 'FREE' : `₹${shipping.toFixed(2)}`, 520, y, 9);
+  drawText(shipping === 0 ? 'FREE' : `Rs.${shipping.toFixed(2)}`, 520, y, 9);
   y -= 16;
   drawText('Total', 380, y, 11, true);
-  drawText(`₹${total.toFixed(2)}`, 520, y, 11, true);
+  drawText(`Rs.${total.toFixed(2)}`, 520, y, 11, true);
   y -= 30;
 
   drawText(`Total amount (in words): INR ${total.toLocaleString('en-IN')} Only.`, marginX, y, 9);
@@ -398,12 +188,62 @@ async function buildInvoicePdfBytes(params: {
   y -= 30;
 
   drawText('Thank you for choosing Ankshaastra Occult Experts LLP.', marginX, y, 9, true);
-  y -= 20;
-  drawText('This is a computer generated invoice electronically valid without a physical signature or company seal.', marginX, y, 8, false, rgb(0.4, 0.4, 0.4));
-  y -= 11;
-  drawText('Payment once made is non-refundable and non-transferable unless otherwise stated in writing.', marginX, y, 8, false, rgb(0.4, 0.4, 0.4));
-  y -= 11;
-  drawText('All applicable taxes have been charged in accordance with prevailing GST regulations.', marginX, y, 8, false, rgb(0.4, 0.4, 0.4));
+  y -= 18;
+
+  const maxLineWidth = pageWidth - marginX * 2;
+  const wrapText = (text: string, size: number): string[] => {
+    const words = text.split(' ');
+    const lines: string[] = [];
+    let current = '';
+    for (const word of words) {
+      const test = current ? `${current} ${word}` : word;
+      if (font.widthOfTextAtSize(test, size) > maxLineWidth && current) {
+        lines.push(current);
+        current = word;
+      } else {
+        current = test;
+      }
+    }
+    if (current) lines.push(current);
+    return lines;
+  };
+
+  let currentPage = page;
+  const ensureSpace = (needed: number) => {
+    if (y - needed < 50) {
+      currentPage = pdfDoc.addPage([595.28, 841.89]);
+      y = 800;
+    }
+  };
+  const drawOnCurrent = (text: string, x: number, yPos: number, size = 10, useBold = false, color = rgb(0.13, 0.13, 0.13)) => {
+    currentPage.drawText(text, { x, y: yPos, size, font: useBold ? bold : font, color });
+  };
+
+  ensureSpace(20);
+  drawOnCurrent('Terms & Conditions', marginX, y, 10, true);
+  y -= 16;
+
+  const termsList = [
+    'This invoice is generated electronically and is valid without a physical signature or company seal.',
+    'Services provided by Ankshaastra Occult Experts LLP are digital consultation and advisory services in nature.',
+    'Payment once made is non-refundable and non-transferable unless otherwise stated in writing by Ankshaastra Occult Experts LLP.',
+    'Service delivery timelines may vary depending on the nature of the service purchased.',
+    'The company shall not be liable for any indirect, incidental, or consequential losses arising from the use of its services.',
+    'Any dispute relating to services, payments, or invoices shall be subject to the jurisdiction of the competent courts of Uttar Pradesh, India.',
+    'All applicable taxes have been charged in accordance with prevailing GST regulations.',
+    'The SAC Code applicable to the services rendered under this invoice is 999799.',
+    'Customers are advised to retain this invoice for future reference and tax-related purposes.',
+    'By making payment, the customer acknowledges acceptance of these terms and conditions.',
+  ];
+
+  termsList.forEach((term, i) => {
+    const wrapped = wrapText(`${i + 1}. ${term}`, 8);
+    wrapped.forEach((line) => {
+      ensureSpace(11);
+      drawOnCurrent(line, marginX, y, 8, false, rgb(0.4, 0.4, 0.4));
+      y -= 11;
+    });
+  });
 
   return pdfDoc.save();
 }
@@ -630,6 +470,7 @@ Deno.serve(async (req) => {
     });
 
     let invoiceAttachment: { filename: string; content: Buffer; contentType: string } | null = null;
+    let invoiceError: string | null = null;
     try {
       const pdfBytes = await buildInvoicePdfBytes({
         orderNumber,
@@ -651,7 +492,8 @@ Deno.serve(async (req) => {
         contentType: 'application/pdf',
       };
     } catch (pdfErr: unknown) {
-      console.error('Invoice PDF generation failed:', pdfErr instanceof Error ? pdfErr.message : pdfErr);
+      invoiceError = pdfErr instanceof Error ? pdfErr.message : String(pdfErr);
+      console.error('Invoice PDF generation failed:', invoiceError);
     }
 
     let customerEmailError: string | null = null;
@@ -708,7 +550,12 @@ Deno.serve(async (req) => {
       throw new Error(`Customer email failed: ${customerEmailError}`);
     }
 
-    return new Response(JSON.stringify({ success: true, adminEmail: adminEmailResult }), {
+    return new Response(JSON.stringify({
+      success: true,
+      adminEmail: adminEmailResult,
+      invoiceAttached: !!invoiceAttachment,
+      invoiceError: invoiceError,
+    }), {
       status: 200,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
