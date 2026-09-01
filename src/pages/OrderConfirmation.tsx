@@ -84,21 +84,19 @@ const OrderConfirmation: React.FC = () => {
       customerName: order.customerName,
       customerEmail: order.email,
       customerPhone: order.phone,
-      shippingAddress: order.address,
-      shippingCity: order.city,
-      shippingState: order.state,
-      shippingPincode: order.pincode,
+      shippingAddress: `${order.address}, ${order.city}, ${order.state} - ${order.pincode}`,
       items: order.items.map((i) => ({
-        product_name: i.name,
-        product_price: i.price,
+        name: i.name,
+        price: i.price,
         quantity: i.quantity,
         total: i.price * i.quantity,
       })),
       subtotal: order.subtotal,
       shipping: order.shipping,
+      discount: order.discount,
       total: order.total,
       paymentMethod: order.paymentMethod,
-    } as never);
+    });
   };
 
   return (
