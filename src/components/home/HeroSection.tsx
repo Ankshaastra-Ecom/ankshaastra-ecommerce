@@ -7,57 +7,51 @@ const SriYantra3D = lazy(() => import('./SriYantra3D'));
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#0a0814]">
-      {/* Animated Mesh Gradient Background */}
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#1a0d18]">
+      {/* Temple-light gradient background */}
       <div className="absolute inset-0 z-0">
         <div
           className="absolute inset-0"
           style={{
             background: `
-              radial-gradient(circle at 20% 30%, hsl(270 50% 25% / 0.45) 0%, transparent 50%),
-              radial-gradient(circle at 80% 70%, hsl(280 45% 22% / 0.4) 0%, transparent 50%),
-              radial-gradient(circle at 50% 50%, hsl(260 40% 18% / 0.5) 0%, transparent 60%),
-              radial-gradient(circle at 70% 20%, hsl(38 60% 30% / 0.25) 0%, transparent 45%),
-              linear-gradient(180deg, #0a0814 0%, #120f1f 50%, #0d0b18 100%)
+              radial-gradient(ellipse 80% 60% at 50% 0%, hsl(38 70% 45% / 0.28) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 50% at 15% 85%, hsl(300 45% 22% / 0.5) 0%, transparent 65%),
+              radial-gradient(ellipse 70% 60% at 90% 60%, hsl(25 60% 32% / 0.3) 0%, transparent 60%),
+              linear-gradient(165deg, #1f1020 0%, #17101f 45%, #120b14 100%)
             `,
           }}
         />
-        {/* Slow-moving nebula blobs */}
+        {/* Soft drifting light veils */}
         <div
-          className="absolute -top-1/4 -left-1/4 w-[80%] h-[80%] rounded-full blur-[140px] animate-nebula-drift"
-          style={{ background: 'hsl(270 50% 30% / 0.25)' }}
+          className="absolute -top-1/3 left-1/4 w-[60%] h-[90%] rounded-full blur-[130px] animate-nebula-drift"
+          style={{ background: 'hsl(38 75% 50% / 0.14)' }}
         />
         <div
-          className="absolute -bottom-1/4 -right-1/4 w-[70%] h-[70%] rounded-full blur-[120px] animate-nebula-drift"
-          style={{ background: 'hsl(280 45% 28% / 0.2)', animationDelay: '-8s' }}
-        />
-        <div
-          className="absolute top-1/3 left-1/3 w-1/2 h-1/2 rounded-full blur-[100px] animate-nebula-drift"
-          style={{ background: 'hsl(38 55% 35% / 0.15)', animationDelay: '-4s' }}
+          className="absolute -bottom-1/3 -left-1/5 w-[70%] h-[80%] rounded-full blur-[140px] animate-nebula-drift"
+          style={{ background: 'hsl(305 45% 32% / 0.22)', animationDelay: '-6s' }}
         />
       </div>
 
-      {/* Subtle star field */}
+      {/* Fine silk weave texture */}
       <div
-        className="absolute inset-0 z-[1] opacity-[0.12]"
+        className="absolute inset-0 z-[1] opacity-[0.06]"
         style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.6) 1px, transparent 0)`,
-          backgroundSize: '60px 60px',
+          backgroundImage: `repeating-linear-gradient(45deg, rgba(255,255,255,0.5) 0 1px, transparent 1px 6px), repeating-linear-gradient(-45deg, rgba(255,255,255,0.35) 0 1px, transparent 1px 6px)`,
         }}
       />
 
-      {/* Giant faded ॐ watermark */}
-      <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none select-none">
-        <span
-          className="text-[35rem] font-display font-bold text-cream/[0.02] leading-none"
-          style={{ fontFamily: 'serif' }}
-        >
-          ॐ
-        </span>
+      {/* Concentric halo rings */}
+      <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
+        <div className="w-[120vh] h-[120vh] rounded-full border border-gold/[0.06]" />
+        <div className="absolute w-[85vh] h-[85vh] rounded-full border border-gold/[0.05]" />
+        <div className="absolute w-[50vh] h-[50vh] rounded-full border border-gold/[0.04]" />
       </div>
 
-      {/* Mandala pattern overlay */}
-      <div className="absolute inset-0 z-[1] pattern-mandala opacity-[0.06]" />
+      {/* Warm floor glow */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-1/3 z-[1]"
+        style={{ background: 'linear-gradient(0deg, hsl(38 60% 40% / 0.12) 0%, transparent 100%)' }}
+      />
 
       {/* Floating glowing orbs */}
       <div className="absolute top-20 left-[10%] w-24 h-24 rounded-full bg-gold/[0.08] blur-3xl animate-float z-[2]" />
