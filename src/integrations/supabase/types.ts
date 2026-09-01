@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "14.4"
+    PostgrestVersion: "14.5"
   }
   public: {
     Tables: {
@@ -179,18 +179,13 @@ export type Database = {
       }
       orders: {
         Row: {
-          confirmation_email_sent: boolean
           created_at: string
           id: string
           notes: string | null
           order_number: string
-          payment_error: string | null
           payment_id: string | null
           payment_method: Database["public"]["Enums"]["payment_method"]
           payment_status: Database["public"]["Enums"]["payment_status"]
-          razorpay_order_id: string | null
-          razorpay_payment_id: string | null
-          razorpay_signature: string | null
           shipping: number
           shipping_address: string
           shipping_city: string
@@ -207,18 +202,13 @@ export type Database = {
           user_id: string | null
         }
         Insert: {
-          confirmation_email_sent?: boolean
           created_at?: string
           id?: string
           notes?: string | null
           order_number: string
-          payment_error?: string | null
           payment_id?: string | null
           payment_method?: Database["public"]["Enums"]["payment_method"]
           payment_status?: Database["public"]["Enums"]["payment_status"]
-          razorpay_order_id?: string | null
-          razorpay_payment_id?: string | null
-          razorpay_signature?: string | null
           shipping?: number
           shipping_address: string
           shipping_city: string
@@ -235,18 +225,13 @@ export type Database = {
           user_id?: string | null
         }
         Update: {
-          confirmation_email_sent?: boolean
           created_at?: string
           id?: string
           notes?: string | null
           order_number?: string
-          payment_error?: string | null
           payment_id?: string | null
           payment_method?: Database["public"]["Enums"]["payment_method"]
           payment_status?: Database["public"]["Enums"]["payment_status"]
-          razorpay_order_id?: string | null
-          razorpay_payment_id?: string | null
-          razorpay_signature?: string | null
           shipping?: number
           shipping_address?: string
           shipping_city?: string
