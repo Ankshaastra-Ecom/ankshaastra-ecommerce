@@ -35,7 +35,6 @@ import Vouchers from "./pages/Vouchers";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ScrollToTop from "./components/ScrollToTop";
 import MobileBottomNav from "./components/layout/MobileBottomNav";
-import ExitIntentPopup from "./components/ExitIntentPopup";
 import CookieConsent from "./components/CookieConsent";
 import SocialProofNotification from "./components/SocialProofNotification";
 
@@ -84,7 +83,6 @@ const App = () => (
             <MobileBottomNav />
           </BrowserRouter>
           <WhatsAppButton />
-          <ExitIntentPopup />
           <CookieConsent />
           <SocialProofNotification />
         </TooltipProvider>
