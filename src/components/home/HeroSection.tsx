@@ -9,7 +9,9 @@ const SriYantra3D = lazy(() => import('./SriYantra3D'));
 
 
 const HeroSection: React.FC = () => {
+  const isMobile = useIsMobile();
   return (
+
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#1a0d18]">
       {/* Temple-light gradient background */}
       <div className="absolute inset-0 z-0">
