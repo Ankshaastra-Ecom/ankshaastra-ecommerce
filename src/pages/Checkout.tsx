@@ -14,6 +14,8 @@ import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { downloadInvoice } from '@/utils/generateInvoice';
+import { ORDER_STORAGE_KEY, type StoredOrder } from '@/pages/OrderConfirmation';
+
 
 type CheckoutStep = 'shipping' | 'payment' | 'confirmation';
 
@@ -41,6 +43,21 @@ const Checkout: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Prefill contact details for signed-in customers
+  React.useEffect(() => {
+    if (!user) return;
+    const meta = (user.user_metadata ?? {}) as Record<string, string>;
+    const fullName = meta.full_name || meta.name || '';
+    const [first, ...rest] = fullName.trim().split(' ');
+    setShippingInfo((prev) => ({
+      ...prev,
+      email: prev.email || user.email || '',
+      firstName: prev.firstName || first || '',
+      lastName: prev.lastName || rest.join(' '),
+    }));
+  }, [user]);
+
 
   const shipping = 0; // Always free shipping
   const discountAmount = appliedCoupon
@@ -169,10 +186,34 @@ const Checkout: React.FC = () => {
     const whatsappMessage = buildWhatsAppOrderMessage(orderNum);
     window.open(`https://wa.me/919667305577?text=${whatsappMessage}`, '_blank');
 
-    setCurrentStep('confirmation');
+    const snapshot: StoredOrder = {
+      orderNumber: orderNum,
+      orderDate: new Date().toISOString(),
+      customerName: `${shippingInfo.firstName} ${shippingInfo.lastName}`,
+      email: shippingInfo.email,
+      phone: shippingInfo.phone,
+      address: shippingInfo.address,
+      city: shippingInfo.city,
+      state: shippingInfo.state,
+      pincode: shippingInfo.pincode,
+      paymentMethod,
+      subtotal: state.total,
+      discount: discountAmount,
+      shipping,
+      total: grandTotal,
+      items: state.items.map((i) => ({ name: i.product.name, price: i.product.price, quantity: i.quantity })),
+    };
+    try {
+      sessionStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(snapshot));
+    } catch {
+      /* storage may be unavailable */
+    }
+
     clearCart();
     localStorage.removeItem('applied_voucher');
+    navigate(`/order-confirmation/${orderNum}`);
   };
+
 
   const handlePaymentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -384,10 +425,18 @@ const Checkout: React.FC = () => {
               {/* Shipping Step */}
               {currentStep === 'shipping' && (
                 <div className="card-spiritual p-6">
-                  <h2 className="text-2xl font-display font-bold text-foreground mb-6 flex items-center gap-2">
+                  <h2 className="text-2xl font-display font-bold text-foreground mb-2 flex items-center gap-2">
                     <MapPin className="w-6 h-6 text-primary" />
                     Shipping Information
                   </h2>
+                  {!user && (
+                    <p className="mb-6 text-sm text-muted-foreground flex items-center gap-2">
+                      <Check className="w-4 h-4 text-primary shrink-0" />
+                      Checkout as guest — no account needed.
+                    </p>
+                  )}
+                  {user && <div className="mb-6" />}
+
                   <form onSubmit={handleShippingSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
