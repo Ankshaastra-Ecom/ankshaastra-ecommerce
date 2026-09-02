@@ -384,10 +384,18 @@ const Checkout: React.FC = () => {
               {/* Shipping Step */}
               {currentStep === 'shipping' && (
                 <div className="card-spiritual p-6">
-                  <h2 className="text-2xl font-display font-bold text-foreground mb-6 flex items-center gap-2">
+                  <h2 className="text-2xl font-display font-bold text-foreground mb-2 flex items-center gap-2">
                     <MapPin className="w-6 h-6 text-primary" />
                     Shipping Information
                   </h2>
+                  {!user && (
+                    <p className="mb-6 text-sm text-muted-foreground flex items-center gap-2">
+                      <Check className="w-4 h-4 text-primary shrink-0" />
+                      Checkout as guest — no account needed.
+                    </p>
+                  )}
+                  {user && <div className="mb-6" />}
+
                   <form onSubmit={handleShippingSubmit} className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
