@@ -14,6 +14,8 @@ import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/hooks/use-toast';
 import { downloadInvoice } from '@/utils/generateInvoice';
+import { ORDER_STORAGE_KEY, type StoredOrder } from '@/pages/OrderConfirmation';
+
 
 type CheckoutStep = 'shipping' | 'payment' | 'confirmation';
 
