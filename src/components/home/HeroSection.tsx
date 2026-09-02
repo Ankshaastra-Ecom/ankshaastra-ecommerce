@@ -110,9 +110,14 @@ const HeroSection: React.FC = () => {
                 <p className="text-cream/60 text-sm">Spiritual Products</p>
               </div>
             </div>
+
+            {/* Trust badges */}
+            <div className="mt-8 max-w-xl mx-auto lg:mx-0">
+              <TrustBar variant="dark" />
+            </div>
           </div>
 
-          {/* Sri Yantra Sacred Geometry — 3D */}
+          {/* Sri Yantra Sacred Geometry — 3D (desktop only, keeps mobile LCP fast) */}
           <div className="relative hidden lg:block">
             <div className="relative w-full aspect-square flex items-center justify-center">
               {/* Radial Glow */}
@@ -120,10 +125,13 @@ const HeroSection: React.FC = () => {
 
               {/* 3D Sri Yantra Canvas */}
               <div className="absolute inset-0">
-                <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-gold/40 text-sm">Loading sacred geometry…</div>}>
-                  <SriYantra3D />
-                </Suspense>
+                {!isMobile && (
+                  <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-gold/40 text-sm">Loading sacred geometry…</div>}>
+                    <SriYantra3D />
+                  </Suspense>
+                )}
               </div>
+
 
               {/* Center ॐ overlay */}
               <div className="relative z-[2] text-center pointer-events-none">
