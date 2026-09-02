@@ -169,10 +169,34 @@ const Checkout: React.FC = () => {
     const whatsappMessage = buildWhatsAppOrderMessage(orderNum);
     window.open(`https://wa.me/919667305577?text=${whatsappMessage}`, '_blank');
 
-    setCurrentStep('confirmation');
+    const snapshot: StoredOrder = {
+      orderNumber: orderNum,
+      orderDate: new Date().toISOString(),
+      customerName: `${shippingInfo.firstName} ${shippingInfo.lastName}`,
+      email: shippingInfo.email,
+      phone: shippingInfo.phone,
+      address: shippingInfo.address,
+      city: shippingInfo.city,
+      state: shippingInfo.state,
+      pincode: shippingInfo.pincode,
+      paymentMethod,
+      subtotal: state.total,
+      discount: discountAmount,
+      shipping,
+      total: grandTotal,
+      items: state.items.map((i) => ({ name: i.product.name, price: i.product.price, quantity: i.quantity })),
+    };
+    try {
+      sessionStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(snapshot));
+    } catch {
+      /* storage may be unavailable */
+    }
+
     clearCart();
     localStorage.removeItem('applied_voucher');
+    navigate(`/order-confirmation/${orderNum}`);
   };
+
 
   const handlePaymentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
