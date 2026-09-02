@@ -44,6 +44,21 @@ const Checkout: React.FC = () => {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  // Prefill contact details for signed-in customers
+  React.useEffect(() => {
+    if (!user) return;
+    const meta = (user.user_metadata ?? {}) as Record<string, string>;
+    const fullName = meta.full_name || meta.name || '';
+    const [first, ...rest] = fullName.trim().split(' ');
+    setShippingInfo((prev) => ({
+      ...prev,
+      email: prev.email || user.email || '',
+      firstName: prev.firstName || first || '',
+      lastName: prev.lastName || rest.join(' '),
+    }));
+  }, [user]);
+
+
   const shipping = 0; // Always free shipping
   const discountAmount = appliedCoupon
     ? appliedCoupon.flatAmount ?? Math.round(state.total * appliedCoupon.discount / 100)
