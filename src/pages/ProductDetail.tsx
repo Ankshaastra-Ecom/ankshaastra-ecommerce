@@ -38,6 +38,8 @@ const ProductDetail: React.FC = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [zoomOpen, setZoomOpen] = useState(false);
   const [showCartAnimation, setShowCartAnimation] = useState(false);
+  const [sizeIndex, setSizeIndex] = useState(0);
+  const [frameId, setFrameId] = useState<'pinecone' | 'floating-black'>('pinecone');
   const isMobile = useIsMobile();
   const recentlyViewed = useRecentlyViewed(id);
 
@@ -45,6 +47,8 @@ const ProductDetail: React.FC = () => {
   useEffect(() => {
     setSelectedImageIndex(0);
     setQuantity(1);
+    setSizeIndex(0);
+    setFrameId('pinecone');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [id]);
 
@@ -71,6 +75,24 @@ const ProductDetail: React.FC = () => {
     );
   }
 
+  const sizeOptions = product.sizeOptions;
+  const frameOptions = product.frameOptions;
+  const selectedSize = sizeOptions?.[sizeIndex];
+  const frameExtra = selectedSize && frameId === 'floating-black' ? selectedSize.floatingFrameExtra : 0;
+  const unitPrice = selectedSize ? selectedSize.price + frameExtra : product.price;
+  const selectedFrameName = frameOptions?.find(f => f.id === frameId)?.name;
+
+  // Each size + frame combination is a distinct cart line item
+  const cartProduct = selectedSize
+    ? {
+        ...product,
+        id: `${product.id}--${selectedSize.label.replace(/[^0-9x]/g, '')}--${frameId}`,
+        name: `${product.name} — ${selectedSize.label}, ${selectedFrameName}`,
+        price: unitPrice,
+        originalPrice: undefined,
+      }
+    : product;
+
   const discount = product.originalPrice
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
     : 0;
@@ -80,12 +102,12 @@ const ProductDetail: React.FC = () => {
     .slice(0, 4);
 
   const handleAddToCart = () => {
-    addItem(product, quantity);
+    addItem(cartProduct, quantity);
     setShowCartAnimation(true);
   };
 
   const handleBuyNow = () => {
-    addItem(product, quantity);
+    addItem(cartProduct, quantity);
     navigate('/cart');
   };
 
@@ -98,7 +120,7 @@ const ProductDetail: React.FC = () => {
     brand: { '@type': 'Brand', name: 'Ankshaastra' },
     offers: {
       '@type': 'Offer',
-      price: product.price,
+      price: unitPrice,
       priceCurrency: 'INR',
       availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
       seller: { '@type': 'Organization', name: 'Ankshaastra' },
@@ -245,7 +267,7 @@ const ProductDetail: React.FC = () => {
                 {/* Price */}
                 <div className="flex items-center gap-4 mb-6">
                   <span className="text-4xl font-bold text-primary">
-                    ₹{product.price.toLocaleString()}
+                    ₹{unitPrice.toLocaleString()}
                   </span>
                   {product.originalPrice && (
                     <span className="text-xl text-muted-foreground line-through">
@@ -268,6 +290,57 @@ const ProductDetail: React.FC = () => {
                 <div className="mb-6">
                   <StockWarning stock={product.stock} inStock={product.inStock} />
                 </div>
+
+                {/* Size & Frame Selection (Vastu Paintings) */}
+                {sizeOptions && frameOptions && (
+                  <div className="space-y-5 mb-6">
+                    <div>
+                      <p className="font-medium mb-2">Select Size <span className="text-muted-foreground text-sm font-normal">(inches)</span></p>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        {sizeOptions.map((size, i) => (
+                          <button
+                            key={size.label}
+                            type="button"
+                            onClick={() => setSizeIndex(i)}
+                            className={`rounded-lg border px-3 py-2 text-left transition-colors min-h-[44px] ${
+                              i === sizeIndex
+                                ? 'border-primary bg-primary/10 text-foreground'
+                                : 'border-border hover:border-primary/50'
+                            }`}
+                          >
+                            <span className="block text-sm font-medium">{size.label.replace(' inch', '')}</span>
+                            <span className="block text-xs text-muted-foreground">₹{(size.price + (frameId === 'floating-black' ? size.floatingFrameExtra : 0)).toLocaleString()}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <p className="font-medium mb-2">Select Framing</p>
+                      <div className="grid sm:grid-cols-2 gap-2">
+                        {frameOptions.map((frame) => {
+                          const extra = frame.id === 'floating-black' ? (selectedSize?.floatingFrameExtra ?? 0) : 0;
+                          return (
+                            <button
+                              key={frame.id}
+                              type="button"
+                              onClick={() => setFrameId(frame.id)}
+                              className={`rounded-lg border px-3 py-3 text-left transition-colors min-h-[44px] ${
+                                frame.id === frameId
+                                  ? 'border-primary bg-primary/10'
+                                  : 'border-border hover:border-primary/50'
+                              }`}
+                            >
+                              <span className="block text-sm font-medium">{frame.name}</span>
+                              <span className="block text-xs text-muted-foreground">
+                                {extra > 0 ? `+₹${extra.toLocaleString()}` : 'Included — no extra cost'}
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {/* Quantity Selector */}
                 <div className="flex items-center gap-4 mb-6">
@@ -296,10 +369,10 @@ const ProductDetail: React.FC = () => {
                     size="lg"
                     className="btn-gold flex-1 py-6 text-base"
                     onClick={handleAddToCart}
-                    disabled={!product.inStock || isInCart(product.id)}
+                    disabled={!product.inStock || isInCart(cartProduct.id)}
                   >
                     <ShoppingCart className="w-5 h-5 mr-2" />
-                    {isInCart(product.id) ? 'In Cart' : 'Add to Cart'}
+                    {product.comingSoon ? 'Coming Soon' : isInCart(cartProduct.id) ? 'In Cart' : 'Add to Cart'}
                   </Button>
                   <Button
                     size="lg"
