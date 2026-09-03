@@ -10,6 +10,7 @@ import malaImg from '@/assets/categories/mala.png';
 import gemstonesImg from '@/assets/categories/gemstones.png';
 import yantraImg from '@/assets/categories/yantra.png';
 import miscellaneousImg from '@/assets/categories/miscellaneous.png';
+import vastuPaintingsImg from '@/assets/paintings/dhan-varsha-1.webp';
 
 const categoryImages: Record<string, string> = {
   rudraksha: rudrakshaImg,
@@ -18,6 +19,7 @@ const categoryImages: Record<string, string> = {
   gemstones: gemstonesImg,
   yantra: yantraImg,
   miscellaneous: miscellaneousImg,
+  'vastu-paintings': vastuPaintingsImg,
 };
 
 const CategoriesSection: React.FC = () => {
