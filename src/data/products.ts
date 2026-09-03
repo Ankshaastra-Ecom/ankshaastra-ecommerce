@@ -639,6 +639,15 @@ export const categories = [
     ]
   },
   {
+    id: 'vastu-paintings',
+    name: 'Vastu Paintings',
+    description: 'Energised Vastu canvas paintings for prosperity, harmony and success',
+    image: '/placeholder.svg',
+    items: [
+      'Dhan Varsha', 'Vyapar Samridhi', 'Manokamna Siddhi', 'Vidya Siddhi'
+    ]
+  },
+  {
     id: 'miscellaneous',
     name: 'Miscellaneous',
     description: 'Spiritual tools and accessories',
@@ -918,6 +927,112 @@ const generateProducts = (): Product[] => {
       stock: Math.floor(Math.random() * 20) + 2,
       featured: Math.random() > 0.5,
       bestSeller: Math.random() > 0.6
+    });
+  });
+
+  // Vastu Paintings
+  const paintingItems = [
+    {
+      name: 'Dhan Varsha Vastu Painting',
+      images: [dhanVarsha1, dhanVarsha2],
+      description: 'Lord Kuber seated on a blooming lotus at sunrise, showering wealth from his golden kalash. Hung on the north wall, this Vastu painting invites steady cash flow, savings growth and financial stability into your home. Printed on premium canvas and energised with Vedic wealth mantras before dispatch.',
+      benefits: ['Attracts wealth & cash flow', 'Strengthens savings', 'Ideal for north wall', 'Energised with Kuber mantra', 'Museum-grade canvas print'],
+      specifications: {
+        'Deity': 'Lord Kuber',
+        'Material': 'Premium Canvas Print',
+        'Ideal Direction': 'North',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Finish': 'Matte, fade-resistant inks',
+        'Status': 'Pre-Charged with Vedic Mantras'
+      }
+    },
+    {
+      name: 'Vyapar Samridhi Vastu Painting',
+      images: [vyaparSamridhi1, vyaparSamridhi2],
+      description: 'Goddess Lakshmi standing on a lotus with the sacred white elephant beside flowing water, the classic symbol of expanding business fortune. Placed in your office or shop, it supports rising sales, loyal clients and smooth trade. Premium canvas print, energised with Shree Lakshmi mantras before dispatch.',
+      benefits: ['Boosts business growth', 'Attracts loyal customers', 'Perfect for office or shop', 'Energised with Lakshmi mantra', 'Museum-grade canvas print'],
+      specifications: {
+        'Deity': 'Goddess Lakshmi',
+        'Material': 'Premium Canvas Print',
+        'Ideal Direction': 'North or East',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Finish': 'Matte, fade-resistant inks',
+        'Status': 'Pre-Charged with Vedic Mantras'
+      }
+    },
+    {
+      name: 'Manokamna Siddhi Vastu Painting',
+      images: [manokamnaSiddhi1, manokamnaSiddhi2],
+      description: 'The Kalpavriksha wish-fulfilling tree with Kamdhenu resting beneath it, framed by a serene lake and peacocks at golden hour. This wide Vastu painting nurtures family harmony, good health and the fulfilment of long-held wishes. Premium canvas print, energised with Vedic mantras before dispatch.',
+      benefits: ['Supports wish fulfilment', 'Nurtures family harmony', 'Ideal for living room', 'Energised with Vedic mantras', 'Museum-grade canvas print'],
+      specifications: {
+        'Theme': 'Kalpavriksha & Kamdhenu',
+        'Material': 'Premium Canvas Print',
+        'Ideal Direction': 'East or North-East',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Finish': 'Matte, fade-resistant inks',
+        'Status': 'Pre-Charged with Vedic Mantras'
+      }
+    },
+    {
+      name: 'Vidya Siddhi Vastu Painting',
+      images: [vidyaSiddhi1, vidyaSiddhi2],
+      description: 'Goddess Saraswati with her veena on a pale lotus, crowned by a golden Saraswati yantra and mantra border. Hung in a study or child\u2019s room, it sharpens concentration, memory and creative expression before exams. Premium canvas print, energised with Saraswati mantras before dispatch.',
+      benefits: ['Sharpens focus & memory', 'Supports exam success', 'Ideal for study room', 'Energised with Saraswati mantra', 'Museum-grade canvas print'],
+      specifications: {
+        'Deity': 'Goddess Saraswati',
+        'Material': 'Premium Canvas Print',
+        'Ideal Direction': 'East or North-East',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Finish': 'Matte, fade-resistant inks',
+        'Status': 'Pre-Charged with Vedic Mantras'
+      }
+    },
+  ];
+
+  paintingItems.forEach(item => {
+    products.push({
+      id: `vpt-${id++}`,
+      name: item.name,
+      category: 'vastu-paintings',
+      price: PAINTING_SIZES[0].price,
+      image: item.images[0],
+      images: item.images,
+      rating: 4.7 + Math.random() * 0.3,
+      reviews: Math.floor(Math.random() * 25) + 12,
+      description: item.description,
+      benefits: item.benefits,
+      specifications: item.specifications,
+      inStock: true,
+      stock: 25,
+      featured: true,
+      sizeOptions: PAINTING_SIZES,
+      frameOptions: PAINTING_FRAMES,
+    });
+  });
+
+  // Vastu Paintings - launching soon
+  ['Grah Shanti Vastu Painting', 'Santan Sukh Vastu Painting'].forEach(name => {
+    products.push({
+      id: `vpt-${id++}`,
+      name,
+      category: 'vastu-paintings',
+      price: PAINTING_SIZES[0].price,
+      image: '/placeholder.svg',
+      rating: 5,
+      reviews: 0,
+      description: 'This energised Vastu painting is being hand-finished in our studio and will be available very soon. It will offer the same premium canvas, mantra-energised finish and choice of pinecone wood or floating black framing across all six sizes.',
+      benefits: ['Launching soon', 'Premium canvas print', 'Choice of two framings', 'All six sizes available'],
+      specifications: {
+        'Material': 'Premium Canvas Print',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Status': 'Coming Soon'
+      },
+      inStock: false,
+      stock: 0,
+      comingSoon: true,
+      sizeOptions: PAINTING_SIZES,
+      frameOptions: PAINTING_FRAMES,
     });
   });
 
