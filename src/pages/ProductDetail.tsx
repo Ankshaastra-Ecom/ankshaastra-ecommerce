@@ -563,7 +563,7 @@ const ProductDetail: React.FC = () => {
 
       {/* Sticky Mobile Add to Cart */}
       <StickyAddToCart
-        product={product}
+        product={cartProduct}
         onAddToCart={handleAddToCart}
         onBuyNow={handleBuyNow}
       />
