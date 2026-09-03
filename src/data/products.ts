@@ -345,7 +345,36 @@ export interface Product {
   stock?: number;
   featured?: boolean;
   bestSeller?: boolean;
+  sizeOptions?: PaintingSize[];
+  frameOptions?: PaintingFrame[];
+  comingSoon?: boolean;
 }
+
+export interface PaintingSize {
+  label: string;
+  price: number;
+  floatingFrameExtra: number;
+}
+
+export interface PaintingFrame {
+  id: 'pinecone' | 'floating-black';
+  name: string;
+  description: string;
+}
+
+export const PAINTING_SIZES: PaintingSize[] = [
+  { label: '12 x 8 inch', price: 1727, floatingFrameExtra: 400 },
+  { label: '12 x 17 inch', price: 2987, floatingFrameExtra: 800 },
+  { label: '17 x 23 inch', price: 4067, floatingFrameExtra: 1200 },
+  { label: '23 x 33 inch', price: 6587, floatingFrameExtra: 1600 },
+  { label: '33 x 47 inch', price: 11267, floatingFrameExtra: 1650 },
+  { label: '40 x 57 inch', price: 14147, floatingFrameExtra: 1700 },
+];
+
+export const PAINTING_FRAMES: PaintingFrame[] = [
+  { id: 'pinecone', name: 'Pinecone Wood Frame', description: 'Included at no additional cost' },
+  { id: 'floating-black', name: 'Floating Black Frame', description: 'Premium gallery-style floating frame' },
+];
 
 const yantraImageMap: Record<string, string> = {
   'Surya Yantra': suryaYantra,
