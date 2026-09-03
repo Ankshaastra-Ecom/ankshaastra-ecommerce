@@ -17,6 +17,16 @@ import laxmiGaneshKuberYantra from '@/assets/yantras/laxmi-ganesh-kuber-yantra.w
 import laxmiKuberYantra from '@/assets/yantras/laxmi-kuber-yantra.webp';
 import budhYantra from '@/assets/yantras/budh-yantra.webp';
 
+// Vastu Painting images
+import dhanVarsha1 from '@/assets/paintings/dhan-varsha-1.webp';
+import dhanVarsha2 from '@/assets/paintings/dhan-varsha-2.webp';
+import vyaparSamridhi1 from '@/assets/paintings/vyapar-samridhi-1.webp';
+import vyaparSamridhi2 from '@/assets/paintings/vyapar-samridhi-2.webp';
+import manokamnaSiddhi1 from '@/assets/paintings/manokamna-siddhi-1.webp';
+import manokamnaSiddhi2 from '@/assets/paintings/manokamna-siddhi-2.webp';
+import vidyaSiddhi1 from '@/assets/paintings/vidya-siddhi-1.webp';
+import vidyaSiddhi2 from '@/assets/paintings/vidya-siddhi-2.webp';
+
 // Bracelet images
 import amazonite1 from '@/assets/bracelets/amazonite-1.webp';
 import amazonite2 from '@/assets/bracelets/amazonite-2.webp';
