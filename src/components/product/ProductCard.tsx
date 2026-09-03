@@ -65,6 +65,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 -{discount}%
               </Badge>
             )}
+            {product.comingSoon && (
+              <Badge className="bg-secondary text-secondary-foreground text-xs">
+                Coming Soon
+              </Badge>
+            )}
             {product.bestSeller && (
               <Badge className="bg-primary text-primary-foreground text-xs">
                 Best Seller
@@ -91,20 +96,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
           {/* Add to Cart Overlay - Desktop hover */}
           <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-foreground/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto hidden md:block">
-            <Button 
-              onClick={handleAddToCart}
-              className="w-full btn-gold text-sm"
-              disabled={isInCart(product.id)}
-            >
-              <ShoppingCart className="w-4 h-4 mr-2" />
-              {isInCart(product.id) ? 'In Cart' : 'Add to Cart'}
-            </Button>
+            {product.sizeOptions?.length ? (
+              <Button className="w-full btn-gold text-sm" disabled={product.comingSoon}>
+                {product.comingSoon ? 'Coming Soon' : 'Choose Size & Frame'}
+              </Button>
+            ) : (
+              <Button 
+                onClick={handleAddToCart}
+                className="w-full btn-gold text-sm"
+                disabled={isInCart(product.id)}
+              >
+                <ShoppingCart className="w-4 h-4 mr-2" />
+                {isInCart(product.id) ? 'In Cart' : 'Add to Cart'}
+              </Button>
+            )}
           </div>
 
           {/* Quick Add - Mobile: always-visible small button */}
           <button
             onClick={handleAddToCart}
-            disabled={isInCart(product.id) || !product.inStock}
+            disabled={isInCart(product.id) || !product.inStock || !!product.sizeOptions?.length}
             className={`absolute bottom-2 right-2 md:hidden w-9 h-9 rounded-full flex items-center justify-center shadow-md transition-colors ${
               isInCart(product.id) 
                 ? 'bg-primary/50 text-primary-foreground cursor-default' 
@@ -149,7 +160,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {/* Price */}
           <div className="flex items-center gap-2">
             <span className="text-lg font-bold text-primary">
-              ₹{product.price.toLocaleString()}
+              {product.sizeOptions?.length ? 'From ' : ''}₹{product.price.toLocaleString()}
             </span>
             {product.originalPrice && (
               <span className="text-sm text-muted-foreground line-through">
@@ -159,7 +170,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
 
           {/* Stock Status */}
-          {!product.inStock ? (
+          {product.comingSoon ? (
+            <p className="text-xs mt-2 text-muted-foreground">○ Launching soon</p>
+          ) : !product.inStock ? (
             <p className="text-xs mt-2 text-destructive">○ Out of Stock</p>
           ) : product.stock !== undefined && product.stock <= 5 ? (
             <p className="text-xs mt-2 text-amber-600 font-semibold">🔥 Only {product.stock} left!</p>

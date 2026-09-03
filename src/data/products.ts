@@ -17,6 +17,16 @@ import laxmiGaneshKuberYantra from '@/assets/yantras/laxmi-ganesh-kuber-yantra.w
 import laxmiKuberYantra from '@/assets/yantras/laxmi-kuber-yantra.webp';
 import budhYantra from '@/assets/yantras/budh-yantra.webp';
 
+// Vastu Painting images
+import dhanVarsha1 from '@/assets/paintings/dhan-varsha-1.webp';
+import dhanVarsha2 from '@/assets/paintings/dhan-varsha-2.webp';
+import vyaparSamridhi1 from '@/assets/paintings/vyapar-samridhi-1.webp';
+import vyaparSamridhi2 from '@/assets/paintings/vyapar-samridhi-2.webp';
+import manokamnaSiddhi1 from '@/assets/paintings/manokamna-siddhi-1.webp';
+import manokamnaSiddhi2 from '@/assets/paintings/manokamna-siddhi-2.webp';
+import vidyaSiddhi1 from '@/assets/paintings/vidya-siddhi-1.webp';
+import vidyaSiddhi2 from '@/assets/paintings/vidya-siddhi-2.webp';
+
 // Bracelet images
 import amazonite1 from '@/assets/bracelets/amazonite-1.webp';
 import amazonite2 from '@/assets/bracelets/amazonite-2.webp';
@@ -335,7 +345,36 @@ export interface Product {
   stock?: number;
   featured?: boolean;
   bestSeller?: boolean;
+  sizeOptions?: PaintingSize[];
+  frameOptions?: PaintingFrame[];
+  comingSoon?: boolean;
 }
+
+export interface PaintingSize {
+  label: string;
+  price: number;
+  floatingFrameExtra: number;
+}
+
+export interface PaintingFrame {
+  id: 'pinecone' | 'floating-black';
+  name: string;
+  description: string;
+}
+
+export const PAINTING_SIZES: PaintingSize[] = [
+  { label: '12 x 8 inch', price: 1727, floatingFrameExtra: 400 },
+  { label: '12 x 17 inch', price: 2987, floatingFrameExtra: 800 },
+  { label: '17 x 23 inch', price: 4067, floatingFrameExtra: 1200 },
+  { label: '23 x 33 inch', price: 6587, floatingFrameExtra: 1600 },
+  { label: '33 x 47 inch', price: 11267, floatingFrameExtra: 1650 },
+  { label: '40 x 57 inch', price: 14147, floatingFrameExtra: 1700 },
+];
+
+export const PAINTING_FRAMES: PaintingFrame[] = [
+  { id: 'pinecone', name: 'Pinecone Wood Frame', description: 'Included at no additional cost' },
+  { id: 'floating-black', name: 'Floating Black Frame', description: 'Premium gallery-style floating frame' },
+];
 
 const yantraImageMap: Record<string, string> = {
   'Surya Yantra': suryaYantra,
@@ -597,6 +636,15 @@ export const categories = [
       'Budh Yantra', 'Shukra Yantra', 'Ketu Yantra', 'Shani Yantra',
       'Mangal Yantra', 'Shree Yantra', 'Ganesh Yantra', 'Laxmi Kuber Yantra',
       'Laxmi-Ganesh-Kuber Yantra', 'Hanuman Yantra', 'Baglamukhi Yantra'
+    ]
+  },
+  {
+    id: 'vastu-paintings',
+    name: 'Vastu Paintings',
+    description: 'Energised Vastu canvas paintings for prosperity, harmony and success',
+    image: '/placeholder.svg',
+    items: [
+      'Dhan Varsha', 'Vyapar Samridhi', 'Manokamna Siddhi', 'Vidya Siddhi'
     ]
   },
   {
@@ -879,6 +927,112 @@ const generateProducts = (): Product[] => {
       stock: Math.floor(Math.random() * 20) + 2,
       featured: Math.random() > 0.5,
       bestSeller: Math.random() > 0.6
+    });
+  });
+
+  // Vastu Paintings
+  const paintingItems = [
+    {
+      name: 'Dhan Varsha Vastu Painting',
+      images: [dhanVarsha1, dhanVarsha2],
+      description: 'Lord Kuber seated on a blooming lotus at sunrise, showering wealth from his golden kalash. Hung on the north wall, this Vastu painting invites steady cash flow, savings growth and financial stability into your home. Printed on premium canvas and energised with Vedic wealth mantras before dispatch.',
+      benefits: ['Attracts wealth & cash flow', 'Strengthens savings', 'Ideal for north wall', 'Energised with Kuber mantra', 'Museum-grade canvas print'],
+      specifications: {
+        'Deity': 'Lord Kuber',
+        'Material': 'Premium Canvas Print',
+        'Ideal Direction': 'North',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Finish': 'Matte, fade-resistant inks',
+        'Status': 'Pre-Charged with Vedic Mantras'
+      }
+    },
+    {
+      name: 'Vyapar Samridhi Vastu Painting',
+      images: [vyaparSamridhi1, vyaparSamridhi2],
+      description: 'Goddess Lakshmi standing on a lotus with the sacred white elephant beside flowing water, the classic symbol of expanding business fortune. Placed in your office or shop, it supports rising sales, loyal clients and smooth trade. Premium canvas print, energised with Shree Lakshmi mantras before dispatch.',
+      benefits: ['Boosts business growth', 'Attracts loyal customers', 'Perfect for office or shop', 'Energised with Lakshmi mantra', 'Museum-grade canvas print'],
+      specifications: {
+        'Deity': 'Goddess Lakshmi',
+        'Material': 'Premium Canvas Print',
+        'Ideal Direction': 'North or East',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Finish': 'Matte, fade-resistant inks',
+        'Status': 'Pre-Charged with Vedic Mantras'
+      }
+    },
+    {
+      name: 'Manokamna Siddhi Vastu Painting',
+      images: [manokamnaSiddhi1, manokamnaSiddhi2],
+      description: 'The Kalpavriksha wish-fulfilling tree with Kamdhenu resting beneath it, framed by a serene lake and peacocks at golden hour. This wide Vastu painting nurtures family harmony, good health and the fulfilment of long-held wishes. Premium canvas print, energised with Vedic mantras before dispatch.',
+      benefits: ['Supports wish fulfilment', 'Nurtures family harmony', 'Ideal for living room', 'Energised with Vedic mantras', 'Museum-grade canvas print'],
+      specifications: {
+        'Theme': 'Kalpavriksha & Kamdhenu',
+        'Material': 'Premium Canvas Print',
+        'Ideal Direction': 'East or North-East',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Finish': 'Matte, fade-resistant inks',
+        'Status': 'Pre-Charged with Vedic Mantras'
+      }
+    },
+    {
+      name: 'Vidya Siddhi Vastu Painting',
+      images: [vidyaSiddhi1, vidyaSiddhi2],
+      description: 'Goddess Saraswati with her veena on a pale lotus, crowned by a golden Saraswati yantra and mantra border. Hung in a study or child\u2019s room, it sharpens concentration, memory and creative expression before exams. Premium canvas print, energised with Saraswati mantras before dispatch.',
+      benefits: ['Sharpens focus & memory', 'Supports exam success', 'Ideal for study room', 'Energised with Saraswati mantra', 'Museum-grade canvas print'],
+      specifications: {
+        'Deity': 'Goddess Saraswati',
+        'Material': 'Premium Canvas Print',
+        'Ideal Direction': 'East or North-East',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Finish': 'Matte, fade-resistant inks',
+        'Status': 'Pre-Charged with Vedic Mantras'
+      }
+    },
+  ];
+
+  paintingItems.forEach(item => {
+    products.push({
+      id: `vpt-${id++}`,
+      name: item.name,
+      category: 'vastu-paintings',
+      price: PAINTING_SIZES[0].price,
+      image: item.images[0],
+      images: item.images,
+      rating: 4.7 + Math.random() * 0.3,
+      reviews: Math.floor(Math.random() * 25) + 12,
+      description: item.description,
+      benefits: item.benefits,
+      specifications: item.specifications,
+      inStock: true,
+      stock: 25,
+      featured: true,
+      sizeOptions: PAINTING_SIZES,
+      frameOptions: PAINTING_FRAMES,
+    });
+  });
+
+  // Vastu Paintings - launching soon
+  ['Grah Shanti Vastu Painting', 'Santan Sukh Vastu Painting'].forEach(name => {
+    products.push({
+      id: `vpt-${id++}`,
+      name,
+      category: 'vastu-paintings',
+      price: PAINTING_SIZES[0].price,
+      image: '/placeholder.svg',
+      rating: 5,
+      reviews: 0,
+      description: 'This energised Vastu painting is being hand-finished in our studio and will be available very soon. It will offer the same premium canvas, mantra-energised finish and choice of pinecone wood or floating black framing across all six sizes.',
+      benefits: ['Launching soon', 'Premium canvas print', 'Choice of two framings', 'All six sizes available'],
+      specifications: {
+        'Material': 'Premium Canvas Print',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Status': 'Coming Soon'
+      },
+      inStock: false,
+      stock: 0,
+      comingSoon: true,
+      sizeOptions: PAINTING_SIZES,
+      frameOptions: PAINTING_FRAMES,
     });
   });
 
