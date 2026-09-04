@@ -500,6 +500,7 @@ const ProductDetail: React.FC = () => {
                   rating={product.rating}
                   reviewCount={product.reviews}
                   productName={product.name}
+                  productImages={product.images?.length ? product.images : [product.image]}
                 />
               </TabsContent>
 

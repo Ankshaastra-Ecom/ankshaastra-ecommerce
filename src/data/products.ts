@@ -26,6 +26,10 @@ import manokamnaSiddhi1 from '@/assets/paintings/manokamna-siddhi-1.webp';
 import manokamnaSiddhi2 from '@/assets/paintings/manokamna-siddhi-2.webp';
 import vidyaSiddhi1 from '@/assets/paintings/vidya-siddhi-1.webp';
 import vidyaSiddhi2 from '@/assets/paintings/vidya-siddhi-2.webp';
+import vijayGatiRed1 from '@/assets/paintings/vijay-gati-red-1.webp';
+import vijayGatiRed2 from '@/assets/paintings/vijay-gati-red-2.webp';
+import vijayGatiWhite1 from '@/assets/paintings/vijay-gati-white-1.webp';
+import vijayGatiWhite2 from '@/assets/paintings/vijay-gati-white-2.webp';
 
 // Bracelet images
 import amazonite1 from '@/assets/bracelets/amazonite-1.webp';
@@ -644,7 +648,8 @@ export const categories = [
     description: 'Energised Vastu canvas paintings for prosperity, harmony and success',
     image: '/placeholder.svg',
     items: [
-      'Dhan Varsha', 'Vyapar Samridhi', 'Manokamna Siddhi', 'Vidya Siddhi'
+      'Dhan Varsha', 'Vyapar Samridhi', 'Manokamna Siddhi', 'Vidya Siddhi',
+      'Vijay Gati Red', 'Vijay Gati White'
     ]
   },
   {
@@ -935,12 +940,14 @@ const generateProducts = (): Product[] => {
     {
       name: 'Dhan Varsha Vastu Painting',
       images: [dhanVarsha1, dhanVarsha2],
-      description: 'Lord Kuber seated on a blooming lotus at sunrise, showering wealth from his golden kalash. Hung on the north wall, this Vastu painting invites steady cash flow, savings growth and financial stability into your home. Printed on premium canvas and energised with Vedic wealth mantras before dispatch.',
-      benefits: ['Attracts wealth & cash flow', 'Strengthens savings', 'Ideal for north wall', 'Energised with Kuber mantra', 'Museum-grade canvas print'],
+      description: 'Lord Kuber, guardian of wealth, is shown with a filled kalash symbolising fullness, prosperity and an ever-growing flow of resources. As a Vastu-inspired prosperity symbol it encourages financial stability, new opportunities and wealth that is accumulated, nurtured and sustained. Premium canvas, energised with Kuber mantras.',
+      benefits: ['Business & offices', 'Wealth-conscious spaces', 'Reception areas', 'Home office / workspace', 'Areas for financial planning'],
       specifications: {
-        'Deity': 'Lord Kuber',
+        'Theme': "Kuber's Abundance",
+        'Deity': 'Lord Kuber with Filled Kalash',
+        'Vastu Significance': 'Encourages financial stability, opportunities and sustained abundance',
+        'Best Direction': 'North',
         'Material': 'Premium Canvas Print',
-        'Ideal Direction': 'North',
         'Framing': 'Pinecone Wood or Floating Black',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
@@ -949,12 +956,14 @@ const generateProducts = (): Product[] => {
     {
       name: 'Vyapar Samridhi Vastu Painting',
       images: [vyaparSamridhi1, vyaparSamridhi2],
-      description: 'Goddess Lakshmi standing on a lotus with the sacred white elephant beside flowing water, the classic symbol of expanding business fortune. Placed in your office or shop, it supports rising sales, loyal clients and smooth trade. Premium canvas print, energised with Shree Lakshmi mantras before dispatch.',
-      benefits: ['Boosts business growth', 'Attracts loyal customers', 'Perfect for office or shop', 'Energised with Lakshmi mantra', 'Museum-grade canvas print'],
+      description: 'Goddess Lakshmi in the Raja Ravi Varma tradition represents prosperity, abundance, beauty and fortune. The lotus signifies purity and blossoming wealth, while the white elephants depict Gajalakshmi — royal abundance, dignity and blessings. A powerful traditional symbol for inviting auspicious, harmonious prosperity into any space.',
+      benefits: ['Living & drawing rooms', 'Entrance / reception areas', 'Business spaces', 'Wealth & prosperity zones', 'Homes seeking auspicious ambience'],
       specifications: {
-        'Deity': 'Goddess Lakshmi',
+        'Theme': 'Goddess Lakshmi by Raja Ravi Varma',
+        'Deity': 'Gajalakshmi with White Elephants',
+        'Vastu Significance': 'Invites prosperity, harmony and auspicious energy',
+        'Best Direction': 'North, North-East',
         'Material': 'Premium Canvas Print',
-        'Ideal Direction': 'North or East',
         'Framing': 'Pinecone Wood or Floating Black',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
@@ -963,12 +972,14 @@ const generateProducts = (): Product[] => {
     {
       name: 'Manokamna Siddhi Vastu Painting',
       images: [manokamnaSiddhi1, manokamnaSiddhi2],
-      description: 'The Kalpavriksha wish-fulfilling tree with Kamdhenu resting beneath it, framed by a serene lake and peacocks at golden hour. This wide Vastu painting nurtures family harmony, good health and the fulfilment of long-held wishes. Premium canvas print, energised with Vedic mantras before dispatch.',
-      benefits: ['Supports wish fulfilment', 'Nurtures family harmony', 'Ideal for living room', 'Energised with Vedic mantras', 'Museum-grade canvas print'],
+      description: 'Kalpavriksha, the divine wish-fulfilling tree, represents abundance, fulfilment, growth and the manifestation of aspirations. Kamdhenu resting beneath adds nourishment and prosperity. Together they form a strong symbol of abundance that continuously grows and nourishes, making it deeply meaningful for prosperity-oriented homes and businesses.',
+      benefits: ['Family homes', 'Business & entrepreneurial spaces', 'Wealth & prosperity zones', 'Living rooms', 'Spaces focused on long-term growth'],
       specifications: {
-        'Theme': 'Kalpavriksha & Kamdhenu',
+        'Theme': 'Kalpavraksha - Sarvasiddhidayak',
+        'Symbolism': 'Kalpavriksha with Kamdhenu',
+        'Vastu Significance': 'Symbolises abundance that continuously grows and nourishes',
+        'Best Direction': 'North, West, North-West',
         'Material': 'Premium Canvas Print',
-        'Ideal Direction': 'East or North-East',
         'Framing': 'Pinecone Wood or Floating Black',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
@@ -977,12 +988,46 @@ const generateProducts = (): Product[] => {
     {
       name: 'Vidya Siddhi Vastu Painting',
       images: [vidyaSiddhi1, vidyaSiddhi2],
-      description: 'Goddess Saraswati with her veena on a pale lotus, crowned by a golden Saraswati yantra and mantra border. Hung in a study or child\u2019s room, it sharpens concentration, memory and creative expression before exams. Premium canvas print, energised with Saraswati mantras before dispatch.',
-      benefits: ['Sharpens focus & memory', 'Supports exam success', 'Ideal for study room', 'Energised with Saraswati mantra', 'Museum-grade canvas print'],
+      description: 'Goddess Saraswati, the Saraswati Yantra and sacred mantra combine into a spiritually rich representation of knowledge, wisdom and refined intellect. The veena represents creativity and learning while the Yantra adds sacred geometry, symbolically supporting clarity, concentration and intellectual growth in every space dedicated to learning.',
+      benefits: ['Students & academic spaces', 'Study rooms & libraries', 'Schools & institutions', 'Teachers, scholars & researchers', 'Creative, knowledge-based workspaces'],
       specifications: {
+        'Theme': 'Saraswati Maa with Yantra & Mantra',
         'Deity': 'Goddess Saraswati',
+        'Vastu Significance': 'Supports clarity, concentration, wisdom and intellectual growth',
+        'Best Direction': 'East, North-East, North, West',
         'Material': 'Premium Canvas Print',
-        'Ideal Direction': 'East or North-East',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Finish': 'Matte, fade-resistant inks',
+        'Status': 'Pre-Charged with Vedic Mantras'
+      }
+    },
+    {
+      name: 'Vijay Gati Red - Seven Horses Vastu Painting',
+      images: [vijayGatiRed1, vijayGatiRed2],
+      description: 'The Red Seven Horses represent dynamic energy, speed, movement and forward momentum. Their powerful stride symbolises continuous work progress, ambition and the drive to achieve goals. Traditionally linked to Surya energy, this Vastu-inspired remedy encourages an atmosphere of action, momentum and steady professional progress.',
+      benefits: ['Business & professional growth', 'Office cabins & workspaces', 'Entrepreneurs & leadership spaces', 'Goal-oriented environments', 'Career advancement & progress'],
+      specifications: {
+        'Theme': 'Red Seven Horses',
+        'Symbolism': 'Surya energy, momentum and ambition',
+        'Vastu Significance': 'Encourages action, momentum and continuous progress',
+        'Best Direction': 'East, South, South-East',
+        'Material': 'Premium Canvas Print',
+        'Framing': 'Pinecone Wood or Floating Black',
+        'Finish': 'Matte, fade-resistant inks',
+        'Status': 'Pre-Charged with Vedic Mantras'
+      }
+    },
+    {
+      name: 'Vijay Gati White - Seven Horses Vastu Painting',
+      images: [vijayGatiWhite1, vijayGatiWhite2],
+      description: 'The White Seven Horses represent dynamic energy, speed, movement and forward momentum. Their powerful stride symbolises continuous work progress, ambition and the drive to achieve goals. Traditionally linked to Surya energy, this Vastu-inspired remedy encourages an atmosphere of action, momentum and steady professional progress.',
+      benefits: ['Business & professional growth', 'Office cabins & workspaces', 'Entrepreneurs & leadership spaces', 'Goal-oriented environments', 'Career advancement & progress'],
+      specifications: {
+        'Theme': 'White Seven Horses',
+        'Symbolism': 'Surya energy, momentum and ambition',
+        'Vastu Significance': 'Encourages action, momentum and continuous progress',
+        'Best Direction': 'North, North-East',
+        'Material': 'Premium Canvas Print',
         'Framing': 'Pinecone Wood or Floating Black',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
@@ -990,7 +1035,7 @@ const generateProducts = (): Product[] => {
     },
   ];
 
-  paintingItems.forEach(item => {
+  paintingItems.forEach((item, i) => {
     products.push({
       id: `vpt-${id++}`,
       name: item.name,
@@ -998,39 +1043,15 @@ const generateProducts = (): Product[] => {
       price: PAINTING_SIZES[0].price,
       image: item.images[0],
       images: item.images,
-      rating: 4.7 + Math.random() * 0.3,
-      reviews: Math.floor(Math.random() * 25) + 12,
+      rating: 4.7 + ((i * 7) % 3) * 0.1,
+      reviews: 250 + ((i * 37) % 51),
       description: item.description,
       benefits: item.benefits,
       specifications: item.specifications,
       inStock: true,
       stock: 25,
       featured: true,
-      sizeOptions: PAINTING_SIZES,
-      frameOptions: PAINTING_FRAMES,
-    });
-  });
-
-  // Vastu Paintings - launching soon
-  ['Grah Shanti Vastu Painting', 'Santan Sukh Vastu Painting'].forEach(name => {
-    products.push({
-      id: `vpt-${id++}`,
-      name,
-      category: 'vastu-paintings',
-      price: PAINTING_SIZES[0].price,
-      image: '/placeholder.svg',
-      rating: 5,
-      reviews: 0,
-      description: 'This energised Vastu painting is being hand-finished in our studio and will be available very soon. It will offer the same premium canvas, mantra-energised finish and choice of pinecone wood or floating black framing across all six sizes.',
-      benefits: ['Launching soon', 'Premium canvas print', 'Choice of two framings', 'All six sizes available'],
-      specifications: {
-        'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
-        'Status': 'Coming Soon'
-      },
-      inStock: false,
-      stock: 0,
-      comingSoon: true,
+      bestSeller: i < 2,
       sizeOptions: PAINTING_SIZES,
       frameOptions: PAINTING_FRAMES,
     });

@@ -7,9 +7,10 @@ interface ProductReviewsProps {
   rating: number;
   reviewCount: number;
   productName: string;
+  productImages?: string[];
 }
 
-const sampleReviews = [
+const baseReviews = [
   {
     id: 1,
     name: 'Priya S.',
@@ -18,10 +19,7 @@ const sampleReviews = [
     comment: 'Absolutely beautiful quality! The energy from this product is genuinely positive. Packaging was also very thoughtful and secure.',
     helpful: 12,
     verified: true,
-    photos: [
-      'https://images.unsplash.com/photo-1600298882525-15f4c97e9514?w=300&h=300&fit=crop',
-      'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=300&h=300&fit=crop',
-    ],
+    photoCount: 2,
   },
   {
     id: 2,
@@ -31,9 +29,7 @@ const sampleReviews = [
     comment: 'Authentic product with great craftsmanship. I have been using it daily for my puja and meditation. Highly recommend Ankshaastra!',
     helpful: 8,
     verified: true,
-    photos: [
-      'https://images.unsplash.com/photo-1602927525300-aabc2caf4742?w=300&h=300&fit=crop',
-    ],
+    photoCount: 1,
   },
   {
     id: 3,
@@ -43,25 +39,21 @@ const sampleReviews = [
     comment: 'Good quality product. Delivery was a bit slow but the product itself exceeded my expectations. Will order again.',
     helpful: 5,
     verified: true,
-    photos: [],
+    photoCount: 0,
   },
   {
     id: 4,
     name: 'Vikram D.',
     rating: 5,
     date: '2 months ago',
-    comment: 'Received exactly what was shown in the photos. The spiritual energy is palpable. My meditation sessions have improved significantly.',
+    comment: 'Received exactly what was shown in the photos. The finish and detailing are premium. Looks stunning on the wall of my office.',
     helpful: 15,
     verified: true,
-    photos: [
-      'https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=300&h=300&fit=crop',
-      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=300&fit=crop',
-      'https://images.unsplash.com/photo-1604881991720-f91add269bed?w=300&h=300&fit=crop',
-    ],
+    photoCount: 2,
   },
 ];
 
-const ProductReviews: React.FC<ProductReviewsProps> = ({ rating, reviewCount, productName }) => {
+const ProductReviews: React.FC<ProductReviewsProps> = ({ rating, reviewCount, productName, productImages = [] }) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState('');
 
@@ -73,7 +65,21 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ rating, reviewCount, pr
     { stars: 1, percent: 1 },
   ];
 
-  const allPhotos = sampleReviews.flatMap(r => r.photos);
+  // Customer photos are drawn from the real product gallery
+  const gallery = productImages.filter(Boolean);
+  let cursor = 0;
+  const sampleReviews = baseReviews.map((r) => {
+    const photos: string[] = [];
+    if (gallery.length) {
+      for (let i = 0; i < r.photoCount; i++) {
+        photos.push(gallery[cursor % gallery.length]);
+        cursor++;
+      }
+    }
+    return { ...r, photos };
+  });
+
+  const allPhotos = Array.from(new Set(sampleReviews.flatMap(r => r.photos)));
 
   const openLightbox = (img: string) => {
     setLightboxImage(img);
