@@ -10,7 +10,7 @@ import malaImg from '@/assets/categories/mala.png';
 import gemstonesImg from '@/assets/categories/gemstones.png';
 import yantraImg from '@/assets/categories/yantra.png';
 import miscellaneousImg from '@/assets/categories/miscellaneous.png';
-import vastuPaintingsImg from '@/assets/paintings/dhan-varsha-1.webp';
+import vastuPaintingsImg from '@/assets/paintings/vastu-category-hero.webp';
 
 const categoryImages: Record<string, string> = {
   rudraksha: rudrakshaImg,
@@ -38,8 +38,8 @@ const CategoriesSection: React.FC = () => {
           <div className="divider-spiritual max-w-xs mx-auto mt-6" />
         </div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+        {/* Categories Grid — mobile-first: snap-scroll row on small screens */}
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 scrollbar-hide md:grid md:grid-cols-3 lg:grid-cols-6 md:gap-6 md:overflow-visible md:mx-0 md:px-0 md:pb-0">
           {categories.map((category, index) => (
             <motion.div
               key={category.id}
@@ -47,10 +47,11 @@ const CategoriesSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="snap-start shrink-0 w-[70vw] max-w-[280px] sm:w-[45vw] md:w-auto md:max-w-none md:shrink"
             >
               <Link
                 to={`/shop/${category.id}`}
-                className="group relative block"
+                  className="group relative block active:scale-[0.97] transition-transform duration-150 min-h-[44px]"
               >
                 <motion.div
                   whileHover={{ y: -8, scale: 1.02 }}
