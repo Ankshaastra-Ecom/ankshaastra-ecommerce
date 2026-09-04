@@ -648,7 +648,8 @@ export const categories = [
     description: 'Energised Vastu canvas paintings for prosperity, harmony and success',
     image: '/placeholder.svg',
     items: [
-      'Dhan Varsha', 'Vyapar Samridhi', 'Manokamna Siddhi', 'Vidya Siddhi'
+      'Dhan Varsha', 'Vyapar Samridhi', 'Manokamna Siddhi', 'Vidya Siddhi',
+      'Vijay Gati Red', 'Vijay Gati White'
     ]
   },
   {
