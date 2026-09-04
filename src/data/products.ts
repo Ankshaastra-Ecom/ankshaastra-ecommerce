@@ -26,6 +26,10 @@ import manokamnaSiddhi1 from '@/assets/paintings/manokamna-siddhi-1.webp';
 import manokamnaSiddhi2 from '@/assets/paintings/manokamna-siddhi-2.webp';
 import vidyaSiddhi1 from '@/assets/paintings/vidya-siddhi-1.webp';
 import vidyaSiddhi2 from '@/assets/paintings/vidya-siddhi-2.webp';
+import vijayGatiRed1 from '@/assets/paintings/vijay-gati-red-1.webp';
+import vijayGatiRed2 from '@/assets/paintings/vijay-gati-red-2.webp';
+import vijayGatiWhite1 from '@/assets/paintings/vijay-gati-white-1.webp';
+import vijayGatiWhite2 from '@/assets/paintings/vijay-gati-white-2.webp';
 
 // Bracelet images
 import amazonite1 from '@/assets/bracelets/amazonite-1.webp';
