@@ -53,7 +53,7 @@ const baseReviews = [
   },
 ];
 
-const ProductReviews: React.FC<ProductReviewsProps> = ({ rating, reviewCount, productName }) => {
+const ProductReviews: React.FC<ProductReviewsProps> = ({ rating, reviewCount, productName, productImages = [] }) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImage, setLightboxImage] = useState('');
 
@@ -65,7 +65,21 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ rating, reviewCount, pr
     { stars: 1, percent: 1 },
   ];
 
-  const allPhotos = sampleReviews.flatMap(r => r.photos);
+  // Customer photos are drawn from the real product gallery
+  const gallery = productImages.filter(Boolean);
+  let cursor = 0;
+  const sampleReviews = baseReviews.map((r) => {
+    const photos: string[] = [];
+    if (gallery.length) {
+      for (let i = 0; i < r.photoCount; i++) {
+        photos.push(gallery[cursor % gallery.length]);
+        cursor++;
+      }
+    }
+    return { ...r, photos };
+  });
+
+  const allPhotos = Array.from(new Set(sampleReviews.flatMap(r => r.photos)));
 
   const openLightbox = (img: string) => {
     setLightboxImage(img);
