@@ -47,10 +47,11 @@ const CategoriesSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="snap-start shrink-0 w-[70vw] max-w-[280px] sm:w-[45vw] md:w-auto md:max-w-none md:shrink"
             >
               <Link
                 to={`/shop/${category.id}`}
-                className="group relative block"
+                  className="group relative block active:scale-[0.97] transition-transform duration-150 min-h-[44px]"
               >
                 <motion.div
                   whileHover={{ y: -8, scale: 1.02 }}
