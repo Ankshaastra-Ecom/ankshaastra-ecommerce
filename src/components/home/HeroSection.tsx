@@ -113,26 +113,25 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Sri Yantra Sacred Geometry — 3D (desktop only, keeps mobile LCP fast) */}
-          <div className="relative hidden lg:block">
+          {/* Hero Showcase Image */}
+          <div className="relative">
             <div className="relative w-full aspect-square flex items-center justify-center">
               {/* Radial Glow */}
-              <div className="absolute inset-[10%] rounded-full bg-gradient-to-br from-gold/25 via-amethyst/20 to-transparent blur-3xl animate-glow" />
+              <div className="absolute inset-[5%] rounded-full bg-gradient-to-br from-gold/25 via-amethyst/20 to-transparent blur-3xl animate-glow" />
 
-              {/* 3D Sri Yantra Canvas */}
-              <div className="absolute inset-0">
-                {!isMobile && (
-                  <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-gold/40 text-sm">Loading sacred geometry…</div>}>
-                    <SriYantra3D />
-                  </Suspense>
-                )}
-              </div>
-
-
-              {/* Center ॐ overlay */}
-              <div className="relative z-[2] text-center pointer-events-none">
-                <span className="block text-6xl text-gold drop-shadow-[0_0_20px_hsl(42_85%_55%/0.6)]">ॐ</span>
-                <p className="text-cream/70 font-spiritual text-xs mt-3 tracking-widest">SHANTI • PEACE • HARMONY</p>
+              {/* Image with decorative frame */}
+              <div className="relative w-[88%] aspect-square rounded-full overflow-hidden border border-gold/25 shadow-[0_0_80px_hsl(42_85%_55%/0.25)]">
+                <img
+                  src={heroShowcase}
+                  alt="Rudraksha mala, crystal bracelets and sacred yantra on silk"
+                  className="w-full h-full object-cover scale-105 animate-[spin_120s_linear_infinite]"
+                  style={{ animation: 'none' }}
+                  width={1024}
+                  height={1024}
+                  fetchPriority="high"
+                />
+                {/* Soft inner vignette */}
+                <div className="absolute inset-0 rounded-full" style={{ boxShadow: 'inset 0 0 60px 30px hsl(300 40% 8% / 0.55)' }} />
               </div>
 
               {/* Floating Product Cards */}
