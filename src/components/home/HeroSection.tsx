@@ -124,8 +124,7 @@ const HeroSection: React.FC = () => {
                 <img
                   src={heroShowcase}
                   alt="Rudraksha mala, crystal bracelets and sacred yantra on silk"
-                  className="w-full h-full object-cover scale-105 animate-[spin_120s_linear_infinite]"
-                  style={{ animation: 'none' }}
+                  className="w-full h-full object-cover scale-105"
                   width={1024}
                   height={1024}
                   fetchPriority="high"
