@@ -367,13 +367,20 @@ export interface PaintingFrame {
 }
 
 export const PAINTING_SIZES: PaintingSize[] = [
-  { label: '12 x 8 inch', price: 1727, floatingFrameExtra: 400 },
-  { label: '12 x 17 inch', price: 2987, floatingFrameExtra: 800 },
-  { label: '17 x 23 inch', price: 4067, floatingFrameExtra: 1200 },
-  { label: '23 x 33 inch', price: 6587, floatingFrameExtra: 1600 },
-  { label: '33 x 47 inch', price: 11267, floatingFrameExtra: 1650 },
-  { label: '40 x 57 inch', price: 14147, floatingFrameExtra: 1700 },
+  { label: '12 x 8 inch', price: 1727, floatingFrameExtra: 1710 },
+  { label: '12 x 17 inch', price: 2537, floatingFrameExtra: 2160 },
+  { label: '17 x 23 inch', price: 3887, floatingFrameExtra: 2700 },
+  { label: '23 x 33 inch', price: 5597, floatingFrameExtra: 2520 },
+  { label: '33 x 47 inch', price: 9917, floatingFrameExtra: 5760 },
+  { label: '40 x 57 inch', price: 14147, floatingFrameExtra: 5670 },
 ];
+
+// Landscape artworks use the same prices with reversed dimensions
+export const PAINTING_SIZES_LANDSCAPE: PaintingSize[] = PAINTING_SIZES.map(s => ({
+  ...s,
+  label: s.label.replace(/^(\d+) x (\d+)/, '$2 x $1'),
+}));
+
 
 export const PAINTING_FRAMES: PaintingFrame[] = [
   { id: 'pinecone', name: 'Pinecone Wood Frame', description: 'Included at no additional cost' },
