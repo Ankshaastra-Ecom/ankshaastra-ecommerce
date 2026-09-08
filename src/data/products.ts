@@ -367,13 +367,20 @@ export interface PaintingFrame {
 }
 
 export const PAINTING_SIZES: PaintingSize[] = [
-  { label: '12 x 8 inch', price: 1727, floatingFrameExtra: 400 },
-  { label: '12 x 17 inch', price: 2987, floatingFrameExtra: 800 },
-  { label: '17 x 23 inch', price: 4067, floatingFrameExtra: 1200 },
-  { label: '23 x 33 inch', price: 6587, floatingFrameExtra: 1600 },
-  { label: '33 x 47 inch', price: 11267, floatingFrameExtra: 1650 },
-  { label: '40 x 57 inch', price: 14147, floatingFrameExtra: 1700 },
+  { label: '12 x 8 inch', price: 1727, floatingFrameExtra: 1710 },
+  { label: '12 x 17 inch', price: 2537, floatingFrameExtra: 2160 },
+  { label: '17 x 23 inch', price: 3887, floatingFrameExtra: 2700 },
+  { label: '23 x 33 inch', price: 5597, floatingFrameExtra: 2520 },
+  { label: '33 x 47 inch', price: 9917, floatingFrameExtra: 5760 },
+  { label: '40 x 57 inch', price: 14147, floatingFrameExtra: 5670 },
 ];
+
+// Landscape artworks use the same prices with reversed dimensions
+export const PAINTING_SIZES_LANDSCAPE: PaintingSize[] = PAINTING_SIZES.map(s => ({
+  ...s,
+  label: s.label.replace(/^(\d+) x (\d+)/, '$2 x $1'),
+}));
+
 
 export const PAINTING_FRAMES: PaintingFrame[] = [
   { id: 'pinecone', name: 'Pinecone Wood Frame', description: 'Included at no additional cost' },
@@ -1002,12 +1009,13 @@ const generateProducts = (): Product[] => {
       }
     },
     {
-      name: 'Vijay Gati Red - Seven Horses Vastu Painting',
+      name: 'Vijay Gati Red Vastu Painting',
       images: [vijayGatiRed1, vijayGatiRed2],
-      description: 'The Red Seven Horses represent dynamic energy, speed, movement and forward momentum. Their powerful stride symbolises continuous work progress, ambition and the drive to achieve goals. Traditionally linked to Surya energy, this Vastu-inspired remedy encourages an atmosphere of action, momentum and steady professional progress.',
+      landscape: true,
+      description: 'The red horses represent dynamic energy, speed, movement and forward momentum. Their powerful stride symbolises continuous work progress, ambition and the drive to achieve goals. Traditionally linked to Surya energy, this Vastu-inspired remedy encourages an atmosphere of action, momentum and steady professional progress.',
       benefits: ['Business & professional growth', 'Office cabins & workspaces', 'Entrepreneurs & leadership spaces', 'Goal-oriented environments', 'Career advancement & progress'],
       specifications: {
-        'Theme': 'Red Seven Horses',
+        'Theme': 'Vijay Gati - Red Horses',
         'Symbolism': 'Surya energy, momentum and ambition',
         'Vastu Significance': 'Encourages action, momentum and continuous progress',
         'Best Direction': 'East, South, South-East',
@@ -1018,12 +1026,13 @@ const generateProducts = (): Product[] => {
       }
     },
     {
-      name: 'Vijay Gati White - Seven Horses Vastu Painting',
+      name: 'Vijay Gati White Vastu Painting',
       images: [vijayGatiWhite1, vijayGatiWhite2],
-      description: 'The White Seven Horses represent dynamic energy, speed, movement and forward momentum. Their powerful stride symbolises continuous work progress, ambition and the drive to achieve goals. Traditionally linked to Surya energy, this Vastu-inspired remedy encourages an atmosphere of action, momentum and steady professional progress.',
+      landscape: true,
+      description: 'The white horses represent dynamic energy, speed, movement and forward momentum. Their powerful stride symbolises continuous work progress, ambition and the drive to achieve goals. Traditionally linked to Surya energy, this Vastu-inspired remedy encourages an atmosphere of action, momentum and steady professional progress.',
       benefits: ['Business & professional growth', 'Office cabins & workspaces', 'Entrepreneurs & leadership spaces', 'Goal-oriented environments', 'Career advancement & progress'],
       specifications: {
-        'Theme': 'White Seven Horses',
+        'Theme': 'Vijay Gati - White Horses',
         'Symbolism': 'Surya energy, momentum and ambition',
         'Vastu Significance': 'Encourages action, momentum and continuous progress',
         'Best Direction': 'North, North-East',
@@ -1035,12 +1044,13 @@ const generateProducts = (): Product[] => {
     },
   ];
 
-  paintingItems.forEach((item, i) => {
+  (paintingItems as Array<typeof paintingItems[number] & { landscape?: boolean }>).forEach((item, i) => {
+    const sizes = item.landscape ? PAINTING_SIZES_LANDSCAPE : PAINTING_SIZES;
     products.push({
       id: `vpt-${id++}`,
       name: item.name,
       category: 'vastu-paintings',
-      price: PAINTING_SIZES[0].price,
+      price: sizes[0].price,
       image: item.images[0],
       images: item.images,
       rating: 4.7 + ((i * 7) % 3) * 0.1,
@@ -1052,7 +1062,7 @@ const generateProducts = (): Product[] => {
       stock: 25,
       featured: true,
       bestSeller: i < 2,
-      sizeOptions: PAINTING_SIZES,
+      sizeOptions: sizes,
       frameOptions: PAINTING_FRAMES,
     });
   });
