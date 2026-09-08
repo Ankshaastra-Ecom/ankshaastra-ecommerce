@@ -24,7 +24,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { getProductById, products } from '@/data/products';
+import { getProductById, products, type PaintingFrameId } from '@/data/products';
 import SEO from '@/components/SEO';
 import { useCart } from '@/context/CartContext';
 import { useRecentlyViewed } from '@/hooks/use-recently-viewed';
@@ -48,7 +48,7 @@ const ProductDetail: React.FC = () => {
     setSelectedImageIndex(0);
     setQuantity(1);
     setSizeIndex(0);
-    setFrameId('pinecone');
+    setFrameId('gallery-wrap');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [id]);
 
