@@ -39,7 +39,7 @@ const ProductDetail: React.FC = () => {
   const [zoomOpen, setZoomOpen] = useState(false);
   const [showCartAnimation, setShowCartAnimation] = useState(false);
   const [sizeIndex, setSizeIndex] = useState(0);
-  const [frameId, setFrameId] = useState<'pinecone' | 'floating-black'>('pinecone');
+  const [frameId, setFrameId] = useState<PaintingFrameId>('gallery-wrap');
   const isMobile = useIsMobile();
   const recentlyViewed = useRecentlyViewed(id);
 
@@ -78,8 +78,7 @@ const ProductDetail: React.FC = () => {
   const sizeOptions = product.sizeOptions;
   const frameOptions = product.frameOptions;
   const selectedSize = sizeOptions?.[sizeIndex];
-  const frameExtra = selectedSize && frameId === 'floating-black' ? selectedSize.floatingFrameExtra : 0;
-  const unitPrice = selectedSize ? selectedSize.price + frameExtra : product.price;
+  const unitPrice = selectedSize ? selectedSize.prices[frameId] : product.price;
   const selectedFrameName = frameOptions?.find(f => f.id === frameId)?.name;
 
   // Each size + frame combination is a distinct cart line item
@@ -309,34 +308,32 @@ const ProductDetail: React.FC = () => {
                             }`}
                           >
                             <span className="block text-sm font-medium">{size.label.replace(' inch', '')}</span>
-                            <span className="block text-xs text-muted-foreground">₹{(size.price + (frameId === 'floating-black' ? size.floatingFrameExtra : 0)).toLocaleString()}</span>
+                            <span className="block text-xs text-muted-foreground">₹{size.prices[frameId].toLocaleString()}</span>
                           </button>
                         ))}
                       </div>
                     </div>
                     <div>
                       <p className="font-medium mb-2">Select Framing</p>
-                      <div className="grid sm:grid-cols-2 gap-2">
-                        {frameOptions.map((frame) => {
-                          const extra = frame.id === 'floating-black' ? (selectedSize?.floatingFrameExtra ?? 0) : 0;
-                          return (
-                            <button
-                              key={frame.id}
-                              type="button"
-                              onClick={() => setFrameId(frame.id)}
-                              className={`rounded-lg border px-3 py-3 text-left transition-colors min-h-[44px] ${
-                                frame.id === frameId
-                                  ? 'border-primary bg-primary/10'
-                                  : 'border-border hover:border-primary/50'
-                              }`}
-                            >
-                              <span className="block text-sm font-medium">{frame.name}</span>
-                              <span className="block text-xs text-muted-foreground">
-                                {extra > 0 ? `+₹${extra.toLocaleString()}` : 'Included — no extra cost'}
-                              </span>
-                            </button>
-                          );
-                        })}
+                      <div className="grid sm:grid-cols-3 gap-2">
+                        {frameOptions.map((frame) => (
+                          <button
+                            key={frame.id}
+                            type="button"
+                            onClick={() => setFrameId(frame.id)}
+                            className={`rounded-lg border px-3 py-3 text-left transition-colors min-h-[44px] ${
+                              frame.id === frameId
+                                ? 'border-primary bg-primary/10'
+                                : 'border-border hover:border-primary/50'
+                            }`}
+                          >
+                            <span className="block text-sm font-medium">{frame.name}</span>
+                            <span className="block text-xs text-muted-foreground">
+                              ₹{(selectedSize?.prices[frame.id] ?? 0).toLocaleString()}
+                            </span>
+                            <span className="block text-[11px] text-muted-foreground mt-0.5">{frame.description}</span>
+                          </button>
+                        ))}
                       </div>
                     </div>
                   </div>
