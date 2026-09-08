@@ -30,6 +30,7 @@ import vijayGatiRed1 from '@/assets/paintings/vijay-gati-red-1.webp';
 import vijayGatiRed2 from '@/assets/paintings/vijay-gati-red-2.webp';
 import vijayGatiWhite1 from '@/assets/paintings/vijay-gati-white-1.webp';
 import vijayGatiWhite2 from '@/assets/paintings/vijay-gati-white-2.webp';
+import paintingSizingGuide from '@/assets/paintings/sizing-guide.webp';
 
 // Bracelet images
 import amazonite1 from '@/assets/bracelets/amazonite-1.webp';
@@ -1046,13 +1047,15 @@ const generateProducts = (): Product[] => {
 
   (paintingItems as Array<typeof paintingItems[number] & { landscape?: boolean }>).forEach((item, i) => {
     const sizes = item.landscape ? PAINTING_SIZES_LANDSCAPE : PAINTING_SIZES;
+    // Portrait artworks include the sizing guide as an additional gallery image
+    const images = item.landscape ? item.images : [...item.images, paintingSizingGuide];
     products.push({
       id: `vpt-${id++}`,
       name: item.name,
       category: 'vastu-paintings',
       price: sizes[0].price,
       image: item.images[0],
-      images: item.images,
+      images,
       rating: 4.7 + ((i * 7) % 3) * 0.1,
       reviews: 250 + ((i * 37) % 51),
       description: item.description,
