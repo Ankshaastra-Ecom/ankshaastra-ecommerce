@@ -966,7 +966,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Encourages financial stability, opportunities and sustained abundance',
         'Best Direction': 'North',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
@@ -982,7 +982,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Invites prosperity, harmony and auspicious energy',
         'Best Direction': 'North, North-East',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
@@ -998,7 +998,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Symbolises abundance that continuously grows and nourishes',
         'Best Direction': 'North, West, North-West',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
@@ -1014,7 +1014,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Supports clarity, concentration, wisdom and intellectual growth',
         'Best Direction': 'East, North-East, North, West',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
@@ -1031,7 +1031,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Encourages action, momentum and continuous progress',
         'Best Direction': 'East, South, South-East',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
@@ -1048,7 +1048,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Encourages action, momentum and continuous progress',
         'Best Direction': 'North, North-East',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
