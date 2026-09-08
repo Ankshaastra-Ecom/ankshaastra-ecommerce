@@ -355,25 +355,34 @@ export interface Product {
   comingSoon?: boolean;
 }
 
+export type PaintingFrameId = 'rolled' | 'gallery-wrap' | 'floating-black';
+
 export interface PaintingSize {
   label: string;
+  /** Lowest price across framing options (Rolled Canvas) */
   price: number;
-  floatingFrameExtra: number;
+  prices: Record<PaintingFrameId, number>;
 }
 
 export interface PaintingFrame {
-  id: 'pinecone' | 'floating-black';
+  id: PaintingFrameId;
   name: string;
   description: string;
 }
 
+const makeSize = (label: string, rolled: number, gallery: number, floating: number): PaintingSize => ({
+  label,
+  price: rolled,
+  prices: { rolled, 'gallery-wrap': gallery, 'floating-black': floating },
+});
+
 export const PAINTING_SIZES: PaintingSize[] = [
-  { label: '12 x 8 inch', price: 1727, floatingFrameExtra: 1710 },
-  { label: '12 x 17 inch', price: 2537, floatingFrameExtra: 2160 },
-  { label: '17 x 23 inch', price: 3887, floatingFrameExtra: 2700 },
-  { label: '23 x 33 inch', price: 5597, floatingFrameExtra: 2520 },
-  { label: '33 x 47 inch', price: 9917, floatingFrameExtra: 5760 },
-  { label: '40 x 57 inch', price: 14147, floatingFrameExtra: 5670 },
+  makeSize('12 x 8 inch', 917, 1727, 3437),
+  makeSize('12 x 17 inch', 1457, 2537, 4697),
+  makeSize('17 x 23 inch', 2537, 3887, 6587),
+  makeSize('23 x 33 inch', 4067, 5597, 8117),
+  makeSize('33 x 47 inch', 7577, 9917, 15677),
+  makeSize('40 x 57 inch', 9467, 14147, 19817),
 ];
 
 // Landscape artworks use the same prices with reversed dimensions
@@ -384,7 +393,8 @@ export const PAINTING_SIZES_LANDSCAPE: PaintingSize[] = PAINTING_SIZES.map(s => 
 
 
 export const PAINTING_FRAMES: PaintingFrame[] = [
-  { id: 'pinecone', name: 'Pinecone Wood Frame', description: 'Included at no additional cost' },
+  { id: 'rolled', name: 'Rolled Canvas', description: 'Unframed canvas roll — frame it your way' },
+  { id: 'gallery-wrap', name: 'Gallery Wrap (Pinecone Wood)', description: 'Canvas stretched on pinecone wood frame' },
   { id: 'floating-black', name: 'Floating Black Frame', description: 'Premium gallery-style floating frame' },
 ];
 
@@ -956,7 +966,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Encourages financial stability, opportunities and sustained abundance',
         'Best Direction': 'North',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
@@ -972,7 +982,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Invites prosperity, harmony and auspicious energy',
         'Best Direction': 'North, North-East',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
@@ -988,7 +998,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Symbolises abundance that continuously grows and nourishes',
         'Best Direction': 'North, West, North-West',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
@@ -1004,7 +1014,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Supports clarity, concentration, wisdom and intellectual growth',
         'Best Direction': 'East, North-East, North, West',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
@@ -1021,7 +1031,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Encourages action, momentum and continuous progress',
         'Best Direction': 'East, South, South-East',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
@@ -1038,7 +1048,7 @@ const generateProducts = (): Product[] => {
         'Vastu Significance': 'Encourages action, momentum and continuous progress',
         'Best Direction': 'North, North-East',
         'Material': 'Premium Canvas Print',
-        'Framing': 'Pinecone Wood or Floating Black',
+        'Framing': 'Rolled Canvas, Gallery Wrap or Floating Black Frame',
         'Finish': 'Matte, fade-resistant inks',
         'Status': 'Pre-Charged with Vedic Mantras'
       }
