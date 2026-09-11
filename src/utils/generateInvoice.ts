@@ -21,8 +21,8 @@ interface InvoiceData {
   paymentMethod: string;
 }
 
-// GST rates for spiritual/religious items (typically 5% or exempt)
-const GST_RATE = 0.18; 
+// GST on spiritual/religious items
+const GST_RATE = 0.18; // 18% GST
 
 export const calculateGST = (amount: number) => {
   const gstAmount = amount * GST_RATE;
@@ -36,7 +36,11 @@ export const calculateGST = (amount: number) => {
 };
 
 export const generateInvoiceHTML = (data: InvoiceData): string => {
-  const gstBreakdown = calculateGST(data.subtotal);
+  // Tax must be charged on what the customer actually paid for the goods
+  // (after discount), not the pre-discount subtotal — otherwise a coupon
+  // still leaves GST calculated on the full original price.
+  const taxableValue = Math.max(data.subtotal - (data.discount || 0), 0);
+  const gstBreakdown = calculateGST(taxableValue);
   const invoiceDate = new Date(data.orderDate).toLocaleDateString('en-IN', {
     day: '2-digit',
     month: 'short',
@@ -136,17 +140,17 @@ export const generateInvoiceHTML = (data: InvoiceData): string => {
         </table>
 
         <div class="gst-box">
-          <h4>GST Breakup (5%)</h4>
+          <h4>GST Breakup (18%)</h4>
           <div class="gst-row">
             <span>Taxable Amount</span>
             <span>₹${gstBreakdown.baseAmount.toLocaleString('en-IN')}</span>
           </div>
           <div class="gst-row">
-            <span>CGST @ 2.5%</span>
+            <span>CGST @ 9%</span>
             <span>₹${gstBreakdown.cgst.toLocaleString('en-IN')}</span>
           </div>
           <div class="gst-row">
-            <span>SGST @ 2.5%</span>
+            <span>SGST @ 9%</span>
             <span>₹${gstBreakdown.sgst.toLocaleString('en-IN')}</span>
           </div>
           <div class="gst-row" style="font-weight: bold; border-top: 1px solid #8B5CF6; padding-top: 8px; margin-top: 8px;">
