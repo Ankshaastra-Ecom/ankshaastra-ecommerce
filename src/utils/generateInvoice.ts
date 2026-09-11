@@ -22,7 +22,7 @@ interface InvoiceData {
 }
 
 // GST rates for spiritual/religious items (typically 5% or exempt)
-const GST_RATE = 0.05; // 5% GST
+const GST_RATE = 0.18; 
 
 export const calculateGST = (amount: number) => {
   const gstAmount = amount * GST_RATE;
