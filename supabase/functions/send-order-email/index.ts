@@ -107,7 +107,7 @@ function getStateCode(stateName?: string): string {
   return code ? `${code}-${stateName.toUpperCase()}` : stateName.toUpperCase();
 }
 
-const GST_RATE = 0.05;
+const GST_RATE = 0.18;
 
 async function buildInvoicePdfBytes(params: {
   orderNumber: string;
