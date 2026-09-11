@@ -110,10 +110,12 @@ import { supabase } from '@/integrations/supabase/client';
 import { lovable } from '@/integrations/lovable';
 
 // Supabase Auth needs an email-shaped identifier. Customers only ever see/enter
-// a mobile number — we map it to a fixed-domain pseudo-email internally so
-// Supabase Auth still handles password hashing/storage securely, without any
-// OTP/SMS step. Never shown to the user, never used for real email delivery.
-const PHONE_EMAIL_DOMAIN = 'phone.ankshaastra.internal';
+// a mobile number — we map it to a fixed pseudo-email internally so Supabase
+// Auth still handles password hashing/storage securely, without any OTP/SMS
+// step. This uses a subdomain of the real store domain (Supabase's email
+// validator rejects made-up TLDs like ".internal") — never shown to the user,
+// never used for real email delivery, no mailbox needs to exist there.
+const PHONE_EMAIL_DOMAIN = 'phone.ankshaastra.in';
 export const normalizePhone = (phone: string) => phone.replace(/\D/g, '').slice(-10);
 export const phoneToPseudoEmail = (phone: string) => `${normalizePhone(phone)}@${PHONE_EMAIL_DOMAIN}`;
 
