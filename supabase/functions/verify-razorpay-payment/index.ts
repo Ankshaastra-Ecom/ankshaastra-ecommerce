@@ -1,3 +1,4 @@
+
 // import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
 
 // const corsHeaders = {
@@ -6,7 +7,7 @@
 // };
 
 // interface VerifyRequest {
-//   orderId: string; // our internal orders.id
+//   orderId: string;
 //   razorpay_order_id: string;
 //   razorpay_payment_id: string;
 //   razorpay_signature: string;
@@ -80,10 +81,15 @@
 //       });
 //     }
 
-//     // Fire the confirmation emails now (fast path). The razorpay-webhook function
-//     // does the same thing as a durable fallback, guarded by confirmation_email_sent
-//     // so the customer/admin never gets duplicate emails.
-//     if (!order.confirmation_email_sent) {
+//     const { data: claimed } = await supabase
+//       .from('orders')
+//       .update({ confirmation_email_sent: true })
+//       .eq('id', order.id)
+//       .eq('confirmation_email_sent', false)
+//       .select('id')
+//       .maybeSingle();
+
+//     if (claimed) {
 //       const { data: items } = await supabase
 //         .from('order_items')
 //         .select('product_name, product_price, quantity, total')
@@ -98,20 +104,24 @@
 //         body: JSON.stringify({
 //           to: order.shipping_email,
 //           customerName: `${order.shipping_first_name} ${order.shipping_last_name}`,
+//           customerPhone: order.shipping_phone,
 //           orderNumber: order.order_number,
+//           orderDate: order.created_at,
 //           items: items || [],
 //           subtotal: order.subtotal,
 //           shipping: order.shipping,
 //           total: order.total,
 //           paymentMethod: order.payment_method,
 //           shippingAddress: `${order.shipping_address}, ${order.shipping_city}, ${order.shipping_state} - ${order.shipping_pincode}`,
+//           shippingCity: order.shipping_city,
+//           shippingState: order.shipping_state,
+//           shippingPincode: order.shipping_pincode,
 //         }),
 //       });
 
-//       if (emailRes.ok) {
-//         await supabase.from('orders').update({ confirmation_email_sent: true }).eq('id', order.id);
-//       } else {
+//       if (!emailRes.ok) {
 //         console.error('send-order-email failed from verify-razorpay-payment:', await emailRes.text());
+//         await supabase.from('orders').update({ confirmation_email_sent: false }).eq('id', order.id);
 //       }
 //     }
 
@@ -128,6 +138,8 @@
 //     });
 //   }
 // });
+
+
 
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
@@ -241,6 +253,7 @@ Deno.serve(async (req) => {
           items: items || [],
           subtotal: order.subtotal,
           shipping: order.shipping,
+          discount: order.discount,
           total: order.total,
           paymentMethod: order.payment_method,
           shippingAddress: `${order.shipping_address}, ${order.shipping_city}, ${order.shipping_state} - ${order.shipping_pincode}`,
