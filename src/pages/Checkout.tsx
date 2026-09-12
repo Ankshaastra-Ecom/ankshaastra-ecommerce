@@ -1,5 +1,7 @@
 
 
+
+
 // import React, { useState } from 'react';
 // import { Link, useNavigate } from 'react-router-dom';
 // import { Check, CreditCard, Truck, MapPin, ChevronRight, ShieldCheck, Loader2, Tag, FileText } from 'lucide-react';
@@ -250,31 +252,6 @@
 //         .single();
 
 //       if (orderError) throw orderError;
-
-//       // Log this checkout attempt to the Google Sheet immediately — even
-//       // before payment happens. If the customer abandons or payment fails,
-//       // this row still shows up so the team can follow up. Fire-and-forget:
-//       // never blocks or breaks checkout if it fails.
-//       supabase.functions.invoke('track-checkout-start', {
-//         body: {
-//           orderNumber: orderNum,
-//           customerName: `${shippingInfo.firstName} ${shippingInfo.lastName}`,
-//           email: shippingInfo.email,
-//           phone: shippingInfo.phone,
-//           items: state.items.map(item => ({
-//             product_name: item.product.name,
-//             quantity: item.quantity,
-//           })),
-//           subtotal: state.total,
-//           shipping,
-//           total: grandTotal,
-//           paymentMethod,
-//           address: shippingInfo.address,
-//           city: shippingInfo.city,
-//           state: shippingInfo.state,
-//           pincode: shippingInfo.pincode,
-//         },
-//       }).catch(err => console.error('Checkout tracking failed:', err));
 
 //       // 2. Insert order items
 //       const orderItems = state.items.map(item => ({
@@ -3385,6 +3362,7 @@ const Checkout: React.FC = () => {
           payment_method: paymentMethod as 'cod' | 'upi' | 'card',
           subtotal: state.total,
           shipping,
+          discount: discountAmount,
           total: grandTotal,
           notes: appliedCoupon ? `Coupon: ${appliedCoupon.code} (${appliedCoupon.discount}% off, -₹${discountAmount})` : null,
           status: 'pending',
