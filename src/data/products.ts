@@ -31,6 +31,15 @@ import vijayGatiRed2 from '@/assets/paintings/vijay-gati-red-2.webp';
 import vijayGatiWhite1 from '@/assets/paintings/vijay-gati-white-1.webp';
 import vijayGatiWhite2 from '@/assets/paintings/vijay-gati-white-2.webp';
 import paintingSizingGuide from '@/assets/paintings/sizing-guide.webp';
+import dhanVarshaSceneryAsset from '@/assets/paintings/dhan-varsha-scenery.webp.asset.json';
+import dhanVarshaSizeGuideAsset from '@/assets/paintings/dhan-varsha-size-guide.webp.asset.json';
+import manokamnaSceneryAsset from '@/assets/paintings/manokamna-siddhi-scenery.webp.asset.json';
+import manokamnaSizeGuideAsset from '@/assets/paintings/manokamna-siddhi-size-guide.webp.asset.json';
+import vidyaSceneryAsset from '@/assets/paintings/vidya-siddhi-scenery.webp.asset.json';
+import vidyaSizeGuideAsset from '@/assets/paintings/vidya-siddhi-size-guide.webp.asset.json';
+import vijayGatiRedSceneryAsset from '@/assets/paintings/vijay-gati-red-scenery.webp.asset.json';
+import vijayGatiRedSizeGuideAsset from '@/assets/paintings/vijay-gati-red-size-guide.webp.asset.json';
+import gicleePrintQualityAsset from '@/assets/paintings/giclee-print-quality.webp.asset.json';
 
 // Bracelet images
 import amazonite1 from '@/assets/bracelets/amazonite-1.webp';
@@ -957,7 +966,7 @@ const generateProducts = (): Product[] => {
   const paintingItems = [
     {
       name: 'Dhan Varsha Vastu Painting',
-      images: [dhanVarsha1, dhanVarsha2],
+      images: [dhanVarsha1, dhanVarsha2, dhanVarshaSceneryAsset.url, dhanVarshaSizeGuideAsset.url],
       description: 'Lord Kuber, guardian of wealth, is shown with a filled kalash symbolising fullness, prosperity and an ever-growing flow of resources. As a Vastu-inspired prosperity symbol it encourages financial stability, new opportunities and wealth that is accumulated, nurtured and sustained. Premium canvas, energised with Kuber mantras.',
       benefits: ['Business & offices', 'Wealth-conscious spaces', 'Reception areas', 'Home office / workspace', 'Areas for financial planning'],
       specifications: {
@@ -989,7 +998,7 @@ const generateProducts = (): Product[] => {
     },
     {
       name: 'Manokamna Siddhi Vastu Painting',
-      images: [manokamnaSiddhi1, manokamnaSiddhi2],
+      images: [manokamnaSiddhi1, manokamnaSiddhi2, manokamnaSceneryAsset.url, manokamnaSizeGuideAsset.url],
       description: 'Kalpavriksha, the divine wish-fulfilling tree, represents abundance, fulfilment, growth and the manifestation of aspirations. Kamdhenu resting beneath adds nourishment and prosperity. Together they form a strong symbol of abundance that continuously grows and nourishes, making it deeply meaningful for prosperity-oriented homes and businesses.',
       benefits: ['Family homes', 'Business & entrepreneurial spaces', 'Wealth & prosperity zones', 'Living rooms', 'Spaces focused on long-term growth'],
       specifications: {
@@ -1005,7 +1014,7 @@ const generateProducts = (): Product[] => {
     },
     {
       name: 'Vidya Siddhi Vastu Painting',
-      images: [vidyaSiddhi1, vidyaSiddhi2],
+      images: [vidyaSiddhi1, vidyaSiddhi2, vidyaSceneryAsset.url, vidyaSizeGuideAsset.url],
       description: 'Goddess Saraswati, the Saraswati Yantra and sacred mantra combine into a spiritually rich representation of knowledge, wisdom and refined intellect. The veena represents creativity and learning while the Yantra adds sacred geometry, symbolically supporting clarity, concentration and intellectual growth in every space dedicated to learning.',
       benefits: ['Students & academic spaces', 'Study rooms & libraries', 'Schools & institutions', 'Teachers, scholars & researchers', 'Creative, knowledge-based workspaces'],
       specifications: {
@@ -1021,7 +1030,7 @@ const generateProducts = (): Product[] => {
     },
     {
       name: 'Vijay Gati Red Vastu Painting',
-      images: [vijayGatiRed1, vijayGatiRed2],
+      images: [vijayGatiRed1, vijayGatiRed2, vijayGatiRedSceneryAsset.url, vijayGatiRedSizeGuideAsset.url],
       landscape: true,
       description: 'The red horses represent dynamic energy, speed, movement and forward momentum. Their powerful stride symbolises continuous work progress, ambition and the drive to achieve goals. Traditionally linked to Surya energy, this Vastu-inspired remedy encourages an atmosphere of action, momentum and steady professional progress.',
       benefits: ['Business & professional growth', 'Office cabins & workspaces', 'Entrepreneurs & leadership spaces', 'Goal-oriented environments', 'Career advancement & progress'],
@@ -1057,8 +1066,13 @@ const generateProducts = (): Product[] => {
 
   (paintingItems as Array<typeof paintingItems[number] & { landscape?: boolean }>).forEach((item, i) => {
     const sizes = item.landscape ? PAINTING_SIZES_LANDSCAPE : PAINTING_SIZES;
-    // Portrait artworks include the sizing guide as an additional gallery image
-    const images = item.landscape ? item.images : [...item.images, paintingSizingGuide];
+    // Every artwork includes print-quality details; products without a dedicated guide use the shared guide.
+    const hasDedicatedSizeGuide = [0, 2, 3, 4].includes(i);
+    const images = [
+      ...item.images,
+      ...(hasDedicatedSizeGuide ? [] : [paintingSizingGuide]),
+      gicleePrintQualityAsset.url,
+    ];
     products.push({
       id: `vpt-${id++}`,
       name: item.name,
