@@ -39,6 +39,9 @@ import vidyaSceneryAsset from '@/assets/paintings/vidya-siddhi-scenery.webp.asse
 import vidyaSizeGuideAsset from '@/assets/paintings/vidya-siddhi-size-guide.webp.asset.json';
 import vijayGatiRedSceneryAsset from '@/assets/paintings/vijay-gati-red-scenery.webp.asset.json';
 import vijayGatiRedSizeGuideAsset from '@/assets/paintings/vijay-gati-red-size-guide.webp.asset.json';
+import vyaparSamridhiSceneryAsset from '@/assets/paintings/vyapar-samridhi-scenery.webp.asset.json';
+import vyaparSamridhiSizeGuideAsset from '@/assets/paintings/vyapar-samridhi-size-guide.webp.asset.json';
+import vijayGatiWhiteSizeGuideAsset from '@/assets/paintings/vijay-gati-white-size-guide.webp.asset.json';
 import gicleePrintQualityAsset from '@/assets/paintings/giclee-print-quality.webp.asset.json';
 
 // Bracelet images
@@ -982,7 +985,7 @@ const generateProducts = (): Product[] => {
     },
     {
       name: 'Vyapar Samridhi Vastu Painting',
-      images: [vyaparSamridhi1, vyaparSamridhi2],
+      images: [vyaparSamridhi1, vyaparSamridhi2, vyaparSamridhiSceneryAsset.url, vyaparSamridhiSizeGuideAsset.url],
       description: 'Goddess Lakshmi in the Raja Ravi Varma tradition represents prosperity, abundance, beauty and fortune. The lotus signifies purity and blossoming wealth, while the white elephants depict Gajalakshmi — royal abundance, dignity and blessings. A powerful traditional symbol for inviting auspicious, harmonious prosperity into any space.',
       benefits: ['Living & drawing rooms', 'Entrance / reception areas', 'Business spaces', 'Wealth & prosperity zones', 'Homes seeking auspicious ambience'],
       specifications: {
@@ -1047,7 +1050,7 @@ const generateProducts = (): Product[] => {
     },
     {
       name: 'Vijay Gati White Vastu Painting',
-      images: [vijayGatiWhite1, vijayGatiWhite2],
+      images: [vijayGatiWhite1, vijayGatiWhite2, vijayGatiWhiteSizeGuideAsset.url],
       landscape: true,
       description: 'The white horses represent dynamic energy, speed, movement and forward momentum. Their powerful stride symbolises continuous work progress, ambition and the drive to achieve goals. Traditionally linked to Surya energy, this Vastu-inspired remedy encourages an atmosphere of action, momentum and steady professional progress.',
       benefits: ['Business & professional growth', 'Office cabins & workspaces', 'Entrepreneurs & leadership spaces', 'Goal-oriented environments', 'Career advancement & progress'],
@@ -1066,13 +1069,8 @@ const generateProducts = (): Product[] => {
 
   (paintingItems as Array<typeof paintingItems[number] & { landscape?: boolean }>).forEach((item, i) => {
     const sizes = item.landscape ? PAINTING_SIZES_LANDSCAPE : PAINTING_SIZES;
-    // Every artwork includes print-quality details; products without a dedicated guide use the shared guide.
-    const hasDedicatedSizeGuide = [0, 2, 3, 4].includes(i);
-    const images = [
-      ...item.images,
-      ...(hasDedicatedSizeGuide ? [] : [paintingSizingGuide]),
-      gicleePrintQualityAsset.url,
-    ];
+    // Product photos first, its own scenery and sizing guide next, then the shared print-quality image.
+    const images = [...item.images, gicleePrintQualityAsset.url];
     products.push({
       id: `vpt-${id++}`,
       name: item.name,
