@@ -30,7 +30,6 @@ import vijayGatiRed1 from '@/assets/paintings/vijay-gati-red-1.webp';
 import vijayGatiRed2 from '@/assets/paintings/vijay-gati-red-2.webp';
 import vijayGatiWhite1 from '@/assets/paintings/vijay-gati-white-1.webp';
 import vijayGatiWhite2 from '@/assets/paintings/vijay-gati-white-2.webp';
-import paintingSizingGuide from '@/assets/paintings/sizing-guide.webp';
 import dhanVarshaSceneryAsset from '@/assets/paintings/dhan-varsha-scenery.webp.asset.json';
 import dhanVarshaSizeGuideAsset from '@/assets/paintings/dhan-varsha-size-guide.webp.asset.json';
 import manokamnaSceneryAsset from '@/assets/paintings/manokamna-siddhi-scenery.webp.asset.json';
